@@ -1,0 +1,28 @@
+# config.example.yaml
+# Copy this file to config.yaml.
+# Credentials are loaded from .env — do NOT put them here.
+# See .env.example for the required variables.
+
+kis:
+  env: "prod"               # prod | paper (paper does not support short-sale APIs)
+  base_url_prod: "https://openapi.koreainvestment.com:9443"
+  base_url_paper: "https://openapivts.koreainvestment.com:29443"
+
+schedule:
+  run_after: "15:44"        # KST — investor data available after 15:40
+  lookback_days: 5          # days for short ratio 5-day average
+
+score:
+  weights:
+    short_today: 0.35
+    short_5d: 0.15
+    foreign_sell: 0.25
+    inst_sell: 0.15
+    return_neg: 0.10
+  high_pressure_threshold: 1.5   # score >= this → counted as high-pressure
+
+output:
+  json_dir: "data/output"
+  cache_dir: "data/cache"
+  serve_port: 8080
+  meta_cache_days: 7        # how often to refresh stock metadata

@@ -1,0 +1,31 @@
+# Credentials — never commit
+config.yaml
+.env
+# (commit .env.example and config.example.yaml instead)
+
+# Token and data cache
+data/cache/token.json
+data/cache/stock_meta.json
+
+# Output snapshots (optional — commit if you want history)
+# data/output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+*.swp

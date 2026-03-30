@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Korea Short Pressure Monitor</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg: #07090f;
+      --s1: #0b1018;
+      --s2: #0f1520;
+      --s3: #131c2a;
+      --s4: #182236;
+      --b1: #1b2a42;
+      --b2: #213352;
+      --b3: #2a4068;
+      --t1: #e8eef8;
+      --t2: #a8bdd6;
+      --t3: #607a96;
+      --t4: #2a3a52;
+      --ac: #60A8D6;
+      --gr: #3CC8B8;
+      --rd: #E86060;
+      --am: #FFCC30;
+      --pu: #FF9040;
+      --pA: #60A8D6;
+      --pB: #3CC8B8;
+      --pC: #FF9040;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(96,168,214,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(60,200,184,0.10), transparent 24%),
+        linear-gradient(180deg, #07090f 0%, #090d14 100%);
+      color: var(--t1);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 14px 24px; border-bottom: 1px solid var(--b1);
+      background: rgba(11,16,24,0.92);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+    .header-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .header-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    header h1 span { color: var(--ac); }
+    .header-source {
+      color: var(--t3);
+      font-size: 10px;
+      letter-spacing: 0.02em;
+    }
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      text-align: right;
+    }
+    .header-right .header-source,
+    .header-right #meta-info {
+      white-space: nowrap;
+    }
+    .header-source-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .source-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid var(--b2);
+      background: var(--s3);
+      color: var(--t2);
+      transition: 0.15s ease;
+    }
+    .source-link:hover {
+      border-color: var(--ac);
+      color: var(--t1);
+      background: rgba(96,168,214,0.10);
+    }
+    .source-link svg {
+      width: 12px;
+      height: 12px;
+      display: block;
+      fill: currentColor;
+    }
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border: 1px solid var(--b2);
+      border-radius: 4px;
+      background: var(--s3);
+      color: var(--t2);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gr);
+      box-shadow: 0 0 8px rgba(60,200,184,0.85);
+    }
+    #meta-info { color: var(--t3); font-size: 11px; white-space: nowrap; }
+
+    .container { max-width: 1440px; margin: 0 auto; padding: 18px 24px 28px; }
+
+    /* KPI cards */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+    .kpi-card {
+      background: var(--s2); border: 1px solid var(--b1); border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      min-height: 128px;
+    }
+    .kpi-card .label { color: var(--t2); font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 6px; }
+    .kpi-card .value { font-size: 20px; font-weight: 700; color: var(--t1); }
+    .kpi-card .sub {
+      color: #8fa3be;
+      font-size: 10px;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+      margin-top: 0;
+    }
+    .kpi-note {
+      color: #8fa3be;
+      font-size: 10px;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+      margin-top: 3px;
+    }
+    .kpi-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+    .kpi-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .kpi-label {
+      color: var(--t2);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      line-height: 1.2;
+    }
+    .kpi-tip-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+    .kpi-info-btn {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--b2);
+      border-radius: 50%;
+      background: var(--s3);
+      color: var(--t2);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: help;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.15s ease;
+    }
+    .kpi-info-btn:hover,
+    .kpi-info-btn:focus {
+      border-color: var(--ac);
+      color: var(--t1);
+      background: rgba(96,168,214,0.10);
+      outline: none;
+    }
+    .kpi-tooltip {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      width: max-content;
+      max-width: 460px;
+      white-space: nowrap;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--b2);
+      background: #0c121c;
+      color: var(--t1);
+      font-size: 10px;
+      line-height: 1.45;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: 0.15s ease;
+      z-index: 20;
+    }
+    .kpi-tip-wrap:hover .kpi-tooltip,
+    .kpi-tip-wrap:focus-within .kpi-tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .kpi-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      flex: 1;
+    }
+    .kpi-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .kpi-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .kpi-bottom {
+      margin-top: auto;
+      padding-top: 8px;
+      min-height: 16px;
+    }
+    .kpi-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--b2);
+      background: var(--s3);
+      color: var(--t2);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .kpi-badge.badge-red { border-color: rgba(232,96,96,0.45); color: #ff9b9b; background: rgba(232,96,96,0.10); }
+    .kpi-badge.badge-blue { border-color: rgba(96,168,214,0.45); color: #9fd0f1; background: rgba(96,168,214,0.10); }
+    .kpi-badge.badge-green { border-color: rgba(60,200,184,0.45); color: #8de9df; background: rgba(60,200,184,0.10); }
+    .kpi-badge.badge-yellow { border-color: rgba(255,204,48,0.45); color: #ffe08a; background: rgba(255,204,48,0.10); }
+    .red { color: var(--rd); }
+    .blue { color: var(--ac); }
+    .green { color: var(--gr); }
+    .yellow { color: var(--am); }
+
+    /* Formula strip */
+    .formula-strip {
+      background: var(--s2); border: 1px solid var(--b1); border-radius: 8px;
+      padding: 10px 16px; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .formula-strip .label { color: var(--t2); font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; margin-right: 4px; }
+    .pill {
+      background: var(--s3); border: 1px solid var(--b1); border-radius: 4px; padding: 4px 10px; font-size: 11px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .pill .w { font-weight: 700; color: var(--ac); }
+    .pill .n { color: var(--t1); }
+
+    /* Market tabs */
+    .tabs { display: flex; gap: 8px; margin-bottom: 0; }
+    .tab-btn {
+      padding: 6px 16px; cursor: pointer;
+      border: 1px solid transparent; background: var(--s3);
+      color: var(--t3); font-size: 12px; font-weight: 600; border-radius: 4px;
+      transition: 0.15s ease;
+    }
+    .tab-btn.active { color: var(--t1); border-color: var(--ac); background: rgba(96,168,214,0.10); }
+    .tab-btn:hover:not(.active) { color: var(--t1); border-color: var(--b2); }
+
+    /* Ranking table */
+    .table-section { background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; margin: 12px 0 20px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      padding: 8px 12px; text-align: left; font-size: 9px; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--t2); border-bottom: 1px solid var(--b2);
+      cursor: pointer; user-select: none; white-space: nowrap;
+    }
+    .th-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sort-btn {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--b2);
+      border-radius: 3px;
+      background: var(--s3);
+      color: var(--t3);
+      font-size: 9px;
+      line-height: 1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: 0.15s ease;
+    }
+    .sort-btn:hover { border-color: var(--t1); color: var(--t1); }
+    .sort-btn.active { border-color: var(--ac); color: var(--ac); background: rgba(96,168,214,0.10); }
+    thead th:hover { color: var(--t1); }
+    thead th.sorted { color: var(--ac); }
+    tbody tr { border-bottom: 1px solid rgba(27,42,66,0.65); transition: background 0.1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--s4); }
+    tbody td { padding: 7px 12px; font-size: 12px; }
+    .rank-badge {
+      display: inline-block; width: 24px; height: 24px; border-radius: 50%;
+      background: var(--s3); color: var(--t3); font-size: 11px; font-weight: 700;
+      text-align: center; line-height: 24px;
+    }
+    .rank-badge.top3 { background: rgba(96,168,214,0.18); color: var(--ac); border: 1px solid rgba(96,168,214,0.28); }
+    .ticker-cell .ticker { font-size: 10px; color: var(--t3); }
+    .ticker-cell .name { font-weight: 600; color: var(--t1); }
+    .bar-cell { display: flex; align-items: center; gap: 6px; }
+    .mini-bar-wrap { width: 60px; height: 6px; background: var(--s3); border-radius: 3px; overflow: hidden; }
+    .mini-bar { height: 100%; border-radius: 3px; }
+    .bar-today { background: var(--rd); }
+    .bar-5d { background: var(--t4); }
+    .score-cell { font-weight: 700; font-size: 14px; }
+    .score-high { color: var(--rd); }
+    .score-mid { color: var(--am); }
+    .score-low { color: var(--gr); }
+    .incomplete-row td { color: var(--t3); font-style: italic; }
+    .neg { color: var(--rd); }
+    .pos { color: var(--gr); }
+
+    /* Charts grid */
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .chart-card {
+      background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; padding: 14px 16px;
+    }
+    .chart-card h3 { font-size: 9px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
+    .chart-full { background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
+    .chart-full h3 { font-size: 9px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
+
+    /* Loading/error */
+    #loading { text-align: center; padding: 60px; color: var(--t3); }
+    #error-msg { background: rgba(232,96,96,0.08); border: 1px solid rgba(232,96,96,0.35); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; color: var(--rd); display: none; }
+
+    @media (max-width: 900px) {
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .charts-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-brand">
+    <div class="header-title-row">
+      <h1>KOREA <span>SHORT PRESSURE</span> MONITOR</h1>
+      <span class="live-pill"><span class="live-dot"></span><span>Live</span></span>
+      <span id="header-date" class="live-pill">Date: —</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-source">Cherin Kim | cherin0508@gmail.com</div>
+    <div class="header-source-row">
+      <div class="header-source">Source: KIS OPEN API</div>
+      <div class="source-links">
+        <a class="source-link" href="https://apiportal.koreainvestment.com/intro" target="_blank" rel="noopener noreferrer" aria-label="KIS API portal">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3a9 9 0 0 0-6.36 15.36l1.41-1.41A7 7 0 1 1 19 12h2A9 9 0 0 0 12 3zm-1 5v6h2V8h-2zm0 8v2h2v-2h-2z"/>
+          </svg>
+        </a>
+        <a class="source-link" href="https://github.com/koreainvestment/open-trading-api" target="_blank" rel="noopener noreferrer" aria-label="KIS GitHub repository">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.8 1.1 1.8 1.1 1 .1 1.7-.7 2-1.1-.9-.1-2-.5-2.9-2-.7-1.1-.1-2.2.2-2.5-.1-.1-.4-1.1.1-2.3 0 0 .9-.3 3 .9a10.4 10.4 0 0 1 5.5 0c2.1-1.2 3-.9 3-.9.5 1.2.2 2.2.1 2.3.3.3.9 1.4.2 2.5-.9 1.5-2 1.9-2.9 2 .7.6 1.3 1.8 1.3 3.6v3.8c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div id="meta-info">Last updated as —</div>
+  </div>
+</header>
+
+<div id="loading">Loading data…</div>
+<div id="error-msg"></div>
+
+<div class="container" id="main-content" style="display:none">
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-body">
+        <div class="kpi-label-row">
+          <div class="kpi-label">High-Pressure Stocks</div>
+          <div class="kpi-tip-wrap">
+            <button class="kpi-info-btn" type="button" aria-label="Explain High-Pressure Stocks formula">i</button>
+            <div class="kpi-tooltip">
+              # of stocks with short_pressure_score ≥ 1.5
+            </div>
+          </div>
+        </div>
+        <div class="kpi-head">
+          <div class="kpi-main">
+            <div class="value" id="kpi-high-pressure-count">—</div>
+            <div class="sub" id="kpi-high-pressure-sub">score ≥ 1.5</div>
+          </div>
+          <span class="kpi-badge badge-blue" id="kpi-high-pressure-badge">—</span>
+        </div>
+        <div class="kpi-bottom">
+          <div class="kpi-note" id="kpi-high-pressure-note">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-body">
+        <div class="kpi-label-row">
+          <div class="kpi-label">Market Pressure Regime</div>
+          <div class="kpi-tip-wrap">
+            <button class="kpi-info-btn" type="button" aria-label="Explain Market Pressure Regime formula">i</button>
+            <div class="kpi-tooltip">
+              High Pressure Stocks / Total Universe
+            </div>
+          </div>
+        </div>
+        <div class="kpi-head">
+          <div class="kpi-main">
+            <div class="value" id="kpi-regime-share">—</div>
+            <div class="sub" id="kpi-regime-sub">How broad is short pressure across the market</div>
+          </div>
+          <span class="kpi-badge badge-blue" id="kpi-regime-badge">—</span>
+        </div>
+        <div class="kpi-bottom">
+          <div class="kpi-note" id="kpi-regime-note">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-body">
+        <div class="kpi-label-row">
+          <div class="kpi-label">Price Impact Strength</div>
+          <div class="kpi-tip-wrap">
+            <button class="kpi-info-btn" type="button" aria-label="Explain Price Impact Strength formula">i</button>
+            <div class="kpi-tooltip">
+              average(return_pct of high pressure stocks)
+            </div>
+          </div>
+        </div>
+        <div class="kpi-head">
+          <div class="kpi-main">
+            <div class="value yellow" id="kpi-price-impact-strength">—</div>
+            <div class="sub" id="kpi-price-impact-sub">Average return of high-pressure names</div>
+          </div>
+          <span class="kpi-badge badge-yellow" id="kpi-price-impact-badge">—</span>
+        </div>
+        <div class="kpi-bottom">
+          <div class="kpi-note" id="kpi-price-impact-note">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-body">
+        <div class="kpi-label-row">
+          <div class="kpi-label">Top Pressure Concentration</div>
+          <div class="kpi-tip-wrap">
+            <button class="kpi-info-btn" type="button" aria-label="Explain Top Pressure Concentration formula">i</button>
+            <div class="kpi-tooltip">
+              sum(top 3 max(score, 0)) / sum(all max(score, 0))
+            </div>
+          </div>
+        </div>
+        <div class="kpi-head">
+          <div class="kpi-main">
+            <div class="value red" id="kpi-concentration-risk">—</div>
+            <div class="sub" id="kpi-concentration-sub">Top 3 score share of total score</div>
+          </div>
+          <span class="kpi-badge badge-red" id="kpi-concentration-badge">—</span>
+        </div>
+        <div class="kpi-bottom">
+          <div class="kpi-note" id="kpi-concentration-note">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Score formula -->
+  <div class="formula-strip">
+    <span class="label">Short Pressure Score =</span>
+    <span class="pill"><span class="w">0.35</span><span class="n">× z(short turnover %)</span></span>
+    <span>+</span>
+    <span class="pill"><span class="w">0.15</span><span class="n">× z(5D avg short turnover %)</span></span>
+    <span>+</span>
+    <span class="pill"><span class="w">0.25</span><span class="n">× z(−foreign net flow)</span></span>
+    <span>+</span>
+    <span class="pill"><span class="w">0.15</span><span class="n">× z(−inst net flow)</span></span>
+    <span>+</span>
+    <span class="pill"><span class="w">0.10</span><span class="n">× z(−price chg%)</span></span>
+  </div>
+
+  <!-- Market tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" data-market="kospi">KOSPI</button>
+    <button class="tab-btn" data-market="kosdaq">KOSDAQ</button>
+  </div>
+
+  <!-- Ranking table -->
+  <div class="table-section">
+    <table id="ranking-table">
+      <thead>
+        <tr>
+          <th data-col="rank">Rank</th>
+          <th data-col="name">Name</th>
+          <th data-col="ssts_vol_rlim"><span class="th-wrap"><span>Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim" aria-label="Sort Short Turnover %">↕</button></span></th>
+          <th data-col="ssts_vol_rlim_5d"><span class="th-wrap"><span>5D Avg Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim_5d" aria-label="Sort 5D Avg Short Turnover %">↕</button></span></th>
+          <th data-col="frgn_ntby_tr_pbmn"><span class="th-wrap"><span>Foreign Net Flow (KRW mn)</span><button class="sort-btn" data-sort="frgn_ntby_tr_pbmn" aria-label="Sort Foreign Net Flow">↕</button></span></th>
+          <th data-col="orgn_ntby_tr_pbmn"><span class="th-wrap"><span>Inst Net Flow (KRW mn)</span><button class="sort-btn" data-sort="orgn_ntby_tr_pbmn" aria-label="Sort Inst Net Flow">↕</button></span></th>
+          <th data-col="prdy_ctrt"><span class="th-wrap"><span>Price Change %</span><button class="sort-btn" data-sort="prdy_ctrt" aria-label="Sort Price Change %">↕</button></span></th>
+          <th data-col="score"><span class="th-wrap"><span>Score</span><button class="sort-btn" data-sort="score" aria-label="Sort Score">↕</button></span></th>
+        </tr>
+      </thead>
+      <tbody id="ranking-tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- Charts row 1 -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Short Ratio Distribution (Today vs 5d Avg)</h3>
+      <canvas id="chart-distribution"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Score vs Return%</h3>
+      <canvas id="chart-scatter"></canvas>
+    </div>
+  </div>
+
+  <!-- Trend lines -->
+  <div class="chart-full">
+    <h3 id="trend-title">Foreign vs Inst Net — Combined Market Map</h3>
+    <canvas id="chart-trend" height="80"></canvas>
+  </div>
+
+</div>
+
+<script>
+// ── State ─────────────────────────────────────────────────────────────────────
+let DATA = null;
+let activeMarket = 'kospi';
+let sortCol = 'rank';
+let sortAsc = true;
+const HIGH_PRESSURE_THRESHOLD = 1.5;
+let charts = {};
+const THEME = {
+  text: '#e8eef8',
+  muted: '#a8bdd6',
+  grid: '#213352',
+  pA: '#60A8D6',
+  pB: '#3CC8B8',
+  pC: '#FF9040',
+  rd: '#E86060',
+  t3: '#607a96',
+};
+
+// ── Fetch ─────────────────────────────────────────────────────────────────────
+async function fetchJson(url) {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`${url} returned ${res.status}`);
+  }
+  return await res.json();
+}
+
+async function loadData() {
+  try {
+    const attempts = [
+      '/api/data',
+      '../data/output/latest.json',
+      './latest.json',
+    ];
+
+    let lastError = null;
+    for (const url of attempts) {
+      try {
+        DATA = await fetchJson(url);
+        break;
+      } catch (err) {
+        lastError = err;
+      }
+    }
+
+    if (!DATA) {
+      throw lastError || new Error('No data source available');
+    }
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    render();
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const errEl = document.getElementById('error-msg');
+    errEl.style.display = 'block';
+    errEl.textContent = 'Failed to load data: ' + e.message + '. Open the dashboard through http://localhost:8080 or keep the page in the same folder as data/output/latest.json.';
+  }
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render() {
+  renderMeta();
+  renderKPIs();
+  renderTable();
+  renderCharts();
+}
+
+function renderMeta() {
+  const el = document.getElementById('meta-info');
+  if (DATA.generated_at) el.textContent = `Last updated as ${formatHKT(DATA.generated_at)}`;
+  const dateEl = document.getElementById('header-date');
+  if (dateEl) dateEl.textContent = `Date: ${DATA.date || '—'}`;
+}
+
+function formatHKT(isoString) {
+  const dt = new Date(isoString);
+  if (Number.isNaN(dt.getTime())) return isoString;
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Hong_Kong',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).formatToParts(dt);
+  const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
+  return `${map.year}-${map.month}-${map.day} ${map.hour}:${map.minute}:${map.second} HKT`;
+}
+
+function renderKPIs() {
+  const allRows = [...(DATA.kospi || []), ...(DATA.kosdaq || [])]
+    .filter(r => !r.incomplete && getScoreValue(r) != null);
+  const highRows = allRows.filter(r => getScoreValue(r) >= HIGH_PRESSURE_THRESHOLD);
+  const highPressureCount = highRows.length;
+  setKpiCard({
+    valueId: 'kpi-high-pressure-count',
+    badgeId: 'kpi-high-pressure-badge',
+    subId: 'kpi-high-pressure-sub',
+    value: String(highPressureCount),
+    badge: highPressureCount === 0 ? 'NONE' : (highPressureCount <= 3 ? 'FOCUSED' : 'BROAD'),
+    sub: 'score ≥ 1.5',
+    tone: highPressureCount === 0 ? 'green' : (highPressureCount <= 3 ? 'yellow' : 'red'),
+  });
+  const noteEl = document.getElementById('kpi-high-pressure-note');
+  if (noteEl) noteEl.textContent = '';
+
+  const pressureShare = pct(highRows.length, allRows.length);
+  const regime = getMarketPressureRegime(pressureShare);
+  setKpiCard({
+    valueId: 'kpi-regime-share',
+    badgeId: 'kpi-regime-badge',
+    subId: 'kpi-regime-sub',
+    value: pressureShare != null ? `${pressureShare.toFixed(1)}%` : '—',
+    badge: regime.label,
+    sub: 'How broad is short pressure across the market',
+    tone: regime.tone,
+  });
+  const regimeNote = document.getElementById('kpi-regime-note');
+  if (regimeNote) regimeNote.textContent = '';
+
+  const priceImpact = calcPriceImpactStrength(highRows);
+  const priceImpactInterpretation = priceImpact < 0
+    ? 'Strong downside confirmation'
+    : 'Limited price reaction';
+  setKpiCard({
+    valueId: 'kpi-price-impact-strength',
+    badgeId: 'kpi-price-impact-badge',
+    subId: 'kpi-price-impact-sub',
+    value: `${priceImpact.toFixed(1)}%`,
+    badge: priceImpact < 0 ? 'DOWNSIDE' : 'FLAT',
+    sub: priceImpactInterpretation,
+    tone: priceImpact < 0 ? 'red' : 'green',
+  });
+  const priceImpactNote = document.getElementById('kpi-price-impact-note');
+  if (priceImpactNote) priceImpactNote.textContent = '';
+
+  const concentration = calcConcentrationRisk(allRows);
+  const concentrationInterpretation = concentration > 0
+    ? (concentration >= 0.65
+        ? 'Pressure concentrated in a few names'
+        : 'Pressure broadly distributed')
+    : 'No positive scores to evaluate';
+  setKpiCard({
+    valueId: 'kpi-concentration-risk',
+    badgeId: 'kpi-concentration-badge',
+    subId: 'kpi-concentration-sub',
+    value: `${(concentration * 100).toFixed(1)}%`,
+    badge: concentration > 0 ? (concentration >= 0.65 ? 'CONCENTRATED' : 'BROAD') : 'N/A',
+    sub: concentrationInterpretation,
+    tone: concentration > 0 ? (concentration >= 0.65 ? 'red' : 'green') : 'muted',
+  });
+  const concentrationNote = document.getElementById('kpi-concentration-note');
+  if (concentrationNote) concentrationNote.textContent = '';
+}
+
+function stockName(r) {
+  return r.display_name || r.name || r.hts_kor_isnm || r.mksc_shrn_iscd;
+}
+
+function toNum(v) {
+  if (v == null) return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+function getScoreValue(r) {
+  return toNum(r.short_pressure_score ?? r.score);
+}
+
+function getForeignNetValue(r) {
+  return toNum(r.foreign_net_value ?? r.frgn_ntby_tr_pbmn);
+}
+
+function getReturnValue(r) {
+  return toNum(r.return_pct ?? r.prdy_ctrt);
+}
+
+function pct(numerator, denominator) {
+  if (!denominator) return null;
+  return (numerator / denominator) * 100;
+}
+
+function getMarketPressureRegime(sharePct) {
+  if (sharePct == null) return { label: 'N/A', tone: 'muted' };
+  if (sharePct < 3) return { label: 'LOW', tone: 'green' };
+  if (sharePct < 7) return { label: 'ELEVATED', tone: 'blue' };
+  if (sharePct < 12) return { label: 'STRESSED', tone: 'yellow' };
+  return { label: 'EXTREME', tone: 'red' };
+}
+
+function calcPriceImpactStrength(highRows) {
+  if (!highRows.length) return 0;
+  const returns = highRows
+    .map(getReturnValue)
+    .filter(v => v != null);
+  if (!returns.length) return 0;
+  const total = returns.reduce((a, b) => a + b, 0);
+  return total / returns.length;
+}
+
+function calcConcentrationRisk(rows) {
+  const scores = rows
+    .map(getScoreValue)
+    .map(v => (v == null ? null : Math.max(v, 0)))
+    .filter(v => v != null);
+  if (!scores.length) return 0;
+  const total = scores.reduce((a, b) => a + b, 0);
+  if (!total) return 0;
+  const top3 = [...scores].sort((a, b) => b - a).slice(0, 3).reduce((a, b) => a + b, 0);
+  return top3 / total;
+}
+
+function setKpiCard({ valueId, badgeId, subId, value, badge, sub, tone }) {
+  const valueEl = document.getElementById(valueId);
+  const badgeEl = document.getElementById(badgeId);
+  const subEl = document.getElementById(subId);
+  if (valueEl) {
+    valueEl.textContent = value;
+    valueEl.classList.remove('red', 'blue', 'green', 'yellow');
+    if (tone && tone !== 'muted') valueEl.classList.add(tone);
+  }
+  if (badgeEl) {
+    badgeEl.textContent = badge;
+    badgeEl.classList.remove('badge-red', 'badge-blue', 'badge-green', 'badge-yellow');
+    if (tone === 'red') badgeEl.classList.add('badge-red');
+    else if (tone === 'blue') badgeEl.classList.add('badge-blue');
+    else if (tone === 'green') badgeEl.classList.add('badge-green');
+    else if (tone === 'yellow') badgeEl.classList.add('badge-yellow');
+  }
+  if (subEl) subEl.textContent = sub;
+}
+
+function renderTable() {
+  const rows = [...(DATA[activeMarket] || [])];
+
+  // Sort
+  rows.sort((a, b) => {
+    const av = a[sortCol] ?? (sortAsc ? Infinity : -Infinity);
+    const bv = b[sortCol] ?? (sortAsc ? Infinity : -Infinity);
+    if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+    return sortAsc ? av - bv : bv - av;
+  });
+
+  const maxShort = Math.max(...rows.map(r => r.ssts_vol_rlim || 0));
+  const tbody = document.getElementById('ranking-tbody');
+  tbody.innerHTML = rows.map(r => {
+    const isIncomplete = r.incomplete;
+    const rankBadge = r.rank
+      ? `<span class="rank-badge ${r.rank <= 3 ? 'top3' : ''}">${r.rank}</span>`
+      : '<span class="rank-badge">—</span>';
+
+    const shortPct = r.ssts_vol_rlim != null ? r.ssts_vol_rlim.toFixed(2) : '—';
+    const short5d  = r.ssts_vol_rlim_5d != null ? r.ssts_vol_rlim_5d.toFixed(2) : '—';
+    const todayBarPct = maxShort > 0 ? (r.ssts_vol_rlim / maxShort * 100) : 0;
+    const avgBarPct   = maxShort > 0 ? ((r.ssts_vol_rlim_5d || 0) / maxShort * 100) : 0;
+
+    const frgnVal = r.frgn_ntby_tr_pbmn != null
+      ? `<span class="${r.frgn_ntby_tr_pbmn < 0 ? 'neg' : 'pos'}">${fmtM(r.frgn_ntby_tr_pbmn)}</span>` : '—';
+    const instVal = r.orgn_ntby_tr_pbmn != null
+      ? `<span class="${r.orgn_ntby_tr_pbmn < 0 ? 'neg' : 'pos'}">${fmtM(r.orgn_ntby_tr_pbmn)}</span>` : '—';
+    const retVal = r.prdy_ctrt != null
+      ? `<span class="${r.prdy_ctrt < 0 ? 'neg' : 'pos'}">${r.prdy_ctrt > 0 ? '+' : ''}${r.prdy_ctrt.toFixed(2)}%</span>` : '—';
+
+    let scoreClass = 'score-low';
+    if (r.score != null) {
+      if (r.score >= 1.5) scoreClass = 'score-high';
+      else if (r.score >= 1.0) scoreClass = 'score-mid';
+    }
+    const scoreVal = r.score != null
+      ? `<span class="score-cell ${scoreClass}">${r.score.toFixed(2)}</span>` : '—';
+
+    return `<tr class="${isIncomplete ? 'incomplete-row' : ''}">
+      <td>${rankBadge}</td>
+      <td class="ticker-cell">
+        <div class="name">${stockName(r)}</div>
+        <div class="ticker">${r.mksc_shrn_iscd}</div>
+      </td>
+      <td>
+        <div class="bar-cell">
+          <span>${shortPct}%</span>
+          <div class="mini-bar-wrap"><div class="mini-bar bar-today" style="width:${todayBarPct}%"></div></div>
+        </div>
+      </td>
+      <td>
+        <div class="bar-cell">
+          <span>${short5d}%</span>
+          <div class="mini-bar-wrap"><div class="mini-bar bar-5d" style="width:${avgBarPct}%"></div></div>
+        </div>
+      </td>
+      <td>${frgnVal}</td>
+      <td>${instVal}</td>
+      <td>${retVal}</td>
+      <td>${scoreVal}</td>
+    </tr>`;
+  }).join('');
+  updateSortButtons();
+}
+
+function updateSortButtons() {
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    const col = btn.dataset.sort;
+    const active = sortCol === col;
+    btn.classList.toggle('active', active);
+    btn.textContent = active ? (sortAsc ? '↑' : '↓') : '↕';
+  });
+}
+
+function fmtM(v) {
+  if (v == null) return '—';
+  const abs = Math.abs(v);
+  if (abs >= 1e6) return (v / 1e6).toFixed(1) + 'T';
+  if (abs >= 1e3) return (v / 1e3).toFixed(1) + 'B';
+  return v.toFixed(0) + 'M';
+}
+
+// ── Charts ────────────────────────────────────────────────────────────────────
+function destroyChart(id) {
+  if (charts[id]) { charts[id].destroy(); delete charts[id]; }
+}
+
+function renderCharts() {
+  renderDistribution();
+  renderScatter();
+  renderCombinedMap();
+}
+
+function renderDistribution() {
+  destroyChart('dist');
+  const rows = (DATA[activeMarket] || []).filter(r => !r.incomplete && r.ssts_vol_rlim != null);
+  const labels = rows.map(r => stockName(r));
+  charts.dist = new Chart(document.getElementById('chart-distribution'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Today', data: rows.map(r => r.ssts_vol_rlim), backgroundColor: 'rgba(232,96,96,0.80)' },
+        { label: '5d Avg', data: rows.map(r => r.ssts_vol_rlim_5d), backgroundColor: 'rgba(96,168,214,0.45)' },
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { labels: { color: THEME.muted, font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { color: THEME.muted, font: { size: 10 }, maxRotation: 45 }, grid: { color: THEME.grid } },
+        y: { ticks: { color: THEME.muted, font: { size: 11 } }, grid: { color: THEME.grid } },
+      }
+    }
+  });
+}
+
+function renderScatter() {
+  destroyChart('scatter');
+  const allRows = [...(DATA.kospi || []), ...(DATA.kosdaq || [])].filter(r => !r.incomplete && r.score != null && r.prdy_ctrt != null);
+  const kospiTickers = new Set((DATA.kospi || []).map(r => r.mksc_shrn_iscd));
+  charts.scatter = new Chart(document.getElementById('chart-scatter'), {
+    type: 'scatter',
+    data: {
+      datasets: [
+        {
+          label: 'KOSPI',
+          data: allRows.filter(r => kospiTickers.has(r.mksc_shrn_iscd)).map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r) })),
+          backgroundColor: 'rgba(96,168,214,0.72)',
+          pointRadius: 5,
+        },
+        {
+          label: 'KOSDAQ',
+          data: allRows.filter(r => !kospiTickers.has(r.mksc_shrn_iscd)).map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r) })),
+          backgroundColor: 'rgba(60,200,184,0.72)',
+          pointRadius: 5,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: THEME.muted, font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.raw.label}: score=${ctx.raw.y?.toFixed(2)}, ret=${ctx.raw.x?.toFixed(2)}%`
+          }
+        }
+      },
+      scales: {
+        x: { title: { display: true, text: 'Return %', color: THEME.muted }, ticks: { color: THEME.muted }, grid: { color: THEME.grid } },
+        y: { title: { display: true, text: 'Score', color: THEME.muted }, ticks: { color: THEME.muted }, grid: { color: THEME.grid } },
+      }
+    }
+  });
+}
+
+function renderCombinedMap() {
+  destroyChart('trend');
+  const allRows = [...(DATA.kospi || []), ...(DATA.kosdaq || [])]
+    .filter(r => !r.incomplete && r.frgn_ntby_tr_pbmn != null && r.orgn_ntby_tr_pbmn != null && r.score != null);
+
+  document.getElementById('trend-title').textContent =
+    'Foreign vs Inst Net — Combined Market Map';
+
+  const kospiTickers = new Set((DATA.kospi || []).map(r => r.mksc_shrn_iscd));
+  const size = r => Math.max(4, Math.min(16, 4 + (r.score || 0) * 2.5));
+
+  charts.trend = new Chart(document.getElementById('chart-trend'), {
+    type: 'bubble',
+    data: {
+      datasets: [
+        {
+          label: 'KOSPI',
+          data: allRows.filter(r => kospiTickers.has(r.mksc_shrn_iscd)).map(r => ({
+            x: r.frgn_ntby_tr_pbmn,
+            y: r.orgn_ntby_tr_pbmn,
+            r: size(r),
+            label: stockName(r),
+            ticker: r.mksc_shrn_iscd,
+            score: r.score,
+          })),
+          backgroundColor: 'rgba(96,168,214,0.45)',
+          borderColor: 'rgba(96,168,214,0.95)',
+        },
+        {
+          label: 'KOSDAQ',
+          data: allRows.filter(r => !kospiTickers.has(r.mksc_shrn_iscd)).map(r => ({
+            x: r.frgn_ntby_tr_pbmn,
+            y: r.orgn_ntby_tr_pbmn,
+            r: size(r),
+            label: stockName(r),
+            ticker: r.mksc_shrn_iscd,
+            score: r.score,
+          })),
+          backgroundColor: 'rgba(60,200,184,0.45)',
+          borderColor: 'rgba(60,200,184,0.95)',
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: THEME.muted, font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const r = ctx.raw;
+              return `${r.label} (${r.ticker}) · score=${r.score?.toFixed(2)} · F=${fmtM(r.x)} · I=${fmtM(r.y)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: { display: true, text: 'Foreign Net (M)', color: THEME.muted },
+          ticks: { color: THEME.muted, callback: v => fmtM(v) },
+          grid: { color: THEME.grid },
+        },
+        y: {
+          title: { display: true, text: 'Inst Net (M)', color: THEME.muted },
+          ticks: { color: THEME.muted, callback: v => fmtM(v) },
+          grid: { color: THEME.grid },
+        },
+      }
+    }
+  });
+}
+
+// ── Event listeners ───────────────────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeMarket = btn.dataset.market;
+    renderTable();
+    renderDistribution();
+    renderCombinedMap();
+  });
+});
+
+document.querySelectorAll('thead th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (col === 'rank' || col === 'name') return;
+    if (sortCol === col) { sortAsc = !sortAsc; }
+    else { sortCol = col; sortAsc = col === 'rank'; }
+    document.querySelectorAll('thead th').forEach(t => t.classList.remove('sorted'));
+    th.classList.add('sorted');
+    renderTable();
+  });
+});
+
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const col = btn.dataset.sort;
+    if (sortCol === col) { sortAsc = !sortAsc; }
+    else { sortCol = col; sortAsc = false; }
+    document.querySelectorAll('thead th').forEach(t => t.classList.remove('sorted'));
+    btn.closest('th')?.classList.add('sorted');
+    renderTable();
+  });
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>
