@@ -664,16 +664,16 @@ function render() {
 
 function renderMeta() {
   const el = document.getElementById('meta-info');
-  if (DATA.generated_at) el.textContent = `Last updated as ${formatHKT(DATA.generated_at)}`;
+  if (DATA.generated_at) el.textContent = `Last updated as ${formatKST(DATA.generated_at)}`;
   const dateEl = document.getElementById('header-date');
   if (dateEl) dateEl.textContent = `Date: ${DATA.date || '—'}`;
 }
 
-function formatHKT(isoString) {
+function formatKST(isoString) {
   const dt = new Date(isoString);
   if (Number.isNaN(dt.getTime())) return isoString;
   const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Hong_Kong',
+    timeZone: 'Asia/Seoul',
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -683,7 +683,7 @@ function formatHKT(isoString) {
     hour12: false,
   }).formatToParts(dt);
   const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
-  return `${map.year}-${map.month}-${map.day} ${map.hour}:${map.minute}:${map.second} HKT`;
+  return `${map.year}-${map.month}-${map.day} ${map.hour}:${map.minute}:${map.second} KST`;
 }
 
 function renderKPIs() {
