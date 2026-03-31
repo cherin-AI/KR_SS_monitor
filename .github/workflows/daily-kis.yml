@@ -24,6 +24,16 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --upgrade pip && pip install -r requirements.txt
 
+      - name: Set today date
+        id: date
+        run: echo "today=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Restore token cache
+        uses: actions/cache@v4
+        with:
+          path: data/cache/token.json
+          key: kis-token-${{ steps.date.outputs.today }}
+
       - name: Validate secrets are set
         run: |
           if [ -z "$KIS_APP_KEY" ] || [ -z "$KIS_APP_SECRET" ]; then
