@@ -17,6 +17,31 @@ from pipeline.auth import KISAPIError, build_headers
 
 logger = logging.getLogger(__name__)
 
+_RETRYABLE = (httpx.RemoteProtocolError, httpx.ConnectError, httpx.ReadTimeout)
+
+
+async def _get_with_retry(
+    client: httpx.AsyncClient,
+    url: str,
+    *,
+    headers: dict,
+    params: dict,
+    retries: int = 3,
+    backoff: float = 2.0,
+) -> httpx.Response:
+    """GET with exponential backoff on transient KIS connection drops."""
+    for attempt in range(retries):
+        try:
+            return await client.get(url, headers=headers, params=params)
+        except _RETRYABLE as exc:
+            if attempt == retries - 1:
+                raise
+            wait = backoff ** attempt
+            logger.warning("Transient error (%s), retrying in %.1fs…", exc, wait)
+            await asyncio.sleep(wait)
+    raise RuntimeError("unreachable")
+
+
 # ── helpers ───────────────────────────────────────────────────────────────────
 
 def _base_url(config: dict) -> str:
@@ -111,7 +136,9 @@ async def fetch_daily_short_trend(
         "FID_INPUT_DATE_1": _ndays_ago(lookback_days * 2),  # buffer for non-trading days
         "FID_INPUT_DATE_2": trade_date_end or _yesterday(),
     }
-    resp = await client.get(url, headers=build_headers(token, tr_id, config), params=params)
+    resp = await _get_with_retry(
+        client, url, headers=build_headers(token, tr_id, config), params=params
+    )
     resp.raise_for_status()
     data = resp.json()
     _check(data, f"daily_short_trend {ticker}")
@@ -430,7 +457,7 @@ async def fetch_5d_averages(
     config: dict,
     tickers: list[str],
     lookback_days: int = 5,
-    sleep_between: float = 0.1,
+    sleep_between: float = 0.5,
     trade_date_end: str | None = None,
 ) -> dict[str, float | None]:
     """
