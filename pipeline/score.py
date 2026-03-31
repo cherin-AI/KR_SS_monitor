@@ -104,7 +104,7 @@ def compute_score(df: pd.DataFrame, weights: dict[str, float] | None = None) -> 
     return result
 
 
-def build_meta_summary(df_kospi: pd.DataFrame, df_kosdaq: pd.DataFrame, threshold: float = 1.5) -> dict:
+def build_meta_summary(df_kospi: pd.DataFrame, df_kosdaq: pd.DataFrame, threshold: float = 1.0) -> dict:
     """
     Compute aggregate KPI values across both markets.
     """

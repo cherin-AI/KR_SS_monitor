@@ -285,7 +285,7 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
 
     # ── 5. Score ──────────────────────────────────────────────────────────────
     logger.info("Computing scores...")
-    threshold = config["score"].get("high_pressure_threshold", 2.0)
+    threshold = config["score"].get("high_pressure_threshold", 1.0)
     kospi_scored  = compute_score(kospi_merged)
     kosdaq_scored = compute_score(kosdaq_merged)
 

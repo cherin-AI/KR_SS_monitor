@@ -19,7 +19,7 @@ score:
     foreign_sell: 0.25
     inst_sell: 0.15
     return_neg: 0.10
-  high_pressure_threshold: 1.5   # score >= this → counted as high-pressure
+  high_pressure_threshold: 1.0   # score >= this → counted as high-pressure
 
 output:
   json_dir: "data/output"

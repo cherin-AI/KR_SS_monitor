@@ -447,14 +447,14 @@
           <div class="kpi-tip-wrap">
             <button class="kpi-info-btn" type="button" aria-label="Explain High-Pressure Stocks formula">i</button>
             <div class="kpi-tooltip">
-              # of stocks with short_pressure_score ≥ 1.5
+              # of stocks with short_pressure_score ≥ 1.0
             </div>
           </div>
         </div>
         <div class="kpi-head">
           <div class="kpi-main">
             <div class="value" id="kpi-high-pressure-count">—</div>
-            <div class="sub" id="kpi-high-pressure-sub">score ≥ 1.5</div>
+            <div class="sub" id="kpi-high-pressure-sub">score ≥ 1.0</div>
           </div>
           <span class="kpi-badge badge-blue" id="kpi-high-pressure-badge">—</span>
         </div>
@@ -599,7 +599,7 @@ let DATA = null;
 let activeMarket = 'kospi';
 let sortCol = 'rank';
 let sortAsc = true;
-const HIGH_PRESSURE_THRESHOLD = 1.5;
+const HIGH_PRESSURE_THRESHOLD = 1.0;
 let charts = {};
 const THEME = {
   text: '#e8eef8',
@@ -697,7 +697,7 @@ function renderKPIs() {
     subId: 'kpi-high-pressure-sub',
     value: String(highPressureCount),
     badge: highPressureCount === 0 ? 'NONE' : (highPressureCount <= 3 ? 'FOCUSED' : 'BROAD'),
-    sub: 'score ≥ 1.5',
+    sub: 'score ≥ 1.0',
     tone: highPressureCount === 0 ? 'green' : (highPressureCount <= 3 ? 'yellow' : 'red'),
   });
   const noteEl = document.getElementById('kpi-high-pressure-note');
@@ -862,8 +862,8 @@ function renderTable() {
 
     let scoreClass = 'score-low';
     if (r.score != null) {
-      if (r.score >= 1.5) scoreClass = 'score-high';
-      else if (r.score >= 1.0) scoreClass = 'score-mid';
+      if (r.score >= 1.0) scoreClass = 'score-high';
+      else if (r.score >= 0.5) scoreClass = 'score-mid';
     }
     const scoreVal = r.score != null
       ? `<span class="score-cell ${scoreClass}">${r.score.toFixed(2)}</span>` : '—';
