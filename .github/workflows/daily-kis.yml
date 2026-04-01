@@ -1,9 +1,7 @@
 name: Daily KIS Snapshot
 
 on:
-  schedule:
-    - cron: "44 6 * * 1-5"   # 15:44 KST (UTC+9) on weekdays
-  workflow_dispatch:           # manual trigger for testing
+  workflow_dispatch:           # triggered by cron-job.org or manual run
 
 permissions:
   contents: write
