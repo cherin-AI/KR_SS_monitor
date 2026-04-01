@@ -1,6 +1,6 @@
 {
   "date": "2026-04-01",
-  "generated_at": "2026-04-01T07:55:13.460646+00:00",
+  "generated_at": "2026-04-01T08:11:04.411712+00:00",
   "kospi": [
     {
       "rank": 1,
@@ -691,7 +691,7 @@
     {
       "rank": 7,
       "mksc_shrn_iscd": "009520",
-      "display_name": "POSCO M-TECH",
+      "display_name": "포스코엠텍",
       "hts_kor_isnm": "포스코엠텍",
       "ssts_vol_rlim": 18.57,
       "ssts_vol_rlim_5d": 11.026,
@@ -919,7 +919,7 @@
     {
       "rank": 19,
       "mksc_shrn_iscd": "322780",
-      "display_name": "코퍼스코리아",
+      "display_name": "COPUS KOREA",
       "hts_kor_isnm": "코퍼스코리아",
       "ssts_vol_rlim": 1.3,
       "ssts_vol_rlim_5d": 0.454,
@@ -976,7 +976,7 @@
     {
       "rank": 22,
       "mksc_shrn_iscd": "131400",
-      "display_name": "이브이첨단소재",
+      "display_name": "EV.A.M.",
       "hts_kor_isnm": "이브이첨단소재",
       "ssts_vol_rlim": 0.67,
       "ssts_vol_rlim_5d": 2.254,
@@ -1109,7 +1109,7 @@
     {
       "rank": 29,
       "mksc_shrn_iscd": "417200",
-      "display_name": "LS머트리얼즈",
+      "display_name": "LS Materials",
       "hts_kor_isnm": "LS머트리얼즈",
       "ssts_vol_rlim": 5.67,
       "ssts_vol_rlim_5d": 3.406,
