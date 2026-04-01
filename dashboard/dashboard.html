@@ -696,9 +696,9 @@ function renderKPIs() {
     badgeId: 'kpi-high-pressure-badge',
     subId: 'kpi-high-pressure-sub',
     value: String(highPressureCount),
-    badge: highPressureCount === 0 ? 'NONE' : (highPressureCount <= 3 ? 'FOCUSED' : 'BROAD'),
+    badge: highPressureCount === 0 ? 'NONE' : (highPressureCount <= 5 ? 'FOCUSED' : 'BROAD'),
     sub: 'score ≥ 1.0',
-    tone: highPressureCount === 0 ? 'green' : (highPressureCount <= 3 ? 'yellow' : 'red'),
+    tone: highPressureCount === 0 ? 'green' : (highPressureCount <= 5 ? 'yellow' : 'red'),
   });
   const noteEl = document.getElementById('kpi-high-pressure-note');
   if (noteEl) noteEl.textContent = '';
@@ -781,9 +781,10 @@ function pct(numerator, denominator) {
 
 function getMarketPressureRegime(sharePct) {
   if (sharePct == null) return { label: 'N/A', tone: 'muted' };
-  if (sharePct < 3) return { label: 'LOW', tone: 'green' };
-  if (sharePct < 7) return { label: 'ELEVATED', tone: 'blue' };
-  if (sharePct < 12) return { label: 'STRESSED', tone: 'yellow' };
+  // thresholds based on stock counts out of 60: 0-2=LOW, 3-5=ELEVATED, 6-10=STRESSED, 10+=EXTREME
+  if (sharePct < 5) return { label: 'LOW', tone: 'green' };
+  if (sharePct < 8.5) return { label: 'ELEVATED', tone: 'blue' };
+  if (sharePct < 17) return { label: 'STRESSED', tone: 'yellow' };
   return { label: 'EXTREME', tone: 'red' };
 }
 
