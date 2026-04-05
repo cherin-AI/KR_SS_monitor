@@ -311,16 +311,13 @@
     .pill .w { font-weight: 700; color: var(--ac); }
     .pill .n { color: var(--t1); }
 
-    /* Market tabs */
-    .tabs { display: flex; gap: 8px; margin-bottom: 0; }
-    .tab-btn {
-      padding: 6px 16px; cursor: pointer;
-      border: 1px solid transparent; background: var(--s3);
-      color: var(--t3); font-size: 12px; font-weight: 600; border-radius: 4px;
-      transition: 0.15s ease;
+    /* Market badge */
+    .market-badge {
+      display: inline-block; padding: 2px 6px; font-size: 9px; font-weight: 700;
+      border-radius: 3px; letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .tab-btn.active { color: var(--t1); border-color: var(--ac); background: rgba(96,168,214,0.10); }
-    .tab-btn:hover:not(.active) { color: var(--t1); border-color: var(--b2); }
+    .market-badge.kospi { background: rgba(96,168,214,0.18); color: #60A8D6; border: 1px solid rgba(96,168,214,0.35); }
+    .market-badge.kosdaq { background: rgba(60,200,184,0.18); color: #3CC8B8; border: 1px solid rgba(60,200,184,0.35); }
 
     /* Ranking table */
     .table-section { background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; margin: 12px 0 20px; overflow: hidden; }
@@ -548,12 +545,6 @@
     <span class="pill"><span class="w">0.10</span><span class="n">× z(−price chg%)</span></span>
   </div>
 
-  <!-- Market tabs -->
-  <div class="tabs">
-    <button class="tab-btn active" data-market="kospi">KOSPI</button>
-    <button class="tab-btn" data-market="kosdaq">KOSDAQ</button>
-  </div>
-
   <!-- Ranking table -->
   <div class="table-section">
     <table id="ranking-table">
@@ -561,6 +552,7 @@
         <tr>
           <th data-col="rank">Rank</th>
           <th data-col="name">Name</th>
+          <th data-col="market">Market</th>
           <th data-col="ssts_vol_rlim"><span class="th-wrap"><span>Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim" aria-label="Sort Short Turnover %">↕</button></span></th>
           <th data-col="ssts_vol_rlim_5d"><span class="th-wrap"><span>5D Avg Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim_5d" aria-label="Sort 5D Avg Short Turnover %">↕</button></span></th>
           <th data-col="frgn_ntby_tr_pbmn"><span class="th-wrap"><span>Foreign Net Flow (KRW mn)</span><button class="sort-btn" data-sort="frgn_ntby_tr_pbmn" aria-label="Sort Foreign Net Flow">↕</button></span></th>
@@ -596,7 +588,6 @@
 <script>
 // ── State ─────────────────────────────────────────────────────────────────────
 let DATA = null;
-let activeMarket = 'kospi';
 let sortCol = 'rank';
 let sortAsc = true;
 const HIGH_PRESSURE_THRESHOLD = 1.0;
@@ -687,7 +678,7 @@ function formatKST(isoString) {
 }
 
 function renderKPIs() {
-  const allRows = [...(DATA.kospi || []), ...(DATA.kosdaq || [])]
+  const allRows = (DATA.stocks || [])
     .filter(r => !r.incomplete && getScoreValue(r) != null);
   const highRows = allRows.filter(r => getScoreValue(r) >= HIGH_PRESSURE_THRESHOLD);
   const highPressureCount = highRows.length;
@@ -781,10 +772,10 @@ function pct(numerator, denominator) {
 
 function getMarketPressureRegime(sharePct) {
   if (sharePct == null) return { label: 'N/A', tone: 'muted' };
-  // thresholds based on stock counts out of 60: 0-2=LOW, 3-5=ELEVATED, 6-10=STRESSED, 10+=EXTREME
-  if (sharePct < 5) return { label: 'LOW', tone: 'green' };
-  if (sharePct < 8.5) return { label: 'ELEVATED', tone: 'blue' };
-  if (sharePct < 17) return { label: 'STRESSED', tone: 'yellow' };
+  // thresholds calibrated for 300-stock universe: <3%=LOW, 3-8%=ELEVATED, 8-15%=STRESSED, 15%+=EXTREME
+  if (sharePct < 3) return { label: 'LOW', tone: 'green' };
+  if (sharePct < 8) return { label: 'ELEVATED', tone: 'blue' };
+  if (sharePct < 15) return { label: 'STRESSED', tone: 'yellow' };
   return { label: 'EXTREME', tone: 'red' };
 }
 
@@ -831,7 +822,7 @@ function setKpiCard({ valueId, badgeId, subId, value, badge, sub, tone }) {
 }
 
 function renderTable() {
-  const rows = [...(DATA[activeMarket] || [])];
+  const rows = [...(DATA.stocks || [])];
 
   // Sort
   rows.sort((a, b) => {
@@ -869,12 +860,17 @@ function renderTable() {
     const scoreVal = r.score != null
       ? `<span class="score-cell ${scoreClass}">${r.score.toFixed(2)}</span>` : '—';
 
+    const marketKey = (r.market || '').toLowerCase();
+    const marketBadge = r.market
+      ? `<span class="market-badge ${marketKey}">${r.market}</span>`
+      : '—';
     return `<tr class="${isIncomplete ? 'incomplete-row' : ''}">
       <td>${rankBadge}</td>
       <td class="ticker-cell">
         <div class="name">${stockName(r)}</div>
         <div class="ticker">${r.mksc_shrn_iscd}</div>
       </td>
+      <td>${marketBadge}</td>
       <td>
         <div class="bar-cell">
           <span>${shortPct}%</span>
@@ -926,7 +922,7 @@ function renderCharts() {
 
 function renderDistribution() {
   destroyChart('dist');
-  const rows = (DATA[activeMarket] || []).filter(r => !r.incomplete && r.ssts_vol_rlim != null);
+  const rows = (DATA.stocks || []).filter(r => !r.incomplete && r.ssts_vol_rlim != null);
   const labels = rows.map(r => stockName(r));
   charts.dist = new Chart(document.getElementById('chart-distribution'), {
     type: 'bar',
@@ -950,21 +946,20 @@ function renderDistribution() {
 
 function renderScatter() {
   destroyChart('scatter');
-  const allRows = [...(DATA.kospi || []), ...(DATA.kosdaq || [])].filter(r => !r.incomplete && r.score != null && r.prdy_ctrt != null);
-  const kospiTickers = new Set((DATA.kospi || []).map(r => r.mksc_shrn_iscd));
+  const allRows = (DATA.stocks || []).filter(r => !r.incomplete && r.score != null && r.prdy_ctrt != null);
   charts.scatter = new Chart(document.getElementById('chart-scatter'), {
     type: 'scatter',
     data: {
       datasets: [
         {
           label: 'KOSPI',
-          data: allRows.filter(r => kospiTickers.has(r.mksc_shrn_iscd)).map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r) })),
+          data: allRows.filter(r => r.market === 'KOSPI').map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r) })),
           backgroundColor: 'rgba(96,168,214,0.72)',
           pointRadius: 5,
         },
         {
           label: 'KOSDAQ',
-          data: allRows.filter(r => !kospiTickers.has(r.mksc_shrn_iscd)).map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r) })),
+          data: allRows.filter(r => r.market === 'KOSDAQ').map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r) })),
           backgroundColor: 'rgba(60,200,184,0.72)',
           pointRadius: 5,
         },
@@ -990,13 +985,12 @@ function renderScatter() {
 
 function renderCombinedMap() {
   destroyChart('trend');
-  const allRows = [...(DATA.kospi || []), ...(DATA.kosdaq || [])]
+  const allRows = (DATA.stocks || [])
     .filter(r => !r.incomplete && r.frgn_ntby_tr_pbmn != null && r.orgn_ntby_tr_pbmn != null && r.score != null);
 
   document.getElementById('trend-title').textContent =
     'Foreign vs Inst Net — Combined Market Map';
 
-  const kospiTickers = new Set((DATA.kospi || []).map(r => r.mksc_shrn_iscd));
   const size = r => Math.max(4, Math.min(16, 4 + (r.score || 0) * 2.5));
 
   charts.trend = new Chart(document.getElementById('chart-trend'), {
@@ -1005,7 +999,7 @@ function renderCombinedMap() {
       datasets: [
         {
           label: 'KOSPI',
-          data: allRows.filter(r => kospiTickers.has(r.mksc_shrn_iscd)).map(r => ({
+          data: allRows.filter(r => r.market === 'KOSPI').map(r => ({
             x: r.frgn_ntby_tr_pbmn,
             y: r.orgn_ntby_tr_pbmn,
             r: size(r),
@@ -1018,7 +1012,7 @@ function renderCombinedMap() {
         },
         {
           label: 'KOSDAQ',
-          data: allRows.filter(r => !kospiTickers.has(r.mksc_shrn_iscd)).map(r => ({
+          data: allRows.filter(r => r.market === 'KOSDAQ').map(r => ({
             x: r.frgn_ntby_tr_pbmn,
             y: r.orgn_ntby_tr_pbmn,
             r: size(r),
@@ -1061,17 +1055,6 @@ function renderCombinedMap() {
 }
 
 // ── Event listeners ───────────────────────────────────────────────────────────
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeMarket = btn.dataset.market;
-    renderTable();
-    renderDistribution();
-    renderCombinedMap();
-  });
-});
-
 document.querySelectorAll('thead th[data-col]').forEach(th => {
   th.addEventListener('click', () => {
     const col = th.dataset.col;

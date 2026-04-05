@@ -136,12 +136,13 @@ def compute_score(
     return result
 
 
-def build_meta_summary(df_kospi: pd.DataFrame, df_kosdaq: pd.DataFrame, threshold: float = 1.0) -> dict:
+def build_meta_summary(df_all: pd.DataFrame, threshold: float = 1.0) -> dict:
     """
-    Compute aggregate KPI values across both markets.
+    Compute aggregate KPI values across the combined universe.
+
+    df_all must have a "market" column with values "KOSPI" or "KOSDAQ".
     """
-    all_df = pd.concat([df_kospi, df_kosdaq], ignore_index=True)
-    complete = all_df[~all_df["incomplete"]]
+    complete = df_all[~df_all["incomplete"]]
 
     def _safe_mean(series: pd.Series, digits: int = 2) -> float | None:
         value = series.mean()
@@ -149,13 +150,6 @@ def build_meta_summary(df_kospi: pd.DataFrame, df_kosdaq: pd.DataFrame, threshol
 
     avg_short = _safe_mean(complete["ssts_vol_rlim"], 2) if not complete.empty else None
     avg_score = _safe_mean(complete["score"], 2) if not complete.empty else None
-    kospi_avg_score = _safe_mean(df_kospi.loc[~df_kospi["incomplete"], "score"], 2) if not df_kospi.empty else None
-    kosdaq_avg_score = _safe_mean(df_kosdaq.loc[~df_kosdaq["incomplete"], "score"], 2) if not df_kosdaq.empty else None
-    score_gap = (
-        round(float(kospi_avg_score) - float(kosdaq_avg_score), 2)
-        if kospi_avg_score is not None and kosdaq_avg_score is not None
-        else None
-    )
     total_frgn = round(complete["frgn_ntby_tr_pbmn"].sum(), 0) if not complete.empty else None
     high_pressure = int((complete["score"] >= threshold).sum()) if not complete.empty else 0
     high_pressure_share = round((high_pressure / len(complete)) * 100, 1) if not complete.empty else None
@@ -173,19 +167,20 @@ def build_meta_summary(df_kospi: pd.DataFrame, df_kosdaq: pd.DataFrame, threshol
                 return text
         return ""
 
+    kospi_count  = int((df_all["market"] == "KOSPI").sum())  if "market" in df_all.columns else 0
+    kosdaq_count = int((df_all["market"] == "KOSDAQ").sum()) if "market" in df_all.columns else 0
+
     return {
-        "kospi_count": len(df_kospi),
-        "kosdaq_count": len(df_kosdaq),
+        "total_count": len(df_all),
+        "kospi_count": kospi_count,
+        "kosdaq_count": kosdaq_count,
         "avg_short_ratio": avg_short,
         "avg_score": avg_score,
-        "kospi_avg_score": kospi_avg_score,
-        "kosdaq_avg_score": kosdaq_avg_score,
-        "score_gap": score_gap,
         "total_frgn_net_value": total_frgn,
         "high_pressure_count": high_pressure,
         "high_pressure_share": high_pressure_share,
         "top_score_ticker": top_row["mksc_shrn_iscd"] if top_row is not None else None,
-        "top_score_name": _first_text(top_row.get("display_name"), top_row.get("hts_kor_isnm"))
+        "top_score_name": _first_text(top_row.get("display_name"), top_row.get("name_ko"))
             if top_row is not None else None,
         "top_score_value": round(float(top_row["score"]), 2) if top_row is not None else None,
     }

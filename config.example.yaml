@@ -8,6 +8,9 @@ kis:
   base_url_prod: "https://openapi.koreainvestment.com:9443"
   base_url_paper: "https://openapivts.koreainvestment.com:29443"
 
+universe:
+  size: 300                 # top N common stocks by market cap (KOSPI + KOSDAQ combined)
+
 schedule:
   run_after: "15:44"        # KST — investor data available after 15:40
   lookback_days: 5          # days for short ratio 5-day average

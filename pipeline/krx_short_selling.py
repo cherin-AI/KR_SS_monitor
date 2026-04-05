@@ -278,6 +278,109 @@ def fetch_short_selling_balance_history(
     )
 
 
+_NAVER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "Accept-Language": "ko-KR,ko;q=0.9",
+}
+_NAVER_URL = "https://finance.naver.com/sise/sise_market_sum.naver"
+
+_ETF_BRANDS = {
+    "KODEX", "TIGER", "KBSTAR", "ARIRANG", "HANARO", "KOSEF",
+    "SOL", "ACE", "RISE", "PLUS", "TIMEFOLIO", "SMART", "FOCUS", "TREX",
+}
+
+
+def _is_excluded(name: str) -> bool:
+    """Return True for ETFs (brand name), ETNs, and TR total-return fund products."""
+    if name.split()[0].upper() in _ETF_BRANDS:
+        return True
+    if "ETN" in name or "TR" in name:
+        return True
+    return False
+
+
+def _is_preferred(ticker: str) -> bool:
+    """Return True for preferred shares per official KRX ticker convention."""
+    return ticker[-1] in {"5", "7", "9", "K"}
+
+
+def _scrape_naver_page(sosok: int, page: int, market_label: str) -> list[dict]:
+    """Scrape one page of Naver Finance market cap ranking."""
+    import time as _time
+    resp = httpx.get(
+        _NAVER_URL,
+        headers=_NAVER_HEADERS,
+        params={"sosok": sosok, "page": page},
+        timeout=20,
+        follow_redirects=True,
+    )
+    resp.raise_for_status()
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(resp.text, "html.parser")
+    table = soup.find("table", class_="type_2")
+    rows: list[dict] = []
+    if not table:
+        return rows
+    for tr in table.find_all("tr"):
+        tds = tr.find_all("td")
+        if len(tds) < 7:
+            continue
+        rank_txt = tds[0].get_text(strip=True)
+        if not rank_txt.isdigit():
+            continue
+        a_tag = tds[1].find("a")
+        if not a_tag:
+            continue
+        name = a_tag.get_text(strip=True)
+        href = a_tag.get("href", "")
+        ticker = href.split("code=")[-1] if "code=" in href else ""
+        mktcap_raw = tds[6].get_text(strip=True).replace(",", "")
+        rows.append({
+            "ticker":          ticker,
+            "name_ko":         name,
+            "market":          market_label,
+            "market_cap_100m": int(mktcap_raw) if mktcap_raw.isdigit() else 0,
+        })
+    return rows
+
+
+def fetch_market_cap_universe(top_n: int = 300) -> list[dict]:
+    """
+    Return top_n common stocks by market cap (KOSPI + KOSDAQ combined).
+
+    Scrapes Naver Finance live market cap rankings and filters out:
+    - ETFs (brand-name first word), ETNs, TR total-return fund products
+    - Preferred shares (KRX ticker convention: last char in {5,7,9,K})
+
+    Returns list of dicts: [{ticker, name_ko, market, market_cap_100m}, ...]
+    sorted by market cap descending.
+    """
+    import time as _time
+
+    all_rows: list[dict] = []
+    for sosok, label in [(0, "KOSPI"), (1, "KOSDAQ")]:
+        for page in range(1, 11):
+            rows = _scrape_naver_page(sosok, page, label)
+            if not rows:
+                break
+            all_rows.extend(rows)
+            _time.sleep(0.25)
+
+    all_rows.sort(key=lambda r: r["market_cap_100m"], reverse=True)
+
+    common: list[dict] = []
+    for r in all_rows:
+        if _is_excluded(r["name_ko"]):
+            continue
+        if _is_preferred(r["ticker"]):
+            continue
+        common.append(r)
+        if len(common) == top_n:
+            break
+
+    return common
+
+
 @dataclass(frozen=True)
 class KRXShortSnapshot:
     ticker: str

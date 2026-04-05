@@ -449,7 +449,47 @@ async def fetch_stock_meta(
     }
 
 
-# ── E. Orchestrated 5-day fetch for entire universe ───────────────────────────
+# ── E. Bulk short snapshot for entire universe ────────────────────────────────
+
+async def fetch_short_snapshots_bulk(
+    client: httpx.AsyncClient,
+    token: str,
+    config: dict,
+    universe: list[dict],
+    lookback_days: int = 5,
+    concurrency: int = 10,
+    sleep_between: float = 0.1,
+    trade_date_end: str | None = None,
+) -> dict[str, dict]:
+    """
+    Fetch short-sale snapshot for every ticker in universe.
+
+    universe is a list of dicts with at least a "ticker" key (as returned by
+    fetch_market_cap_universe).
+
+    Returns {ticker: snapshot_dict} where snapshot_dict has keys:
+        short_today_ratio, short_5d_avg, short_trade_date, short_today_price, ...
+    """
+    sem = asyncio.Semaphore(concurrency)
+    results: dict[str, dict] = {}
+
+    async def _one(entry: dict) -> None:
+        ticker = entry["ticker"]
+        async with sem:
+            try:
+                snap = await fetch_daily_short_snapshot(
+                    client, token, config, ticker, lookback_days, trade_date_end
+                )
+                results[ticker] = snap
+            except Exception as exc:
+                logger.warning("Short snapshot failed %s: %s", ticker, exc)
+            await asyncio.sleep(sleep_between)
+
+    await asyncio.gather(*(_one(e) for e in universe))
+    return results
+
+
+# ── F. Orchestrated 5-day fetch for entire universe (legacy) ──────────────────
 
 async def fetch_5d_averages(
     client: httpx.AsyncClient,
