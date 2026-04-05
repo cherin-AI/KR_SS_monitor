@@ -19,6 +19,14 @@ WEIGHTS: dict[str, float] = {
 
 assert abs(sum(WEIGHTS.values()) - 1.0) < 1e-9, "Weights must sum to 1.0"
 
+KRX_WEIGHTS: dict[str, float] = {
+    "short_today": 0.50,
+    "short_5d": 0.30,
+    "return_neg": 0.20,
+}
+
+assert abs(sum(KRX_WEIGHTS.values()) - 1.0) < 1e-9, "KRX weights must sum to 1.0"
+
 
 def zscore_series(s: pd.Series) -> pd.Series:
     """
@@ -31,7 +39,11 @@ def zscore_series(s: pd.Series) -> pd.Series:
     return (s - s.mean()) / std
 
 
-def compute_score(df: pd.DataFrame, weights: dict[str, float] | None = None) -> pd.DataFrame:
+def compute_score(
+    df: pd.DataFrame,
+    weights: dict[str, float] | None = None,
+    mode: str = "kis",
+) -> pd.DataFrame:
     """
     Compute short pressure score for all stocks in df.
 
@@ -48,16 +60,27 @@ def compute_score(df: pd.DataFrame, weights: dict[str, float] | None = None) -> 
         rank         int     rank within this DataFrame (1 = highest pressure)
         incomplete   bool    True if any component was missing
     """
-    w = weights or WEIGHTS
-    df = df.copy()
+    if mode not in {"kis", "krx"}:
+        raise ValueError(f"Unsupported scoring mode: {mode}")
 
-    required = [
-        "ssts_vol_rlim",
-        "ssts_vol_rlim_5d",
-        "frgn_ntby_tr_pbmn",
-        "orgn_ntby_tr_pbmn",
-        "prdy_ctrt",
-    ]
+    if mode == "krx":
+        w = weights or KRX_WEIGHTS
+        required = [
+            "ssts_vol_rlim",
+            "ssts_vol_rlim_5d",
+            "prdy_ctrt",
+        ]
+    else:
+        w = weights or WEIGHTS
+        required = [
+            "ssts_vol_rlim",
+            "ssts_vol_rlim_5d",
+            "frgn_ntby_tr_pbmn",
+            "orgn_ntby_tr_pbmn",
+            "prdy_ctrt",
+        ]
+
+    df = df.copy()
     for col in required:
         if col not in df.columns:
             df[col] = np.nan
@@ -71,17 +94,26 @@ def compute_score(df: pd.DataFrame, weights: dict[str, float] | None = None) -> 
     if not complete.empty:
         complete["z_short_today"] = zscore_series(complete["ssts_vol_rlim"])
         complete["z_short_5d"]    = zscore_series(complete["ssts_vol_rlim_5d"])
-        complete["z_foreign"]     = zscore_series(-complete["frgn_ntby_tr_pbmn"])
-        complete["z_inst"]        = zscore_series(-complete["orgn_ntby_tr_pbmn"])
         complete["z_return"]      = zscore_series(-complete["prdy_ctrt"])
 
-        complete["score"] = (
-            w["short_today"]  * complete["z_short_today"]
-            + w["short_5d"]    * complete["z_short_5d"]
-            + w["foreign_sell"] * complete["z_foreign"]
-            + w["inst_sell"]   * complete["z_inst"]
-            + w["return_neg"]  * complete["z_return"]
-        )
+        if mode == "krx":
+            complete["score"] = (
+                w["short_today"] * complete["z_short_today"]
+                + w["short_5d"] * complete["z_short_5d"]
+                + w["return_neg"] * complete["z_return"]
+            )
+            complete["z_foreign"] = np.nan
+            complete["z_inst"] = np.nan
+        else:
+            complete["z_foreign"] = zscore_series(-complete["frgn_ntby_tr_pbmn"])
+            complete["z_inst"] = zscore_series(-complete["orgn_ntby_tr_pbmn"])
+            complete["score"] = (
+                w["short_today"]  * complete["z_short_today"]
+                + w["short_5d"]    * complete["z_short_5d"]
+                + w["foreign_sell"] * complete["z_foreign"]
+                + w["inst_sell"]   * complete["z_inst"]
+                + w["return_neg"]  * complete["z_return"]
+            )
     else:
         for col in ["z_short_today", "z_short_5d", "z_foreign", "z_inst", "z_return", "score"]:
             complete[col] = np.nan
