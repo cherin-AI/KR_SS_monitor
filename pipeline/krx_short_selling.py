@@ -335,11 +335,17 @@ def _scrape_naver_page(sosok: int, page: int, market_label: str) -> list[dict]:
         href = a_tag.get("href", "")
         ticker = href.split("code=")[-1] if "code=" in href else ""
         mktcap_raw = tds[6].get_text(strip=True).replace(",", "")
+        chg_raw = tds[4].get_text(strip=True).replace("%", "").replace("+", "").replace(",", "")
+        try:
+            prdy_ctrt = float(chg_raw)
+        except ValueError:
+            prdy_ctrt = None
         rows.append({
             "ticker":          ticker,
             "name_ko":         name,
             "market":          market_label,
             "market_cap_100m": int(mktcap_raw) if mktcap_raw.isdigit() else 0,
+            "prdy_ctrt":       prdy_ctrt,
         })
     return rows
 

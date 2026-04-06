@@ -134,7 +134,7 @@ async def fetch_daily_short_trend(
         "FID_COND_MRKT_DIV_CODE": "J",
         "FID_INPUT_ISCD": ticker,
         "FID_INPUT_DATE_1": _ndays_ago(lookback_days * 2),  # buffer for non-trading days
-        "FID_INPUT_DATE_2": trade_date_end or _yesterday(),
+        "FID_INPUT_DATE_2": trade_date_end or date.today().strftime("%Y%m%d"),
     }
     resp = await _get_with_retry(
         client, url, headers=build_headers(token, tr_id, config), params=params
@@ -180,9 +180,9 @@ async def fetch_daily_short_snapshot(
         "FID_COND_MRKT_DIV_CODE": "J",
         "FID_INPUT_ISCD": ticker,
         "FID_INPUT_DATE_1": _ndays_ago(lookback_days * 2),  # buffer for non-trading days
-        "FID_INPUT_DATE_2": trade_date_end or _yesterday(),
+        "FID_INPUT_DATE_2": trade_date_end or date.today().strftime("%Y%m%d"),
     }
-    resp = await client.get(url, headers=build_headers(token, tr_id, config), params=params)
+    resp = await _get_with_retry(client, url, headers=build_headers(token, tr_id, config), params=params)
     resp.raise_for_status()
     data = resp.json()
     _check(data, f"daily_short_snapshot {ticker}")
@@ -412,6 +412,50 @@ async def fetch_investor_trend_estimate_fallbacks(
         except Exception as exc:  # pragma: no cover - logged fallback path
             logger.warning("Investor estimate fallback failed for %s: %s", ticker, exc)
         await asyncio.sleep(sleep_between)
+    return results
+
+
+async def fetch_inquire_investor_bulk(
+    client: httpx.AsyncClient,
+    token: str,
+    config: dict,
+    tickers: list[str],
+    concurrency: int = 5,
+    sleep_between: float = 0.3,
+) -> dict[str, dict[str, float | None]]:
+    """
+    Fetch frgn_ntby_tr_pbmn + orgn_ntby_tr_pbmn for all tickers using
+    FHKST01010900 (inquire-investor) as the primary source.
+    Runs with a semaphore (concurrency=5) matching the short-snapshot pattern.
+    """
+    tr_id = "FHKST01010900"
+    url = _base_url(config) + "/uapi/domestic-stock/v1/quotations/inquire-investor"
+    results: dict[str, dict[str, float | None]] = {}
+    sem = asyncio.Semaphore(concurrency)
+
+    async def _one(ticker: str) -> None:
+        async with sem:
+            try:
+                params = {"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": ticker}
+                resp = await _get_with_retry(client, url, headers=build_headers(token, tr_id, config), params=params)
+                resp.raise_for_status()
+                data = resp.json()
+                _check(data, f"inquire_investor {ticker}")
+                output = data.get("output", [])
+                row = output[0] if isinstance(output, list) and output else output
+                out: dict[str, float | None] = {}
+                for key in ("frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn"):
+                    try:
+                        out[key] = float(row[key])
+                    except (KeyError, TypeError, ValueError):
+                        out[key] = None
+                logger.info("[FETCH] %s %s → frgn=%s orgn=%s", tr_id, ticker, out.get("frgn_ntby_tr_pbmn"), out.get("orgn_ntby_tr_pbmn"))
+                results[ticker] = out
+            except Exception as exc:
+                logger.warning("inquire_investor failed for %s: %s", ticker, exc)
+            await asyncio.sleep(sleep_between)
+
+    await asyncio.gather(*(_one(t) for t in tickers))
     return results
 
 

@@ -29,8 +29,7 @@ if __package__ in {None, ""}:
 from pipeline.auth import get_token, load_config
 from pipeline.fetcher import (
     fetch_foreign_inst_aggregate,
-    fetch_investor_trade_fallbacks,
-    fetch_investor_trend_estimate_fallbacks,
+    fetch_inquire_investor_bulk,
     fetch_short_snapshots_bulk,
     fetch_stock_meta,
 )
@@ -137,7 +136,8 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
         # ── 2. Short snapshots (today ratio + 5d avg) ─────────────────────────
         logger.info("Fetching short-sale snapshots for %d tickers…", len(all_tickers))
         snapshots = await fetch_short_snapshots_bulk(
-            client, token, config, universe, lookback_days=lookback
+            client, token, config, universe, lookback_days=lookback,
+            concurrency=5, sleep_between=0.3,
         )
         latest_trade_date = next(
             (v.get("short_trade_date") for v in snapshots.values() if v.get("short_trade_date")),
@@ -145,30 +145,20 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
         )
         logger.info("Short snapshots done. Latest trade date: %s", latest_trade_date)
 
-        # ── 3. Foreign / inst aggregate ───────────────────────────────────────
-        logger.info("Fetching foreign/inst aggregate — KOSPI")
-        fi_kospi = await fetch_foreign_inst_aggregate(client, token, config, "J")
+        # ── 3. Foreign / inst investor data ───────────────────────────────────
+        logger.info("Fetching inquire-investor (FHKST01010900) for %d tickers…", len(all_tickers))
+        investor_data = await fetch_inquire_investor_bulk(
+            client, token, config, all_tickers
+        )
 
-        logger.info("Fetching foreign/inst aggregate — KOSDAQ")
-        fi_kosdaq = await fetch_foreign_inst_aggregate(client, token, config, "NX")
-
-        fi_kospi_tickers  = set(fi_kospi["mksc_shrn_iscd"].astype(str).tolist())  if not fi_kospi.empty  else set()
-        fi_kosdaq_tickers = set(fi_kosdaq["mksc_shrn_iscd"].astype(str).tolist()) if not fi_kosdaq.empty else set()
-        kospi_missing  = [t for t in kospi_tickers  if t not in fi_kospi_tickers]
-        kosdaq_missing = [t for t in kosdaq_tickers if t not in fi_kosdaq_tickers]
-
-        fi_kospi_fallback: dict  = {}
-        fi_kosdaq_fallback: dict = {}
-        if kospi_missing:
-            logger.info("Fetching investor-trade fallback — KOSPI (%d missing)", len(kospi_missing))
-            fi_kospi_fallback = await fetch_investor_trade_fallbacks(
-                client, token, config, "J", kospi_missing, trade_date=latest_trade_date
-            )
-        if kosdaq_missing:
-            logger.info("Fetching investor-trade fallback — KOSDAQ (%d missing)", len(kosdaq_missing))
-            fi_kosdaq_fallback = await fetch_investor_trade_fallbacks(
-                client, token, config, "NX", kosdaq_missing, trade_date=latest_trade_date
-            )
+        # Fallback: fi_total (FHPTJ04400000) only if any tickers still missing
+        still_missing = [t for t in all_tickers if not investor_data.get(t)]
+        fi_kospi: pd.DataFrame = pd.DataFrame()
+        fi_kosdaq: pd.DataFrame = pd.DataFrame()
+        if still_missing:
+            logger.info("fi_total fallback (FHPTJ04400000) for %d tickers still missing…", len(still_missing))
+            fi_kospi  = await fetch_foreign_inst_aggregate(client, token, config, "J")
+            fi_kosdaq = await fetch_foreign_inst_aggregate(client, token, config, "NX")
 
     # ── 4. Merge ──────────────────────────────────────────────────────────────
     meta_map = stock_meta or {}
@@ -192,64 +182,32 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
             "ssts_vol_rlim":    snap.get("short_today_ratio"),
             "ssts_vol_rlim_5d": snap.get("short_5d_avg"),
             "stck_prpr":        price,
-            "prdy_ctrt":        None,   # filled from frgn/inst aggregate below
+            "prdy_ctrt":        u.get("prdy_ctrt"),  # from Naver Finance scrape
             "frgn_ntby_tr_pbmn": None,
             "orgn_ntby_tr_pbmn": None,
         })
 
     df = pd.DataFrame(rows)
 
-    # Merge foreign/inst data
-    fi_all = pd.concat(
-        [f for f in [fi_kospi, fi_kosdaq] if not f.empty],
-        ignore_index=True,
-    )
+    # Apply primary investor data (FHKST01010900)
+    if investor_data:
+        df["frgn_ntby_tr_pbmn"] = df["mksc_shrn_iscd"].map(
+            lambda t: investor_data.get(str(t), {}).get("frgn_ntby_tr_pbmn")
+        )
+        df["orgn_ntby_tr_pbmn"] = df["mksc_shrn_iscd"].map(
+            lambda t: investor_data.get(str(t), {}).get("orgn_ntby_tr_pbmn")
+        )
+
+    # Apply fi_total fallback (FHPTJ04400000) for any remaining nulls
+    fi_all = pd.concat([f for f in [fi_kospi, fi_kosdaq] if not f.empty], ignore_index=True)
     if not fi_all.empty:
-        merge_cols = [c for c in ["mksc_shrn_iscd", "frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn", "prdy_ctrt"] if c in fi_all.columns]
+        merge_cols = [c for c in ["mksc_shrn_iscd", "frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn"] if c in fi_all.columns]
         df = df.merge(fi_all[merge_cols], on="mksc_shrn_iscd", how="left", suffixes=("", "_fi"))
-        for col in ["frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn", "prdy_ctrt"]:
+        for col in ["frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn"]:
             fi_col = col + "_fi"
             if fi_col in df.columns:
                 df[col] = df[col].combine_first(df[fi_col])
                 df.drop(columns=[fi_col], inplace=True)
-
-    # Apply per-ticker investor trade fallbacks
-    all_fallback = {**fi_kospi_fallback, **fi_kosdaq_fallback}
-    if all_fallback:
-        fb_frgn = df["mksc_shrn_iscd"].map(lambda t: all_fallback.get(str(t), {}).get("frgn_ntby_tr_pbmn"))
-        fb_orgn = df["mksc_shrn_iscd"].map(lambda t: all_fallback.get(str(t), {}).get("orgn_ntby_tr_pbmn"))
-        df["frgn_ntby_tr_pbmn"] = df["frgn_ntby_tr_pbmn"].combine_first(fb_frgn)
-        df["orgn_ntby_tr_pbmn"] = df["orgn_ntby_tr_pbmn"].combine_first(fb_orgn)
-
-    # Estimate fallback for rows where both frgn and orgn are still zero/NaN
-    def _needs_estimate(row: pd.Series) -> bool:
-        frgn = pd.to_numeric(row.get("frgn_ntby_tr_pbmn"), errors="coerce")
-        orgn = pd.to_numeric(row.get("orgn_ntby_tr_pbmn"), errors="coerce")
-        return pd.isna(frgn) or pd.isna(orgn) or (float(frgn) == 0.0 and float(orgn) == 0.0)
-
-    estimate_candidates = df.loc[df.apply(_needs_estimate, axis=1), "mksc_shrn_iscd"].astype(str).tolist()
-    if estimate_candidates:
-        logger.info("Fetching estimate fallback for %d zero rows…", len(estimate_candidates))
-        async with httpx.AsyncClient(timeout=30) as client:
-            from pipeline.fetcher import fetch_investor_trend_estimate_fallbacks
-            estimate_map = await fetch_investor_trend_estimate_fallbacks(client, token, config, estimate_candidates)
-
-        price_map = dict(zip(df["mksc_shrn_iscd"], df["stck_prpr"]))
-
-        def _estimate_money(ticker: str, key: str) -> float | None:
-            est = estimate_map.get(str(ticker), {})
-            qty_key = "frgn_fake_ntby_qty" if key == "frgn_ntby_tr_pbmn" else "orgn_fake_ntby_qty"
-            qty   = est.get(qty_key)
-            price = price_map.get(str(ticker))
-            if qty is None or price in (None, 0):
-                return None
-            return round(float(qty) * float(price) / 1_000_000, 3)
-
-        for key in ["frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn"]:
-            est_series = df["mksc_shrn_iscd"].map(lambda t, k=key: _estimate_money(t, k))
-            current    = pd.to_numeric(df[key], errors="coerce")
-            zero_mask  = current.isna() | (current == 0.0)
-            df.loc[zero_mask, key] = est_series.loc[zero_mask]
 
     # ── 5. Score ──────────────────────────────────────────────────────────────
     logger.info("Computing scores across %d stocks…", len(df))
