@@ -93,7 +93,7 @@ def compute_score(
 
     if not complete.empty:
         complete["z_short_today"] = zscore_series(complete["ssts_vol_rlim"])
-        complete["z_short_5d"]    = zscore_series(complete["ssts_vol_rlim_5d"])
+        complete["z_short_5d"]    = zscore_series(complete["ssts_vol_rlim"] - complete["ssts_vol_rlim_5d"])
         complete["z_return"]      = zscore_series(-complete["prdy_ctrt"])
 
         if mode == "krx":

@@ -320,8 +320,8 @@
     .market-badge.kosdaq { background: rgba(60,200,184,0.18); color: #3CC8B8; border: 1px solid rgba(60,200,184,0.35); }
 
     /* Ranking table */
-    .table-section { background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; margin: 12px 0 20px; overflow: hidden; }
-    table { width: 100%; border-collapse: collapse; }
+    .table-section { background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; margin: 12px 0 20px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
     thead th {
       padding: 8px 12px; text-align: left; font-size: 9px; text-transform: uppercase;
       letter-spacing: 0.08em; color: var(--t2); border-bottom: 1px solid var(--b2);
@@ -355,15 +355,14 @@
     tbody tr { border-bottom: 1px solid rgba(27,42,66,0.65); transition: background 0.1s; }
     tbody tr:last-child { border-bottom: none; }
     tbody tr:hover { background: var(--s4); }
-    tbody td { padding: 7px 12px; font-size: 12px; }
+    tbody td { padding: 7px 12px; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    thead th { overflow: hidden; text-overflow: ellipsis; }
     .rank-badge {
-      display: inline-block; width: 24px; height: 24px; border-radius: 50%;
-      background: var(--s3); color: var(--t3); font-size: 11px; font-weight: 700;
-      text-align: center; line-height: 24px;
+      display: inline-block; font-size: 12px; font-weight: 700;
+      color: var(--t3);
     }
-    .rank-badge.top3 { background: rgba(96,168,214,0.18); color: var(--ac); border: 1px solid rgba(96,168,214,0.28); }
-    .ticker-cell .ticker { font-size: 10px; color: var(--t3); }
-    .ticker-cell .name { font-weight: 600; color: var(--t1); }
+    .ticker-cell .ticker { font-size: 10px; color: var(--t3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ticker-cell .name { font-weight: 600; color: var(--t1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .bar-cell { display: flex; align-items: center; gap: 6px; }
     .mini-bar-wrap { width: 60px; height: 6px; background: var(--s3); border-radius: 3px; overflow: hidden; }
     .mini-bar { height: 100%; border-radius: 3px; }
@@ -389,6 +388,51 @@
     /* Loading/error */
     #loading { text-align: center; padding: 60px; color: var(--t3); }
     #error-msg { background: rgba(232,96,96,0.08); border: 1px solid rgba(232,96,96,0.35); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; color: var(--rd); display: none; }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 12px; padding: 10px 14px;
+      background: var(--s2); border: 1px solid var(--b1); border-radius: 8px;
+    }
+    .search-input {
+      flex: 1; min-width: 160px; max-width: 280px;
+      background: var(--s3); border: 1px solid var(--b2);
+      color: var(--t1); border-radius: 5px;
+      padding: 5px 10px; font-size: 12px; font-family: inherit;
+      outline: none;
+    }
+    .search-input::placeholder { color: var(--t3); }
+    .search-input:focus { border-color: var(--ac); }
+    .filter-tabs { display: flex; gap: 4px; }
+    .filter-tab {
+      padding: 4px 10px; border-radius: 4px; border: 1px solid var(--b2);
+      background: var(--s3); color: var(--t2); font-size: 11px;
+      cursor: pointer; transition: 0.15s ease; white-space: nowrap;
+    }
+    .filter-tab:hover { border-color: var(--t2); color: var(--t1); background: none; }
+    .filter-tab.active { border-color: var(--ac); color: var(--ac); background: rgba(96,168,214,0.12); }
+    .filter-tab.active-teal { border-color: var(--gr); color: var(--gr); background: rgba(60,200,184,0.12); }
+    .top-n-select {
+      background: var(--s3); border: 1px solid var(--b2); color: var(--t2);
+      border-radius: 4px; padding: 4px 8px; font-size: 11px; font-family: inherit;
+      cursor: pointer; outline: none;
+    }
+    .top-n-select:focus { border-color: var(--ac); }
+
+
+    /* Score bar */
+    .score-bar-wrap { display: flex; align-items: center; gap: 6px; }
+    .score-bar-bg { width: 44px; height: 4px; background: var(--s3); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+    .score-bar-fill { height: 100%; border-radius: 2px; }
+    .score-bar-high { background: var(--rd); }
+    .score-bar-mid { background: var(--am); }
+    .score-bar-low { background: var(--gr); }
+
+    /* Row priority left accent */
+    tbody tr.row-high { border-left: 2px solid var(--rd); }
+    tbody tr.row-mid { border-left: 2px solid var(--am); }
+    tbody tr.row-scored { border-left: 2px solid transparent; }
 
     @media (max-width: 900px) {
       .kpi-grid { grid-template-columns: 1fr 1fr; }
@@ -536,7 +580,11 @@
     <span class="label">Short Pressure Score =</span>
     <span class="pill"><span class="w">0.35</span><span class="n">× z(short turnover %)</span></span>
     <span>+</span>
-    <span class="pill"><span class="w">0.15</span><span class="n">× z(5D avg short turnover %)</span></span>
+    <div class="kpi-tip-wrap">
+      <span class="pill"><span class="w">0.15</span><span class="n">× z(short turnover accel.)</span></span>
+      <button class="kpi-info-btn" type="button" aria-label="Explain short turnover accel.">i</button>
+      <div class="kpi-tooltip">= today's SS turnover − 5D AVG SS turnover</div>
+    </div>
     <span>+</span>
     <span class="pill"><span class="w">0.25</span><span class="n">× z(−foreign net flow)</span></span>
     <span>+</span>
@@ -545,12 +593,39 @@
     <span class="pill"><span class="w">0.10</span><span class="n">× z(−price chg%)</span></span>
   </div>
 
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <input type="text" id="filter-search" class="search-input" placeholder="Search name / ticker…" autocomplete="off" />
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-market="all">All</button>
+      <button class="filter-tab" data-market="KOSPI">KOSPI</button>
+      <button class="filter-tab" data-market="KOSDAQ">KOSDAQ</button>
+    </div>
+    <select id="filter-topn" class="top-n-select" title="Show top N stocks">
+      <option value="25">Top 25</option>
+      <option value="50">Top 50</option>
+      <option value="100">Top 100</option>
+      <option value="0">All 300</option>
+    </select>
+  </div>
+
   <!-- Ranking table -->
   <div class="table-section">
     <table id="ranking-table">
+      <colgroup>
+        <col style="width:68px" />    <!-- Rank -->
+        <col style="width:165px" />   <!-- Name -->
+        <col style="width:78px" />    <!-- Market -->
+        <col style="width:152px" />   <!-- Short Turnover % -->
+        <col style="width:178px" />   <!-- 5D Avg Short Turnover % -->
+        <col style="width:168px" />   <!-- Foreign Net Flow -->
+        <col style="width:158px" />   <!-- Inst Net Flow -->
+        <col style="width:130px" />   <!-- Price Change % -->
+        <col style="width:108px" />   <!-- Score -->
+      </colgroup>
       <thead>
         <tr>
-          <th data-col="rank">Rank</th>
+          <th data-col="rank"><span class="th-wrap"><span>Rank</span><button class="sort-btn" data-sort="rank" aria-label="Sort Rank">↕</button></span></th>
           <th data-col="name">Name</th>
           <th data-col="market">Market</th>
           <th data-col="ssts_vol_rlim"><span class="th-wrap"><span>Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim" aria-label="Sort Short Turnover %">↕</button></span></th>
@@ -592,6 +667,9 @@ let sortCol = 'rank';
 let sortAsc = true;
 const HIGH_PRESSURE_THRESHOLD = 1.0;
 let charts = {};
+let filterMarket = 'all';
+let filterSearch = '';
+let filterTopN = 25;
 const THEME = {
   text: '#e8eef8',
   muted: '#a8bdd6',
@@ -822,7 +900,7 @@ function setKpiCard({ valueId, badgeId, subId, value, badge, sub, tone }) {
 }
 
 function renderTable() {
-  const rows = [...(DATA.stocks || [])];
+  let rows = [...(DATA.stocks || [])];
 
   // Sort
   rows.sort((a, b) => {
@@ -832,12 +910,36 @@ function renderTable() {
     return sortAsc ? av - bv : bv - av;
   });
 
-  const maxShort = Math.max(...rows.map(r => r.ssts_vol_rlim || 0));
+  // Market filter
+  if (filterMarket !== 'all') {
+    rows = rows.filter(r => r.market === filterMarket);
+  }
+
+  // Search filter
+  if (filterSearch.trim()) {
+    const q = filterSearch.trim().toLowerCase();
+    rows = rows.filter(r =>
+      (stockName(r) || '').toLowerCase().includes(q) ||
+      (r.mksc_shrn_iscd || '').toLowerCase().includes(q)
+    );
+  }
+
+  // Top-N: apply to complete rows; incomplete always appended after
+  const complete = rows.filter(r => !r.incomplete);
+  const incomplete = rows.filter(r => r.incomplete);
+  const shown = filterTopN > 0 ? complete.slice(0, filterTopN) : complete;
+  const finalRows = [...shown, ...incomplete];
+
+  const maxShort = Math.max(...finalRows.map(r => r.ssts_vol_rlim || 0));
+  const maxScore = Math.max(...shown.map(r => Math.max(getScoreValue(r) || 0, 0)), 0.01);
+
   const tbody = document.getElementById('ranking-tbody');
-  tbody.innerHTML = rows.map(r => {
+  tbody.innerHTML = finalRows.map(r => {
     const isIncomplete = r.incomplete;
+    const scoreRaw = getScoreValue(r);
+
     const rankBadge = r.rank
-      ? `<span class="rank-badge ${r.rank <= 3 ? 'top3' : ''}">${r.rank}</span>`
+      ? `<span class="rank-badge">${r.rank}</span>`
       : '<span class="rank-badge">—</span>';
 
     const shortPct = r.ssts_vol_rlim != null ? r.ssts_vol_rlim.toFixed(2) : '—';
@@ -853,18 +955,31 @@ function renderTable() {
       ? `<span class="${r.prdy_ctrt < 0 ? 'neg' : 'pos'}">${r.prdy_ctrt > 0 ? '+' : ''}${r.prdy_ctrt.toFixed(2)}%</span>` : '—';
 
     let scoreClass = 'score-low';
-    if (r.score != null) {
-      if (r.score >= 1.0) scoreClass = 'score-high';
-      else if (r.score >= 0.5) scoreClass = 'score-mid';
+    if (scoreRaw != null) {
+      if (scoreRaw >= 1.0) scoreClass = 'score-high';
+      else if (scoreRaw >= 0.5) scoreClass = 'score-mid';
     }
-    const scoreVal = r.score != null
-      ? `<span class="score-cell ${scoreClass}">${r.score.toFixed(2)}</span>` : '—';
+    const scorePct = scoreRaw != null ? Math.max(0, Math.min(100, (scoreRaw / maxScore) * 100)) : 0;
+    const scoreBarClass = scoreRaw >= 1.0 ? 'score-bar-high' : (scoreRaw >= 0.5 ? 'score-bar-mid' : 'score-bar-low');
+    const scoreVal = scoreRaw != null
+      ? `<div class="score-bar-wrap">
+           <span class="score-cell ${scoreClass}">${scoreRaw.toFixed(2)}</span>
+           <div class="score-bar-bg"><div class="score-bar-fill ${scoreBarClass}" style="width:${scorePct}%"></div></div>
+         </div>` : '—';
 
     const marketKey = (r.market || '').toLowerCase();
     const marketBadge = r.market
       ? `<span class="market-badge ${marketKey}">${r.market}</span>`
       : '—';
-    return `<tr class="${isIncomplete ? 'incomplete-row' : ''}">
+
+    let rowClass = isIncomplete ? 'incomplete-row' : '';
+    if (!isIncomplete) {
+      if (scoreRaw >= 1.0) rowClass += ' row-high';
+      else if (scoreRaw >= 0.5) rowClass += ' row-mid';
+      else rowClass += ' row-scored';
+    }
+
+    return `<tr class="${rowClass.trim()}">
       <td>${rankBadge}</td>
       <td class="ticker-cell">
         <div class="name">${stockName(r)}</div>
@@ -1055,10 +1170,31 @@ function renderCombinedMap() {
 }
 
 // ── Event listeners ───────────────────────────────────────────────────────────
+document.getElementById('filter-search').addEventListener('input', e => {
+  filterSearch = e.target.value;
+  renderTable();
+});
+
+document.getElementById('filter-topn').addEventListener('change', e => {
+  filterTopN = parseInt(e.target.value, 10);
+  renderTable();
+});
+
+document.querySelectorAll('.filter-tab[data-market]').forEach(tab => {
+  tab.addEventListener('click', () => {
+    filterMarket = tab.dataset.market;
+    document.querySelectorAll('.filter-tab[data-market]').forEach(t => {
+      t.classList.remove('active', 'active-teal');
+    });
+    tab.classList.add(filterMarket === 'KOSDAQ' ? 'active-teal' : 'active');
+    renderTable();
+  });
+});
+
 document.querySelectorAll('thead th[data-col]').forEach(th => {
   th.addEventListener('click', () => {
     const col = th.dataset.col;
-    if (col === 'rank' || col === 'name') return;
+    if (col === 'name') return;
     if (sortCol === col) { sortAsc = !sortAsc; }
     else { sortCol = col; sortAsc = col === 'rank'; }
     document.querySelectorAll('thead th').forEach(t => t.classList.remove('sorted'));
