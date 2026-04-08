@@ -29,3 +29,7 @@ env/
 .idea/
 .vscode/
 *.swp
+
+# Session notes
+handoff.md
+peerreview.md
