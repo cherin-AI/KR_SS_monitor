@@ -228,16 +228,15 @@
       position: absolute;
       top: calc(100% + 8px);
       right: 0;
-      width: max-content;
-      max-width: 460px;
-      white-space: nowrap;
+      width: 360px;
+      white-space: normal;
       padding: 10px 12px;
       border-radius: 8px;
       border: 1px solid var(--b2);
       background: #0c121c;
       color: var(--t1);
       font-size: 10px;
-      line-height: 1.45;
+      line-height: 1.5;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
       opacity: 0;
       transform: translateY(-4px);
@@ -245,6 +244,10 @@
       transition: 0.15s ease;
       z-index: 20;
     }
+    .kpi-tooltip .tt-row { margin-bottom: 6px; }
+    .kpi-tooltip .tt-row:last-child { margin-bottom: 0; }
+    .kpi-tooltip .tt-label { color: #60A8D6; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .kpi-tooltip .tt-val { color: #c8d8ea; }
     .kpi-tip-wrap:hover .kpi-tooltip,
     .kpi-tip-wrap:focus-within .kpi-tooltip {
       opacity: 1;
@@ -377,13 +380,13 @@
     .pos { color: var(--gr); }
 
     /* Charts grid */
-    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
     .chart-card {
-      background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; padding: 14px 16px;
+      background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; padding: 10px 12px;
     }
-    .chart-card h3 { font-size: 9px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
-    .chart-full { background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
-    .chart-full h3 { font-size: 9px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
+    .chart-card h3 { font-size: 9px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
+    .chart-full { background: var(--s2); border: 1px solid var(--b1); border-radius: 8px; padding: 10px 12px; margin-bottom: 20px; }
+    .chart-full h3 { font-size: 9px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
 
     /* Loading/error */
     #loading { text-align: center; padding: 60px; color: var(--t3); }
@@ -413,12 +416,26 @@
     .filter-tab:hover { border-color: var(--t2); color: var(--t1); background: none; }
     .filter-tab.active { border-color: var(--ac); color: var(--ac); background: rgba(96,168,214,0.12); }
     .filter-tab.active-teal { border-color: var(--gr); color: var(--gr); background: rgba(60,200,184,0.12); }
-    .top-n-select {
+    .custom-select { position: relative; display: inline-block; }
+    .custom-select-btn {
       background: var(--s3); border: 1px solid var(--b2); color: var(--t2);
-      border-radius: 4px; padding: 4px 8px; font-size: 11px; font-family: inherit;
-      cursor: pointer; outline: none;
+      border-radius: 4px; padding: 4px 24px 4px 8px; font-size: 11px; font-family: inherit;
+      cursor: pointer; outline: none; white-space: nowrap; user-select: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23607a96'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 8px center;
     }
-    .top-n-select:focus { border-color: var(--ac); }
+    .custom-select-btn:focus, .custom-select.open .custom-select-btn { border-color: var(--ac); }
+    .custom-select-menu {
+      display: none; position: absolute; right: 0; top: calc(100% + 4px);
+      background: #0e1825; border: 1px solid var(--b2); border-radius: 4px;
+      min-width: 100%; z-index: 50; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .custom-select.open .custom-select-menu { display: block; }
+    .custom-select-option {
+      padding: 6px 12px; font-size: 11px; color: var(--t2); cursor: pointer; white-space: nowrap;
+    }
+    .custom-select-option:hover { background: var(--s2); color: var(--t1); }
+    .custom-select-option.selected { color: var(--ac); }
 
 
     /* Score bar */
@@ -488,7 +505,9 @@
           <div class="kpi-tip-wrap">
             <button class="kpi-info-btn" type="button" aria-label="Explain High-Pressure Stocks formula">i</button>
             <div class="kpi-tooltip">
-              # of stocks with short_pressure_score ≥ 1.0
+              <div class="tt-row"><div class="tt-label">Formula</div><div class="tt-val">count(score ≥ 1.0)</div></div>
+              <div class="tt-row"><div class="tt-label">Captures</div><div class="tt-val">How many stocks in the top-300 universe are under significant short pressure today. Headline number — breadth of conviction.</div></div>
+              <div class="tt-row"><div class="tt-label">Categories</div><div class="tt-val">NONE = 0 &nbsp;·&nbsp; FOCUSED = 1–5 &nbsp;·&nbsp; BROAD = 6+</div></div>
             </div>
           </div>
         </div>
@@ -507,41 +526,45 @@
     <div class="kpi-card">
       <div class="kpi-body">
         <div class="kpi-label-row">
-          <div class="kpi-label">Market Pressure Regime</div>
+          <div class="kpi-label">Short Pressure Acceleration</div>
           <div class="kpi-tip-wrap">
-            <button class="kpi-info-btn" type="button" aria-label="Explain Market Pressure Regime formula">i</button>
+            <button class="kpi-info-btn" type="button" aria-label="Explain Short Pressure Acceleration formula">i</button>
             <div class="kpi-tooltip">
-              High Pressure Stocks / Total Universe
+              <div class="tt-row"><div class="tt-label">Formula</div><div class="tt-val">count(score ≥ 1.0 &amp; short turnover &gt; 5D avg) / count(score ≥ 1.0)</div></div>
+              <div class="tt-row"><div class="tt-label">Captures</div><div class="tt-val">Among high-pressure stocks, how many are seeing building short pressure — not just high but actively increasing. Separates fresh accumulation from sustained historical pressure.</div></div>
+              <div class="tt-row"><div class="tt-label">Categories</div><div class="tt-val">COOLING 0–20% &nbsp;·&nbsp; BUILDING 21–60% &nbsp;·&nbsp; SURGING 61–100%</div></div>
             </div>
           </div>
         </div>
         <div class="kpi-head">
           <div class="kpi-main">
-            <div class="value" id="kpi-regime-share">—</div>
-            <div class="sub" id="kpi-regime-sub">How broad is short pressure across the market</div>
+            <div class="value" id="kpi-acceleration-share">—</div>
+            <div class="sub" id="kpi-acceleration-sub">% of high-pressure stocks with rising short turnover</div>
           </div>
-          <span class="kpi-badge badge-blue" id="kpi-regime-badge">—</span>
+          <span class="kpi-badge badge-blue" id="kpi-acceleration-badge">—</span>
         </div>
         <div class="kpi-bottom">
-          <div class="kpi-note" id="kpi-regime-note">&nbsp;</div>
+          <div class="kpi-note" id="kpi-acceleration-note">&nbsp;</div>
         </div>
       </div>
     </div>
     <div class="kpi-card">
       <div class="kpi-body">
         <div class="kpi-label-row">
-          <div class="kpi-label">Price Impact Strength</div>
+          <div class="kpi-label">Score-Weighted Return</div>
           <div class="kpi-tip-wrap">
-            <button class="kpi-info-btn" type="button" aria-label="Explain Price Impact Strength formula">i</button>
+            <button class="kpi-info-btn" type="button" aria-label="Explain Score-Weighted Return formula">i</button>
             <div class="kpi-tooltip">
-              average(return_pct of high pressure stocks)
+              <div class="tt-row"><div class="tt-label">Formula</div><div class="tt-val">Σ(score × price chg%) ÷ Σ(score) across stocks with score ≥ 1.0</div></div>
+              <div class="tt-row"><div class="tt-label">Captures</div><div class="tt-val">Are high-pressure stocks actually falling? Weighted so higher-conviction names count more. Confirms whether today's short positioning is validated by price action.</div></div>
+              <div class="tt-row"><div class="tt-label">Categories</div><div class="tt-val">CONFIRMED &lt; −1% &nbsp;·&nbsp; WEAK −1% to 0% &nbsp;·&nbsp; UNCONFIRMED ≥ 0%</div></div>
             </div>
           </div>
         </div>
         <div class="kpi-head">
           <div class="kpi-main">
             <div class="value yellow" id="kpi-price-impact-strength">—</div>
-            <div class="sub" id="kpi-price-impact-sub">Average return of high-pressure names</div>
+            <div class="sub" id="kpi-price-impact-sub">Score-weighted avg return of high-pressure names</div>
           </div>
           <span class="kpi-badge badge-yellow" id="kpi-price-impact-badge">—</span>
         </div>
@@ -553,23 +576,25 @@
     <div class="kpi-card">
       <div class="kpi-body">
         <div class="kpi-label-row">
-          <div class="kpi-label">Top Pressure Concentration</div>
+          <div class="kpi-label">Unconfirmed Shorts</div>
           <div class="kpi-tip-wrap">
-            <button class="kpi-info-btn" type="button" aria-label="Explain Top Pressure Concentration formula">i</button>
+            <button class="kpi-info-btn" type="button" aria-label="Explain Unconfirmed Shorts formula">i</button>
             <div class="kpi-tooltip">
-              sum(top 3 max(score, 0)) / sum(all max(score, 0))
+              <div class="tt-row"><div class="tt-label">Formula</div><div class="tt-val">count(score ≥ 1.0 &amp; price return ≥ +0.5%)</div></div>
+              <div class="tt-row"><div class="tt-label">Captures</div><div class="tt-val">High-pressure stocks where price hasn't broken down — shorts are positioned but the trade hasn't played out. Forward-looking watch list for squeeze risk.</div></div>
+              <div class="tt-row"><div class="tt-label">Categories</div><div class="tt-val">LOW = 0–1 &nbsp;·&nbsp; MODERATE = 2–3 &nbsp;·&nbsp; HIGH = 4+</div></div>
             </div>
           </div>
         </div>
         <div class="kpi-head">
           <div class="kpi-main">
-            <div class="value red" id="kpi-concentration-risk">—</div>
-            <div class="sub" id="kpi-concentration-sub">Top 3 score share of total score</div>
+            <div class="value red" id="kpi-unconfirmed-shorts">—</div>
+            <div class="sub" id="kpi-unconfirmed-sub">High-pressure stocks with price ≥ +0.5%</div>
           </div>
-          <span class="kpi-badge badge-red" id="kpi-concentration-badge">—</span>
+          <span class="kpi-badge badge-red" id="kpi-unconfirmed-badge">—</span>
         </div>
         <div class="kpi-bottom">
-          <div class="kpi-note" id="kpi-concentration-note">&nbsp;</div>
+          <div class="kpi-note" id="kpi-unconfirmed-note">&nbsp;</div>
         </div>
       </div>
     </div>
@@ -601,12 +626,31 @@
       <button class="filter-tab" data-market="KOSPI">KOSPI</button>
       <button class="filter-tab" data-market="KOSDAQ">KOSDAQ</button>
     </div>
-    <select id="filter-topn" class="top-n-select" title="Show top N stocks">
-      <option value="25">Top 25</option>
-      <option value="50">Top 50</option>
-      <option value="100">Top 100</option>
-      <option value="0">All 300</option>
-    </select>
+    <div class="custom-select" id="topn-select">
+      <button class="custom-select-btn" id="topn-btn" type="button">Top 25</button>
+      <div class="custom-select-menu">
+        <div class="custom-select-option selected" data-value="25">Top 25</div>
+        <div class="custom-select-option" data-value="50">Top 50</div>
+        <div class="custom-select-option" data-value="100">Top 100</div>
+        <div class="custom-select-option" data-value="0">All 300</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts row -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Top 25 Short Sell Acceleration</h3>
+      <div style="height:260px"><canvas id="chart-distribution"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3 id="trend-title">Top 25 Unconfirmed Shorts</h3>
+      <div style="height:260px"><canvas id="chart-trend"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Score vs Price Return %</h3>
+      <div style="height:260px"><canvas id="chart-scatter"></canvas></div>
+    </div>
   </div>
 
   <!-- Ranking table -->
@@ -638,24 +682,6 @@
       </thead>
       <tbody id="ranking-tbody"></tbody>
     </table>
-  </div>
-
-  <!-- Charts row 1 -->
-  <div class="charts-grid">
-    <div class="chart-card">
-      <h3>Short Ratio Distribution (Today vs 5d Avg)</h3>
-      <canvas id="chart-distribution"></canvas>
-    </div>
-    <div class="chart-card">
-      <h3>Score vs Return%</h3>
-      <canvas id="chart-scatter"></canvas>
-    </div>
-  </div>
-
-  <!-- Trend lines -->
-  <div class="chart-full">
-    <h3 id="trend-title">Foreign vs Inst Net — Combined Market Map</h3>
-    <canvas id="chart-trend" height="80"></canvas>
   </div>
 
 </div>
@@ -772,53 +798,60 @@ function renderKPIs() {
   const noteEl = document.getElementById('kpi-high-pressure-note');
   if (noteEl) noteEl.textContent = '';
 
-  const pressureShare = pct(highRows.length, allRows.length);
-  const regime = getMarketPressureRegime(pressureShare);
+  const accelPct = calcAccelerationShare(highRows);
+  const accelLabel = accelPct == null ? 'N/A' : accelPct <= 20 ? 'COOLING' : accelPct <= 60 ? 'BUILDING' : 'SURGING';
+  const accelTone  = accelPct == null ? 'muted' : accelPct <= 20 ? 'green' : accelPct <= 60 ? 'yellow' : 'red';
+  const accelSub   = accelPct == null ? 'No high-pressure stocks'
+    : accelPct <= 20 ? 'Short pressure is easing in most names'
+    : accelPct <= 60 ? 'Short pressure building in some names'
+    : 'Fresh short accumulation across most high-pressure names';
   setKpiCard({
-    valueId: 'kpi-regime-share',
-    badgeId: 'kpi-regime-badge',
-    subId: 'kpi-regime-sub',
-    value: pressureShare != null ? `${pressureShare.toFixed(1)}%` : '—',
-    badge: regime.label,
-    sub: 'How broad is short pressure across the market',
-    tone: regime.tone,
+    valueId: 'kpi-acceleration-share',
+    badgeId: 'kpi-acceleration-badge',
+    subId: 'kpi-acceleration-sub',
+    value: accelPct != null ? `${accelPct.toFixed(1)}%` : '—',
+    badge: accelLabel,
+    sub: accelSub,
+    tone: accelTone,
   });
-  const regimeNote = document.getElementById('kpi-regime-note');
-  if (regimeNote) regimeNote.textContent = '';
+  const accelNote = document.getElementById('kpi-acceleration-note');
+  if (accelNote) accelNote.textContent = '';
 
-  const priceImpact = calcPriceImpactStrength(highRows);
-  const priceImpactInterpretation = priceImpact < 0
-    ? 'Strong downside confirmation'
-    : 'Limited price reaction';
+  const priceImpact = calcScoreWeightedReturn(highRows);
+  const priceImpactInterpretation = priceImpact == null
+    ? 'No high-pressure stocks'
+    : priceImpact < -1 ? 'Strong downside confirmation'
+    : priceImpact < 0  ? 'Weak downside confirmation'
+    : 'Shorts not yet confirmed by price';
   setKpiCard({
     valueId: 'kpi-price-impact-strength',
     badgeId: 'kpi-price-impact-badge',
     subId: 'kpi-price-impact-sub',
-    value: `${priceImpact.toFixed(1)}%`,
-    badge: priceImpact < 0 ? 'DOWNSIDE' : 'FLAT',
+    value: priceImpact != null ? `${priceImpact.toFixed(2)}%` : '—',
+    badge: priceImpact == null ? 'N/A' : priceImpact < -1 ? 'CONFIRMED' : priceImpact < 0 ? 'WEAK' : 'UNCONFIRMED',
     sub: priceImpactInterpretation,
-    tone: priceImpact < 0 ? 'red' : 'green',
+    tone: priceImpact == null ? 'muted' : priceImpact < -1 ? 'red' : priceImpact < 0 ? 'yellow' : 'green',
   });
   const priceImpactNote = document.getElementById('kpi-price-impact-note');
   if (priceImpactNote) priceImpactNote.textContent = '';
 
-  const concentration = calcConcentrationRisk(allRows);
-  const concentrationInterpretation = concentration > 0
-    ? (concentration >= 0.65
-        ? 'Pressure concentrated in a few names'
-        : 'Pressure broadly distributed')
-    : 'No positive scores to evaluate';
+  const unconfirmedCount = calcUnconfirmedShorts(highRows);
+  const unconfirmedInterpretation = unconfirmedCount === 0
+    ? 'All high-pressure names are falling'
+    : unconfirmedCount <= 1 ? 'Most shorts confirmed by price action'
+    : unconfirmedCount <= 3 ? 'Some shorts not yet confirmed — watch list'
+    : 'Many shorts unconfirmed — squeeze risk elevated';
   setKpiCard({
-    valueId: 'kpi-concentration-risk',
-    badgeId: 'kpi-concentration-badge',
-    subId: 'kpi-concentration-sub',
-    value: `${(concentration * 100).toFixed(1)}%`,
-    badge: concentration > 0 ? (concentration >= 0.65 ? 'CONCENTRATED' : 'BROAD') : 'N/A',
-    sub: concentrationInterpretation,
-    tone: concentration > 0 ? (concentration >= 0.65 ? 'red' : 'green') : 'muted',
+    valueId: 'kpi-unconfirmed-shorts',
+    badgeId: 'kpi-unconfirmed-badge',
+    subId: 'kpi-unconfirmed-sub',
+    value: String(unconfirmedCount),
+    badge: unconfirmedCount >= 4 ? 'HIGH' : unconfirmedCount >= 2 ? 'MODERATE' : 'LOW',
+    sub: unconfirmedInterpretation,
+    tone: unconfirmedCount >= 4 ? 'red' : unconfirmedCount >= 2 ? 'yellow' : 'green',
   });
-  const concentrationNote = document.getElementById('kpi-concentration-note');
-  if (concentrationNote) concentrationNote.textContent = '';
+  const unconfirmedNote = document.getElementById('kpi-unconfirmed-note');
+  if (unconfirmedNote) unconfirmedNote.textContent = '';
 }
 
 function stockName(r) {
@@ -848,35 +881,37 @@ function pct(numerator, denominator) {
   return (numerator / denominator) * 100;
 }
 
-function getMarketPressureRegime(sharePct) {
-  if (sharePct == null) return { label: 'N/A', tone: 'muted' };
-  // thresholds calibrated for 300-stock universe: <3%=LOW, 3-8%=ELEVATED, 8-15%=STRESSED, 15%+=EXTREME
-  if (sharePct < 3) return { label: 'LOW', tone: 'green' };
-  if (sharePct < 8) return { label: 'ELEVATED', tone: 'blue' };
-  if (sharePct < 15) return { label: 'STRESSED', tone: 'yellow' };
-  return { label: 'EXTREME', tone: 'red' };
+function calcAccelerationShare(highRows) {
+  if (!highRows.length) return null;
+  const eligible = highRows.filter(r =>
+    r.ssts_vol_rlim != null && r.ssts_vol_rlim_5d != null
+  );
+  if (!eligible.length) return null;
+  const accelerating = eligible.filter(r => r.ssts_vol_rlim - r.ssts_vol_rlim_5d > 0).length;
+  return (accelerating / eligible.length) * 100;
 }
 
-function calcPriceImpactStrength(highRows) {
-  if (!highRows.length) return 0;
-  const returns = highRows
-    .map(getReturnValue)
-    .filter(v => v != null);
-  if (!returns.length) return 0;
-  const total = returns.reduce((a, b) => a + b, 0);
-  return total / returns.length;
+function calcScoreWeightedReturn(highRows) {
+  if (!highRows.length) return null;
+  let weightedSum = 0;
+  let scoreSum = 0;
+  for (const r of highRows) {
+    const s = getScoreValue(r);
+    const ret = getReturnValue(r);
+    if (s != null && ret != null) {
+      weightedSum += s * ret;
+      scoreSum += s;
+    }
+  }
+  if (!scoreSum) return null;
+  return weightedSum / scoreSum;
 }
 
-function calcConcentrationRisk(rows) {
-  const scores = rows
-    .map(getScoreValue)
-    .map(v => (v == null ? null : Math.max(v, 0)))
-    .filter(v => v != null);
-  if (!scores.length) return 0;
-  const total = scores.reduce((a, b) => a + b, 0);
-  if (!total) return 0;
-  const top3 = [...scores].sort((a, b) => b - a).slice(0, 3).reduce((a, b) => a + b, 0);
-  return top3 / total;
+function calcUnconfirmedShorts(highRows) {
+  return highRows.filter(r => {
+    const ret = getReturnValue(r);
+    return ret != null && ret >= 0.5;
+  }).length;
 }
 
 function setKpiCard({ valueId, badgeId, subId, value, badge, sub, tone }) {
@@ -924,11 +959,11 @@ function renderTable() {
     );
   }
 
-  // Top-N: apply to complete rows; incomplete always appended after
+  // Top-N: apply to complete rows; incomplete only shown when All is selected
   const complete = rows.filter(r => !r.incomplete);
   const incomplete = rows.filter(r => r.incomplete);
   const shown = filterTopN > 0 ? complete.slice(0, filterTopN) : complete;
-  const finalRows = [...shown, ...incomplete];
+  const finalRows = filterTopN > 0 ? [...shown] : [...shown, ...incomplete];
 
   const maxShort = Math.max(...finalRows.map(r => r.ssts_vol_rlim || 0));
   const maxScore = Math.max(...shown.map(r => Math.max(getScoreValue(r) || 0, 0)), 0.01);
@@ -1029,6 +1064,13 @@ function destroyChart(id) {
   if (charts[id]) { charts[id].destroy(); delete charts[id]; }
 }
 
+function getFilteredStocks() {
+  let rows = (DATA.stocks || []).filter(r => !r.incomplete);
+  if (filterMarket !== 'all') rows = rows.filter(r => r.market === filterMarket);
+  if (filterTopN > 0) rows = rows.slice(0, filterTopN);
+  return rows;
+}
+
 function renderCharts() {
   renderDistribution();
   renderScatter();
@@ -1037,23 +1079,49 @@ function renderCharts() {
 
 function renderDistribution() {
   destroyChart('dist');
-  const rows = (DATA.stocks || []).filter(r => !r.incomplete && r.ssts_vol_rlim != null);
+  const rows = getFilteredStocks()
+    .filter(r => r.ssts_vol_rlim != null && r.ssts_vol_rlim_5d != null)
+    .map(r => ({ ...r, accel: r.ssts_vol_rlim - r.ssts_vol_rlim_5d }))
+    .filter(r => r.accel > 0)
+    .sort((a, b) => b.accel - a.accel)
+    .slice(0, 25);
   const labels = rows.map(r => stockName(r));
   charts.dist = new Chart(document.getElementById('chart-distribution'), {
     type: 'bar',
     data: {
       labels,
       datasets: [
-        { label: 'Today', data: rows.map(r => r.ssts_vol_rlim), backgroundColor: 'rgba(232,96,96,0.80)' },
-        { label: '5d Avg', data: rows.map(r => r.ssts_vol_rlim_5d), backgroundColor: 'rgba(96,168,214,0.45)' },
+        {
+          label: '',
+          data: rows.map(r => +r.accel.toFixed(2)),
+          backgroundColor: 'rgba(60,200,184,0.80)',
+          borderRadius: 3,
+        }
       ]
     },
     options: {
       responsive: true,
-      plugins: { legend: { labels: { color: THEME.muted, font: { size: 11 } } } },
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: (items) => {
+              const r = rows[items[0].dataIndex];
+              return [stockName(r), r.mksc_shrn_iscd];
+            },
+            label: ctx => `Acceleration: ${ctx.raw}%p`,
+          },
+          titleFont: [{ size: 12, weight: 'bold' }, { size: 10, weight: 'normal' }],
+        }
+      },
       scales: {
-        x: { ticks: { color: THEME.muted, font: { size: 10 }, maxRotation: 45 }, grid: { color: THEME.grid } },
-        y: { ticks: { color: THEME.muted, font: { size: 11 } }, grid: { color: THEME.grid } },
+        x: { ticks: { color: THEME.muted, font: { size: 8 }, maxRotation: 45 }, grid: { color: THEME.grid } },
+        y: {
+          ticks: { color: THEME.muted, font: { size: 10 } },
+          grid: { color: THEME.grid },
+          title: { display: true, text: 'Today − 5D Avg Short Turnover (%p)', color: THEME.muted, font: { size: 10 } }
+        },
       }
     }
   });
@@ -1061,37 +1129,57 @@ function renderDistribution() {
 
 function renderScatter() {
   destroyChart('scatter');
-  const allRows = (DATA.stocks || []).filter(r => !r.incomplete && r.score != null && r.prdy_ctrt != null);
+  const allRows = getFilteredStocks().filter(r => r.score != null && r.prdy_ctrt != null);
+  const quadrantLines = {
+    id: 'quadrantLines',
+    beforeDraw(chart) {
+      const { ctx, chartArea: { left, right, top, bottom }, scales: { x, y } } = chart;
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      // vertical line at return = 0
+      const xZero = x.getPixelForValue(0);
+      ctx.beginPath(); ctx.moveTo(xZero, top); ctx.lineTo(xZero, bottom); ctx.stroke();
+      // horizontal line at score = 1.0
+      const yOne = y.getPixelForValue(1.0);
+      ctx.beginPath(); ctx.moveTo(left, yOne); ctx.lineTo(right, yOne); ctx.stroke();
+      ctx.restore();
+    }
+  };
   charts.scatter = new Chart(document.getElementById('chart-scatter'), {
     type: 'scatter',
     data: {
       datasets: [
         {
           label: 'KOSPI',
-          data: allRows.filter(r => r.market === 'KOSPI').map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r) })),
-          backgroundColor: 'rgba(96,168,214,0.72)',
-          pointRadius: 5,
+          data: allRows.filter(r => r.market === 'KOSPI').map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r), ticker: r.mksc_shrn_iscd })),
+          backgroundColor: 'rgba(96,168,214,0.80)',
+          pointRadius: 6,
         },
         {
           label: 'KOSDAQ',
-          data: allRows.filter(r => r.market === 'KOSDAQ').map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r) })),
-          backgroundColor: 'rgba(60,200,184,0.72)',
-          pointRadius: 5,
+          data: allRows.filter(r => r.market === 'KOSDAQ').map(r => ({ x: r.prdy_ctrt, y: r.score, label: stockName(r), ticker: r.mksc_shrn_iscd })),
+          backgroundColor: 'rgba(60,200,184,0.80)',
+          pointRadius: 6,
         },
       ]
     },
+    plugins: [quadrantLines],
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { labels: { color: THEME.muted, font: { size: 11 } } },
         tooltip: {
           callbacks: {
-            label: ctx => `${ctx.raw.label}: score=${ctx.raw.y?.toFixed(2)}, ret=${ctx.raw.x?.toFixed(2)}%`
+            title: items => [items[0].raw.label, items[0].raw.ticker],
+            label: ctx => `score=${ctx.raw.y?.toFixed(2)}  ·  ret=${ctx.raw.x?.toFixed(2)}%`,
           }
         }
       },
       scales: {
-        x: { title: { display: true, text: 'Return %', color: THEME.muted }, ticks: { color: THEME.muted }, grid: { color: THEME.grid } },
+        x: { title: { display: true, text: 'Price Return %', color: THEME.muted }, ticks: { color: THEME.muted, callback: v => v + '%' }, grid: { color: THEME.grid } },
         y: { title: { display: true, text: 'Score', color: THEME.muted }, ticks: { color: THEME.muted }, grid: { color: THEME.grid } },
       }
     }
@@ -1100,68 +1188,43 @@ function renderScatter() {
 
 function renderCombinedMap() {
   destroyChart('trend');
-  const allRows = (DATA.stocks || [])
-    .filter(r => !r.incomplete && r.frgn_ntby_tr_pbmn != null && r.orgn_ntby_tr_pbmn != null && r.score != null);
-
-  document.getElementById('trend-title').textContent =
-    'Foreign vs Inst Net — Combined Market Map';
-
-  const size = r => Math.max(4, Math.min(16, 4 + (r.score || 0) * 2.5));
+  const rows = getFilteredStocks()
+    .filter(r => r.score >= 1.0 && r.prdy_ctrt != null && r.prdy_ctrt >= 0.5)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 25);
 
   charts.trend = new Chart(document.getElementById('chart-trend'), {
-    type: 'bubble',
+    type: 'scatter',
     data: {
-      datasets: [
-        {
-          label: 'KOSPI',
-          data: allRows.filter(r => r.market === 'KOSPI').map(r => ({
-            x: r.frgn_ntby_tr_pbmn,
-            y: r.orgn_ntby_tr_pbmn,
-            r: size(r),
-            label: stockName(r),
-            ticker: r.mksc_shrn_iscd,
-            score: r.score,
-          })),
-          backgroundColor: 'rgba(96,168,214,0.45)',
-          borderColor: 'rgba(96,168,214,0.95)',
-        },
-        {
-          label: 'KOSDAQ',
-          data: allRows.filter(r => r.market === 'KOSDAQ').map(r => ({
-            x: r.frgn_ntby_tr_pbmn,
-            y: r.orgn_ntby_tr_pbmn,
-            r: size(r),
-            label: stockName(r),
-            ticker: r.mksc_shrn_iscd,
-            score: r.score,
-          })),
-          backgroundColor: 'rgba(60,200,184,0.45)',
-          borderColor: 'rgba(60,200,184,0.95)',
-        },
-      ],
+      datasets: [{
+        label: 'Unconfirmed Shorts',
+        data: rows.map(r => ({ x: +r.prdy_ctrt.toFixed(2), y: +r.score.toFixed(2), label: stockName(r), ticker: r.mksc_shrn_iscd })),
+        backgroundColor: 'rgba(232,96,96,0.80)',
+        pointRadius: 7,
+        pointHoverRadius: 9,
+      }]
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
-        legend: { labels: { color: THEME.muted, font: { size: 11 } } },
+        legend: { display: false },
         tooltip: {
           callbacks: {
-            label: ctx => {
-              const r = ctx.raw;
-              return `${r.label} (${r.ticker}) · score=${r.score?.toFixed(2)} · F=${fmtM(r.x)} · I=${fmtM(r.y)}`;
-            }
+            title: items => [items[0].raw.label, items[0].raw.ticker],
+            label: ctx => `score=${ctx.raw.y}  ·  ret=${ctx.raw.x}%`,
           }
         }
       },
       scales: {
         x: {
-          title: { display: true, text: 'Foreign Net (M)', color: THEME.muted },
-          ticks: { color: THEME.muted, callback: v => fmtM(v) },
+          title: { display: true, text: 'Price Return %', color: THEME.muted, font: { size: 10 } },
+          ticks: { color: THEME.muted, callback: v => v + '%' },
           grid: { color: THEME.grid },
         },
         y: {
-          title: { display: true, text: 'Inst Net (M)', color: THEME.muted },
-          ticks: { color: THEME.muted, callback: v => fmtM(v) },
+          title: { display: true, text: 'Score', color: THEME.muted, font: { size: 10 } },
+          ticks: { color: THEME.muted },
           grid: { color: THEME.grid },
         },
       }
@@ -1173,12 +1236,27 @@ function renderCombinedMap() {
 document.getElementById('filter-search').addEventListener('input', e => {
   filterSearch = e.target.value;
   renderTable();
+  renderCharts();
 });
 
-document.getElementById('filter-topn').addEventListener('change', e => {
-  filterTopN = parseInt(e.target.value, 10);
-  renderTable();
+const topnSelect = document.getElementById('topn-select');
+const topnBtn = document.getElementById('topn-btn');
+topnBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  topnSelect.classList.toggle('open');
 });
+topnSelect.querySelectorAll('.custom-select-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    topnSelect.querySelectorAll('.custom-select-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    topnBtn.textContent = opt.textContent;
+    filterTopN = parseInt(opt.dataset.value, 10);
+    topnSelect.classList.remove('open');
+    renderTable();
+    renderCharts();
+  });
+});
+document.addEventListener('click', () => topnSelect.classList.remove('open'));
 
 document.querySelectorAll('.filter-tab[data-market]').forEach(tab => {
   tab.addEventListener('click', () => {
@@ -1188,6 +1266,7 @@ document.querySelectorAll('.filter-tab[data-market]').forEach(tab => {
     });
     tab.classList.add(filterMarket === 'KOSDAQ' ? 'active-teal' : 'active');
     renderTable();
+    renderCharts();
   });
 });
 
