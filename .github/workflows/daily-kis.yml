@@ -32,6 +32,13 @@ jobs:
           path: data/cache/token.json
           key: kis-token-${{ steps.date.outputs.today }}
 
+      - name: Restore stock meta cache
+        uses: actions/cache@v4
+        with:
+          path: data/cache/stock_meta.json
+          key: kis-stock-meta-v1
+          restore-keys: kis-stock-meta-v1
+
       - name: Validate secrets are set
         run: |
           if [ -z "$KIS_APP_KEY" ] || [ -z "$KIS_APP_SECRET" ]; then
