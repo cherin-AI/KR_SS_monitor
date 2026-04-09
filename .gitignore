@@ -5,7 +5,8 @@ config.yaml
 
 # Token and data cache
 data/cache/token.json
-data/cache/stock_meta.json
+# stock_meta.json is committed to seed English display names in CI
+# data/cache/stock_meta.json
 
 # Output snapshots (optional — commit if you want history)
 # data/output/
@@ -33,3 +34,5 @@ env/
 # Session notes
 handoff.md
 peerreview.md
+PLAN.md
+CLAUDE.md   
