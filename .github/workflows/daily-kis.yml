@@ -68,5 +68,5 @@ jobs:
             exit 0
           fi
           git commit -m "data: daily snapshot $(date -u +'%Y-%m-%d')"
-          git pull --rebase origin ${{ github.ref_name }}
+          git pull --no-rebase -X ours origin ${{ github.ref_name }}
           git push origin HEAD:${{ github.ref_name }}
