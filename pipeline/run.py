@@ -151,8 +151,13 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
             client, token, config, all_tickers
         )
 
-        # Fallback: fi_total (FHPTJ04400000) only if any tickers still missing
-        still_missing = [t for t in all_tickers if not investor_data.get(t)]
+        # Fallback: fi_total (FHPTJ04400000) for tickers absent from results OR
+        # where inquire_investor returned null values (truthy dict but null fields)
+        still_missing = [
+            t for t in all_tickers
+            if not investor_data.get(t)
+            or investor_data[t].get("frgn_ntby_tr_pbmn") is None
+        ]
         fi_kospi: pd.DataFrame = pd.DataFrame()
         fi_kosdaq: pd.DataFrame = pd.DataFrame()
         if still_missing:

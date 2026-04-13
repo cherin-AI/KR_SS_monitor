@@ -166,6 +166,7 @@ async def fetch_daily_short_snapshot(
     ticker: str,
     lookback_days: int = 5,
     trade_date_end: str | None = None,
+    market: str = "KOSPI",
 ) -> dict[str, float | str | None]:
     """
     Fetch the latest daily short-sale row plus a 5-day average for one ticker.
@@ -176,8 +177,9 @@ async def fetch_daily_short_snapshot(
     """
     tr_id = "FHPST04830000"
     url = _base_url(config) + "/uapi/domestic-stock/v1/quotations/daily-short-sale"
+    mrkt_code = "Q" if market == "KOSDAQ" else "J"
     params = {
-        "FID_COND_MRKT_DIV_CODE": "J",
+        "FID_COND_MRKT_DIV_CODE": mrkt_code,
         "FID_INPUT_ISCD": ticker,
         "FID_INPUT_DATE_1": _ndays_ago(lookback_days * 2),  # buffer for non-trading days
         "FID_INPUT_DATE_2": trade_date_end or date.today().strftime("%Y%m%d"),
@@ -519,10 +521,11 @@ async def fetch_short_snapshots_bulk(
 
     async def _one(entry: dict) -> None:
         ticker = entry["ticker"]
+        market = entry.get("market", "KOSPI")
         async with sem:
             try:
                 snap = await fetch_daily_short_snapshot(
-                    client, token, config, ticker, lookback_days, trade_date_end
+                    client, token, config, ticker, lookback_days, trade_date_end, market
                 )
                 results[ticker] = snap
             except Exception as exc:

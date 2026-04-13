@@ -526,20 +526,20 @@
     <div class="kpi-card">
       <div class="kpi-body">
         <div class="kpi-label-row">
-          <div class="kpi-label">Short Pressure Acceleration</div>
+          <div class="kpi-label">Rising Short Pressure</div>
           <div class="kpi-tip-wrap">
-            <button class="kpi-info-btn" type="button" aria-label="Explain Short Pressure Acceleration formula">i</button>
+            <button class="kpi-info-btn" type="button" aria-label="Explain Rising Short Pressure formula">i</button>
             <div class="kpi-tooltip">
-              <div class="tt-row"><div class="tt-label">Formula</div><div class="tt-val">count(score ≥ 1.0 &amp; short turnover &gt; 5D avg) / count(score ≥ 1.0)</div></div>
-              <div class="tt-row"><div class="tt-label">Captures</div><div class="tt-val">Among high-pressure stocks, how many are seeing building short pressure - not just high but actively increasing. Separates fresh accumulation from sustained historical pressure.</div></div>
-              <div class="tt-row"><div class="tt-label">Categories</div><div class="tt-val">COOLING 0–20% &nbsp;·&nbsp; BUILDING 21–60% &nbsp;·&nbsp; SURGING 61–100%</div></div>
+              <div class="tt-row"><div class="tt-label">Formula</div><div class="tt-val">count(score ≥ 1.0 &amp; short ratio &gt; 5D avg short ratio)</div></div>
+              <div class="tt-row"><div class="tt-label">Captures</div><div class="tt-val">Among high-pressure stocks, how many have fresh short selling above their recent baseline. A raw count - no ratios.</div></div>
+              <div class="tt-row"><div class="tt-label">Categories</div><div class="tt-val">FADING 0–33% &nbsp;·&nbsp; STEADY 34–66% &nbsp;·&nbsp; RISING 67–100%</div></div>
             </div>
           </div>
         </div>
         <div class="kpi-head">
           <div class="kpi-main">
             <div class="value" id="kpi-acceleration-share">—</div>
-            <div class="sub" id="kpi-acceleration-sub">% of high-pressure stocks with rising short turnover</div>
+            <div class="sub" id="kpi-acceleration-sub">of high-pressure stocks with rising short turnover</div>
           </div>
           <span class="kpi-badge badge-blue" id="kpi-acceleration-badge">—</span>
         </div>
@@ -644,7 +644,7 @@
       <div style="height:260px"><canvas id="chart-distribution"></canvas></div>
     </div>
     <div class="chart-card">
-      <h3 id="trend-title">Top 25 Unconfirmed Shorts</h3>
+      <h3 id="trend-title">Score Driver Breakdown</h3>
       <div style="height:260px"><canvas id="chart-trend"></canvas></div>
     </div>
     <div class="chart-card">
@@ -798,21 +798,20 @@ function renderKPIs() {
   const noteEl = document.getElementById('kpi-high-pressure-note');
   if (noteEl) noteEl.textContent = '';
 
-  const accelPct = calcAccelerationShare(highRows);
-  const accelLabel = accelPct == null ? 'N/A' : accelPct <= 20 ? 'COOLING' : accelPct <= 60 ? 'BUILDING' : 'SURGING';
-  const accelTone  = accelPct == null ? 'muted' : accelPct <= 20 ? 'green' : accelPct <= 60 ? 'yellow' : 'red';
-  const accelSub   = accelPct == null ? 'No high-pressure stocks'
-    : accelPct <= 20 ? 'Short pressure is easing in most names'
-    : accelPct <= 60 ? 'Short pressure building in some names'
-    : 'Fresh short accumulation across most high-pressure names';
+  const risingData = calcRisingShortCount(highRows);
+  const risingPct  = risingData ? risingData.count / risingData.total : null;
+  const risingLabel = risingData == null ? 'N/A' : risingPct <= 0.33 ? 'FADING' : risingPct <= 0.66 ? 'STEADY' : 'RISING';
+  const risingTone  = risingData == null ? 'muted' : risingPct <= 0.33 ? 'green' : risingPct <= 0.66 ? 'yellow' : 'red';
+  const risingSub   = risingData == null ? 'No high-pressure stocks'
+    : `${risingData.count} of ${risingData.total} high-pressure stocks show higher short turnover above 5D avg`;
   setKpiCard({
     valueId: 'kpi-acceleration-share',
     badgeId: 'kpi-acceleration-badge',
     subId: 'kpi-acceleration-sub',
-    value: accelPct != null ? `${accelPct.toFixed(1)}%` : '—',
-    badge: accelLabel,
-    sub: accelSub,
-    tone: accelTone,
+    value: risingData != null ? `${(risingPct * 100).toFixed(1)}%` : '—',
+    badge: risingLabel,
+    sub: risingSub,
+    tone: risingTone,
   });
   const accelNote = document.getElementById('kpi-acceleration-note');
   if (accelNote) accelNote.textContent = '';
@@ -881,14 +880,14 @@ function pct(numerator, denominator) {
   return (numerator / denominator) * 100;
 }
 
-function calcAccelerationShare(highRows) {
+function calcRisingShortCount(highRows) {
   if (!highRows.length) return null;
   const eligible = highRows.filter(r =>
     r.ssts_vol_rlim != null && r.ssts_vol_rlim_5d != null
   );
   if (!eligible.length) return null;
-  const accelerating = eligible.filter(r => r.ssts_vol_rlim - r.ssts_vol_rlim_5d > 0).length;
-  return (accelerating / eligible.length) * 100;
+  const rising = eligible.filter(r => r.ssts_vol_rlim > r.ssts_vol_rlim_5d).length;
+  return { count: rising, total: eligible.length };
 }
 
 function calcScoreWeightedReturn(highRows) {
@@ -1189,42 +1188,75 @@ function renderScatter() {
 function renderCombinedMap() {
   destroyChart('trend');
   const rows = getFilteredStocks()
-    .filter(r => r.score >= 1.0 && r.prdy_ctrt != null && r.prdy_ctrt >= 0.5)
+    .filter(r => !r.incomplete && r.score >= 1.0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 25);
+    .slice(0, 10);
+
+  // Weighted component contributions (clamped to 0 — only positive drivers shown)
+  const W = { short: 0.35, d5: 0.15, frgn: 0.25, inst: 0.15, ret: 0.10 };
+  const comp = (r, key, w) => Math.max(0, (r[key] ?? 0) * w);
+
+  const labels  = rows.map(r => stockName(r));
+  const cShort  = rows.map(r => +comp(r, 'z_short_today', W.short).toFixed(2));
+  const c5d     = rows.map(r => +comp(r, 'z_short_5d',    W.d5  ).toFixed(2));
+  const cFrgn   = rows.map(r => +comp(r, 'z_foreign',     W.frgn).toFixed(2));
+  const cInst   = rows.map(r => +comp(r, 'z_inst',        W.inst).toFixed(2));
+  const cRet    = rows.map(r => +comp(r, 'z_return',      W.ret ).toFixed(2));
+  const scores  = rows.map(r => +r.score.toFixed(2));
+
+  const barOpts = (label, color) => ({
+    label,
+    data: label === 'Short Ratio' ? cShort
+        : label === '5D Short Avg' ? c5d
+        : label === 'Foreign Sell' ? cFrgn
+        : label === 'Inst Sell'    ? cInst
+        : cRet,
+    backgroundColor: color,
+    borderWidth: 0,
+  });
 
   charts.trend = new Chart(document.getElementById('chart-trend'), {
-    type: 'scatter',
+    type: 'bar',
     data: {
-      datasets: [{
-        label: 'Unconfirmed Shorts',
-        data: rows.map(r => ({ x: +r.prdy_ctrt.toFixed(2), y: +r.score.toFixed(2), label: stockName(r), ticker: r.mksc_shrn_iscd })),
-        backgroundColor: 'rgba(232,96,96,0.80)',
-        pointRadius: 7,
-        pointHoverRadius: 9,
-      }]
+      labels,
+      datasets: [
+        { label: 'Short Ratio',  data: cShort, backgroundColor: THEME.pA, borderWidth: 0 },
+        { label: '5D Short Avg', data: c5d,    backgroundColor: THEME.t3, borderWidth: 0 },
+        { label: 'Foreign Sell', data: cFrgn,  backgroundColor: THEME.pC, borderWidth: 0 },
+        { label: 'Inst Sell',    data: cInst,  backgroundColor: THEME.rd, borderWidth: 0 },
+        { label: 'Return',       data: cRet,   backgroundColor: THEME.pB, borderWidth: 0 },
+      ]
     },
     options: {
+      indexAxis: 'y',
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { display: false },
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: { color: THEME.muted, boxWidth: 10, font: { size: 10 }, padding: 8 },
+        },
         tooltip: {
           callbacks: {
-            title: items => [items[0].raw.label, items[0].raw.ticker],
-            label: ctx => `score=${ctx.raw.y}  ·  ret=${ctx.raw.x}%`,
+            title: items => {
+              const i = items[0].dataIndex;
+              return [labels[i], rows[i].mksc_shrn_iscd, `Total score: ${scores[i]}`];
+            },
+            label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.x.toFixed(2)}`,
           }
         }
       },
       scales: {
         x: {
-          title: { display: true, text: 'Price Return %', color: THEME.muted, font: { size: 10 } },
-          ticks: { color: THEME.muted, callback: v => v + '%' },
+          stacked: true,
+          title: { display: true, text: 'Score contribution', color: THEME.muted, font: { size: 10 } },
+          ticks: { color: THEME.muted },
           grid: { color: THEME.grid },
         },
         y: {
-          title: { display: true, text: 'Score', color: THEME.muted, font: { size: 10 } },
-          ticks: { color: THEME.muted },
+          stacked: true,
+          ticks: { color: THEME.text, font: { size: 10 } },
           grid: { color: THEME.grid },
         },
       }
