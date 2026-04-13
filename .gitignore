@@ -31,8 +31,26 @@ env/
 .vscode/
 *.swp
 
-# Session notes
+# Session / dev notes
 handoff.md
 peerreview.md
 PLAN.md
-CLAUDE.md   
+CLAUDE.md
+design.md
+AI_summary.md
+
+# Validation data
+data/validation/
+
+# KRX pipeline (removed — KIS pipeline only)
+pipeline/krx_short_selling.py
+pipeline/run_krx.py
+pipeline/validate_universe.py
+.github/workflows/daily-krx.yml
+scripts/fetch_krx_short_selling.py
+scripts/run_daily_krx_pipeline.py
+tests/test_krx_short_selling.py
+tests/test_run_krx.py
+
+# Env template (credentials go in .env only)
+.env.example
