@@ -62,6 +62,7 @@ Rules:
 - Do not use vague sentiment language without data support
 - Do not give investment advice or price targets
 - Do not reference sectors, names, or data not explicitly given to you
+- Do not mention retail investors, retail short interest, or retail participation — the score formula contains no retail data and Korea's retail short market is structurally negligible; any such contrast is unsupported
 
 Prioritise these themes in order:
 1. Breadth vs concentration of short pressure
