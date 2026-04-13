@@ -881,7 +881,10 @@ function renderAISummary() {
     return;
   }
 
-  list.innerHTML = bullets.map(b => `<li>${b}</li>`).join('');
+  list.innerHTML = bullets.map(b => {
+    const m = b.match(/^(.+?[.:])\s+(.+)$/s);
+    return m ? `<li><strong>${m[1]}</strong> ${m[2]}</li>` : `<li>${b}</li>`;
+  }).join('');
 
   if (isFallback) {
     badge.textContent = 'Rules-Based';
