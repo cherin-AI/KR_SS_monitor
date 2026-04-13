@@ -85,7 +85,7 @@ def _build_kpis(high: pd.DataFrame) -> dict:
     kpi3 = round(float((high["score"] * high["prdy_ctrt"]).sum() / score_sum), 2) \
         if score_sum and high["prdy_ctrt"].notna().any() else None
 
-    kpi4 = int((high["prdy_ctrt"] >= 0.5).sum())
+    kpi4 = int((high["prdy_ctrt"] >= 0).sum())
 
     return {
         "count":       count,
@@ -223,7 +223,7 @@ KPI Summary:
 • High-pressure stocks (score ≥ 1.0): {kpis['count']} [{kpi1_badge}]
 • Rising short pressure: {kpi2_str} of high-pressure stocks have short turnover above 5-day avg [{kpi2_badge}]
 • Score-weighted return: {kpi3_str} [{kpi3_badge}]
-• Unconfirmed shorts (score ≥ 1.0 & price ≥ +0.5%): {kpis['kpi4']} [{kpi4_badge}]
+• Unconfirmed shorts (score ≥ 1.0 & price ≥ 0%): {kpis['kpi4']} [{kpi4_badge}]
 
 Score formula components (weights):
   z(short turnover %) ×0.35  +  z(short turnover accel.) ×0.15

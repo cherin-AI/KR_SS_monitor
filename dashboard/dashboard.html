@@ -617,7 +617,7 @@
           <div class="kpi-tip-wrap">
             <button class="kpi-info-btn" type="button" aria-label="Explain Unconfirmed Shorts formula">i</button>
             <div class="kpi-tooltip">
-              <div class="tt-row"><div class="tt-label">Formula</div><div class="tt-val">count(score ≥ 1.0 &amp; price return ≥ +0.5%)</div></div>
+              <div class="tt-row"><div class="tt-label">Formula</div><div class="tt-val">count(score ≥ 1.0 &amp; price return ≥ 0%)</div></div>
               <div class="tt-row"><div class="tt-label">Captures</div><div class="tt-val">High-pressure stocks where price hasn't broken down - shorts are positioned but the trade hasn't played out. Forward-looking watch list for squeeze risk.</div></div>
               <div class="tt-row"><div class="tt-label">Categories</div><div class="tt-val">LOW = 0–1 &nbsp;·&nbsp; MODERATE = 2–3 &nbsp;·&nbsp; HIGH = 4+</div></div>
             </div>
@@ -626,7 +626,7 @@
         <div class="kpi-head">
           <div class="kpi-main">
             <div class="value red" id="kpi-unconfirmed-shorts">—</div>
-            <div class="sub" id="kpi-unconfirmed-sub">High-pressure stocks with price ≥ +0.5%</div>
+            <div class="sub" id="kpi-unconfirmed-sub">High-pressure stocks with price ≥ 0%</div>
           </div>
           <span class="kpi-badge badge-red" id="kpi-unconfirmed-badge">—</span>
         </div>
@@ -640,9 +640,33 @@
   <!-- AI Analysis -->
   <div class="ai-card" id="ai-summary-card" style="display:none">
     <div class="ai-card-header">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--pB)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;opacity:0.85">
+        <path d="M12 8V4H8"/>
+        <rect width="16" height="12" x="4" y="8" rx="2"/>
+        <path d="M2 14h2"/>
+        <path d="M20 14h2"/>
+        <path d="M15 13v2"/>
+        <path d="M9 13v2"/>
+      </svg>
       <span class="ai-card-label">AI Analysis</span>
     </div>
     <ul class="ai-bullets" id="ai-bullets"></ul>
+  </div>
+
+  <!-- Charts row -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Top 25 Short Sell Acceleration</h3>
+      <div style="height:260px"><canvas id="chart-distribution"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3 id="trend-title">Score Driver Breakdown</h3>
+      <div style="height:260px"><canvas id="chart-trend"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Score vs Price Return %</h3>
+      <div style="height:260px"><canvas id="chart-scatter"></canvas></div>
+    </div>
   </div>
 
   <!-- Score formula -->
@@ -679,22 +703,6 @@
         <div class="custom-select-option" data-value="100">Top 100</div>
         <div class="custom-select-option" data-value="0">All 300</div>
       </div>
-    </div>
-  </div>
-
-  <!-- Charts row -->
-  <div class="charts-grid">
-    <div class="chart-card">
-      <h3>Top 25 Short Sell Acceleration</h3>
-      <div style="height:260px"><canvas id="chart-distribution"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <h3 id="trend-title">Score Driver Breakdown</h3>
-      <div style="height:260px"><canvas id="chart-trend"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <h3>Score vs Price Return %</h3>
-      <div style="height:260px"><canvas id="chart-scatter"></canvas></div>
     </div>
   </div>
 
@@ -1031,7 +1039,7 @@ function calcScoreWeightedReturn(highRows) {
 function calcUnconfirmedShorts(highRows) {
   return highRows.filter(r => {
     const ret = getReturnValue(r);
-    return ret != null && ret >= 0.5;
+    return ret != null && ret >= 0;
   }).length;
 }
 
