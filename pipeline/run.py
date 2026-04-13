@@ -56,12 +56,12 @@ pressure signals and translate them into concise, factual observations for profe
 Rules:
 - Output exactly 3 to 5 bullet points, each on its own line starting with "•"
 - No intro, no conclusion, no headers, no markdown formatting beyond the bullet character
-- Each bullet makes one specific point grounded in the data provided
+- Each bullet must follow this exact structure: a short summary sentence (4–8 words, ends with a period), then one supporting detail sentence. Example: "Short pressure is broad. 14 names exceed the threshold with 100% showing rising short turnover, suggesting systematic bearish positioning."
+- Do not use semicolons to join clauses — use two separate sentences
 - Do not repeat the same KPI across multiple bullets
 - Do not use vague sentiment language without data support
 - Do not give investment advice or price targets
 - Do not reference sectors, names, or data not explicitly given to you
-- Keep each bullet to 1–2 sentences
 
 Prioritise these themes in order:
 1. Breadth vs concentration of short pressure

@@ -641,8 +641,6 @@
   <div class="ai-card" id="ai-summary-card" style="display:none">
     <div class="ai-card-header">
       <span class="ai-card-label">AI Analysis</span>
-      <span class="ai-live-badge" id="ai-source-badge">Live Summary</span>
-      <span class="ai-model-badge" id="ai-model-label">claude haiku</span>
     </div>
     <ul class="ai-bullets" id="ai-bullets"></ul>
   </div>
@@ -860,21 +858,12 @@ function _rulesBasedBullets() {
 }
 
 function renderAISummary() {
-  const card    = document.getElementById('ai-summary-card');
-  const list    = document.getElementById('ai-bullets');
-  const badge   = document.getElementById('ai-source-badge');
-  const model   = document.getElementById('ai-model-label');
+  const card = document.getElementById('ai-summary-card');
+  const list = document.getElementById('ai-bullets');
 
-  let bullets = null;
-  let isFallback = false;
-
-  if (Array.isArray(DATA.ai_summary) && DATA.ai_summary.length >= 3) {
-    bullets = DATA.ai_summary.slice(0, 5);
-  } else {
-    // JSON has no AI summary — generate rules-based fallback in browser
-    bullets = _rulesBasedBullets();
-    isFallback = true;
-  }
+  const bullets = (Array.isArray(DATA.ai_summary) && DATA.ai_summary.length >= 3)
+    ? DATA.ai_summary.slice(0, 5)
+    : _rulesBasedBullets();
 
   if (!bullets || bullets.length === 0) {
     card.style.display = 'none';
@@ -882,19 +871,10 @@ function renderAISummary() {
   }
 
   list.innerHTML = bullets.map(b => {
-    const m = b.match(/^(.+?[.:])\s+(.+)$/s);
+    // Bold the first sentence — split on ". " followed by an uppercase letter
+    const m = b.match(/^(.+?\.)\s+([A-Z].+)$/s);
     return m ? `<li><strong>${m[1]}</strong> ${m[2]}</li>` : `<li>${b}</li>`;
   }).join('');
-
-  if (isFallback) {
-    badge.textContent = 'Rules-Based';
-    badge.className = 'ai-fallback-badge';
-    model.style.display = 'none';
-  } else {
-    badge.textContent = 'Live Summary';
-    badge.className = 'ai-live-badge';
-    model.style.display = '';
-  }
 
   card.style.display = 'block';
 }
