@@ -451,6 +451,43 @@
     tbody tr.row-mid { border-left: 2px solid var(--am); }
     tbody tr.row-scored { border-left: 2px solid transparent; }
 
+    /* AI Analysis card */
+    .ai-card {
+      background: var(--s2); border: 1px solid var(--b1); border-radius: 8px;
+      border-left: 3px solid var(--pB); padding: 14px 18px; margin-bottom: 20px;
+    }
+    .ai-card-header {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    }
+    .ai-card-label {
+      color: var(--t2); font-size: 9px; text-transform: uppercase;
+      letter-spacing: 0.14em; flex: 1;
+    }
+    .ai-live-badge {
+      background: rgba(60,200,184,0.12); color: var(--pB);
+      border: 1px solid rgba(60,200,184,0.28); border-radius: 4px;
+      font-size: 8px; padding: 2px 7px; text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .ai-model-badge {
+      color: var(--t3); font-size: 9px;
+    }
+    .ai-fallback-badge {
+      background: rgba(168,189,214,0.10); color: var(--t2);
+      border: 1px solid rgba(168,189,214,0.2); border-radius: 4px;
+      font-size: 8px; padding: 2px 7px; text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .ai-bullets {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .ai-bullets li {
+      color: var(--t1); font-size: 12px; line-height: 1.55;
+      padding-left: 16px; position: relative;
+    }
+    .ai-bullets li::before {
+      content: "•"; position: absolute; left: 0; color: var(--pB);
+    }
+
     @media (max-width: 900px) {
       .kpi-grid { grid-template-columns: 1fr 1fr; }
       .charts-grid { grid-template-columns: 1fr; }
@@ -598,6 +635,16 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- AI Analysis -->
+  <div class="ai-card" id="ai-summary-card" style="display:none">
+    <div class="ai-card-header">
+      <span class="ai-card-label">AI Analysis</span>
+      <span class="ai-live-badge" id="ai-source-badge">Live Summary</span>
+      <span class="ai-model-badge" id="ai-model-label">claude haiku</span>
+    </div>
+    <ul class="ai-bullets" id="ai-bullets"></ul>
   </div>
 
   <!-- Score formula -->
@@ -753,8 +800,100 @@ async function loadData() {
 function render() {
   renderMeta();
   renderKPIs();
+  renderAISummary();
   renderTable();
   renderCharts();
+}
+
+// ── AI Summary ────────────────────────────────────────────────────────────────
+
+function _rulesBasedBullets() {
+  const allRows = (DATA.stocks || []).filter(r => !r.incomplete && getScoreValue(r) != null);
+  const highRows = allRows.filter(r => getScoreValue(r) >= HIGH_PRESSURE_THRESHOLD);
+  const count = highRows.length;
+  const bullets = [];
+
+  // 1. Breadth
+  const eligible = highRows.filter(r => r.ssts_vol_rlim != null && r.ssts_vol_rlim_5d != null);
+  const risingN  = eligible.filter(r => r.ssts_vol_rlim > r.ssts_vol_rlim_5d).length;
+  const risingPct = eligible.length ? (risingN / eligible.length * 100) : null;
+
+  if (count === 0) {
+    bullets.push('No stocks currently exceed the high-pressure threshold. Short positioning appears minimal across the universe.');
+  } else if (count <= 5) {
+    const rs = risingPct != null ? ` with ${risingPct.toFixed(0)}% showing rising short turnover` : '';
+    bullets.push(`Short pressure is narrowly concentrated in ${count} names${rs}, suggesting targeted rather than broad bearish positioning.`);
+  } else {
+    const rs = risingPct != null ? `${risingPct.toFixed(0)}% show rising short turnover versus their 5-day average` : 'most show rising short turnover';
+    bullets.push(`Short pressure is broad: ${count} stocks exceed the threshold and ${rs}, indicating active widespread bearish positioning.`);
+  }
+
+  // 2. Price confirmation
+  const swReturn = calcScoreWeightedReturn(highRows);
+  if (swReturn != null) {
+    if (swReturn < -1.0) {
+      bullets.push(`Price action confirms the signal. Score-weighted return of ${swReturn.toFixed(2)}% shows the highest-conviction shorts are declining in line with positioning.`);
+    } else if (swReturn < 0) {
+      bullets.push(`Price action weakly confirms. Score-weighted return of ${swReturn.toFixed(2)}% shows modest declines among high-pressure names — traction but not yet strong follow-through.`);
+    } else {
+      bullets.push(`Price action diverges from the signal. Score-weighted return of ${swReturn.toFixed(2)}% — pressured names are not falling, which reduces conviction in the short thesis.`);
+    }
+  }
+
+  // 3. Squeeze risk
+  const unconfirmed = calcUnconfirmedShorts(highRows);
+  if (unconfirmed === 0) {
+    bullets.push('No squeeze risk detected. All high-pressure stocks are flat or declining, so shorts face no near-term forced-covering pressure.');
+  } else if (unconfirmed <= 3) {
+    bullets.push(`Moderate squeeze risk. ${unconfirmed} high-pressure stocks are rising against short flows — monitor these names for potential covering triggers.`);
+  } else {
+    bullets.push(`Elevated squeeze risk. ${unconfirmed} high-pressure names show positive returns despite strong short positioning, raising the risk of disorderly short covering.`);
+  }
+
+  // 4. Concentration
+  if (count > 0) {
+    const top3 = highRows.slice(0, 3).map(r => stockName(r)).join(', ');
+    bullets.push(`Pressure is concentrated in liquid names: ${top3} rank at the top, which may reflect institutional or macro-driven positioning.`);
+  }
+
+  return bullets.slice(0, 5);
+}
+
+function renderAISummary() {
+  const card    = document.getElementById('ai-summary-card');
+  const list    = document.getElementById('ai-bullets');
+  const badge   = document.getElementById('ai-source-badge');
+  const model   = document.getElementById('ai-model-label');
+
+  let bullets = null;
+  let isFallback = false;
+
+  if (Array.isArray(DATA.ai_summary) && DATA.ai_summary.length >= 3) {
+    bullets = DATA.ai_summary.slice(0, 5);
+  } else {
+    // JSON has no AI summary — generate rules-based fallback in browser
+    bullets = _rulesBasedBullets();
+    isFallback = true;
+  }
+
+  if (!bullets || bullets.length === 0) {
+    card.style.display = 'none';
+    return;
+  }
+
+  list.innerHTML = bullets.map(b => `<li>${b}</li>`).join('');
+
+  if (isFallback) {
+    badge.textContent = 'Rules-Based';
+    badge.className = 'ai-fallback-badge';
+    model.style.display = 'none';
+  } else {
+    badge.textContent = 'Live Summary';
+    badge.className = 'ai-live-badge';
+    model.style.display = '';
+  }
+
+  card.style.display = 'block';
 }
 
 function renderMeta() {

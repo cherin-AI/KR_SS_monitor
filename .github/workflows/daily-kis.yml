@@ -51,11 +51,23 @@ jobs:
           KIS_APP_KEY: ${{ secrets.KIS_APP_KEY }}
           KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}
 
+      - name: Check AI summary key (optional)
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "WARNING: ANTHROPIC_API_KEY not set — pipeline will use rules-based fallback summary."
+            echo "To enable AI summaries, add ANTHROPIC_API_KEY to repository secrets."
+          else
+            echo "ANTHROPIC_API_KEY present (length: ${#ANTHROPIC_API_KEY})"
+          fi
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
       - name: Run daily pipeline
         env:
           KIS_APP_KEY: ${{ secrets.KIS_APP_KEY }}
           KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}
           KIS_ENV: prod
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python3 scripts/run_daily_pipeline.py --config config.example.yaml
 
       - name: Commit snapshot updates

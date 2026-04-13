@@ -16,12 +16,16 @@ import argparse
 import asyncio
 import json
 import logging
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
 import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv()  # loads .env from project root for local runs
 
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -42,6 +46,220 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 logger = logging.getLogger(__name__)
+
+# ── AI summary ────────────────────────────────────────────────────────────────
+
+_SYSTEM_PROMPT = """\
+You are a quantitative market monitor for Korean equities. You analyze short-selling \
+pressure signals and translate them into concise, factual observations for professional investors.
+
+Rules:
+- Output exactly 3 to 5 bullet points, each on its own line starting with "•"
+- No intro, no conclusion, no headers, no markdown formatting beyond the bullet character
+- Each bullet makes one specific point grounded in the data provided
+- Do not repeat the same KPI across multiple bullets
+- Do not use vague sentiment language without data support
+- Do not give investment advice or price targets
+- Do not reference sectors, names, or data not explicitly given to you
+- Keep each bullet to 1–2 sentences
+
+Prioritise these themes in order:
+1. Breadth vs concentration of short pressure
+2. Price action confirmation vs divergence
+3. Squeeze risk assessment
+4. Large-cap / liquid name concentration
+5. Early reversal or short exhaustion signals\
+"""
+
+
+def _build_kpis(high: pd.DataFrame) -> dict:
+    """Compute the four KPI values from the high-pressure subset."""
+    count = len(high)
+
+    eligible = high.dropna(subset=["ssts_vol_rlim", "ssts_vol_rlim_5d"])
+    rising_n  = int((eligible["ssts_vol_rlim"] > eligible["ssts_vol_rlim_5d"]).sum())
+    rising_pct = round(rising_n / len(eligible) * 100, 1) if len(eligible) else None
+
+    score_sum = high["score"].sum()
+    kpi3 = round(float((high["score"] * high["prdy_ctrt"]).sum() / score_sum), 2) \
+        if score_sum and high["prdy_ctrt"].notna().any() else None
+
+    kpi4 = int((high["prdy_ctrt"] >= 0.5).sum())
+
+    return {
+        "count":       count,
+        "rising_n":    rising_n,
+        "rising_pct":  rising_pct,
+        "kpi3":        kpi3,
+        "kpi4":        kpi4,
+    }
+
+
+def _rules_based_summary(high: pd.DataFrame, kpis: dict) -> list[str]:
+    """
+    Deterministic fallback bullets generated from dashboard metrics.
+    Called when the AI API is unavailable or returns an invalid response.
+    """
+    bullets: list[str] = []
+    count      = kpis["count"]
+    rising_pct = kpis["rising_pct"]
+    kpi3       = kpis["kpi3"]
+    kpi4       = kpis["kpi4"]
+
+    # 1. Breadth
+    if count == 0:
+        bullets.append(
+            "No stocks currently exceed the high-pressure threshold. "
+            "Short positioning appears minimal across the universe."
+        )
+    elif count <= 5:
+        rising_str = f" with {rising_pct:.0f}% showing rising short turnover" if rising_pct is not None else ""
+        bullets.append(
+            f"Short pressure is narrowly concentrated in {count} names{rising_str}, "
+            "suggesting targeted rather than broad bearish positioning."
+        )
+    else:
+        rising_str = f"{rising_pct:.0f}% show rising short turnover versus their 5-day average" \
+            if rising_pct is not None else "most show rising short turnover"
+        bullets.append(
+            f"Short pressure is broad: {count} stocks exceed the threshold and {rising_str}, "
+            "indicating active widespread bearish positioning."
+        )
+
+    # 2. Confirmation
+    if kpi3 is not None:
+        if kpi3 < -1.0:
+            bullets.append(
+                f"Price action confirms the signal. Score-weighted return of {kpi3:.2f}% shows "
+                "that the highest-conviction shorts are declining in line with positioning."
+            )
+        elif kpi3 < 0:
+            bullets.append(
+                f"Price action weakly confirms. Score-weighted return of {kpi3:.2f}% shows modest "
+                "declines among high-pressure names — signal has traction but not yet strong follow-through."
+            )
+        else:
+            bullets.append(
+                f"Price action diverges from the signal. Score-weighted return of {kpi3:.2f}% — "
+                "pressured names are not falling, which reduces conviction in the short thesis."
+            )
+
+    # 3. Squeeze risk
+    if kpi4 == 0:
+        bullets.append(
+            "No squeeze risk detected. All high-pressure stocks are flat or declining, "
+            "so shorts face no near-term forced-covering pressure."
+        )
+    elif kpi4 <= 3:
+        bullets.append(
+            f"Moderate squeeze risk. {kpi4} high-pressure stocks are rising against short flows — "
+            "monitor these names for potential covering triggers."
+        )
+    else:
+        bullets.append(
+            f"Elevated squeeze risk. {kpi4} high-pressure names show positive returns despite strong "
+            "short positioning, raising the risk of disorderly short covering."
+        )
+
+    # 4. Concentration
+    if count > 0:
+        top3 = high.head(3)["display_name"].tolist()
+        names = ", ".join(top3)
+        bullets.append(
+            f"Pressure is concentrated in liquid names: {names} rank at the top, "
+            "which may reflect institutional or macro-driven positioning."
+        )
+
+    return bullets[:5]
+
+
+async def generate_ai_summary(
+    scored: pd.DataFrame,
+    meta: dict,
+    threshold: float,
+    today_str: str,
+) -> list[str]:
+    """
+    Generate 3–5 market-monitor bullet points using Claude Haiku.
+
+    Falls back to `_rules_based_summary` if:
+    - ANTHROPIC_API_KEY env var is not set
+    - The API call fails for any reason
+    - The response cannot be parsed into at least 3 bullets
+    """
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    complete = scored[~scored["incomplete"]].copy()
+    high = complete[complete["score"] >= threshold].sort_values("score", ascending=False)
+    kpis = _build_kpis(high)
+
+    if not api_key:
+        logger.warning("ANTHROPIC_API_KEY not set — using rules-based fallback summary")
+        return _rules_based_summary(high, kpis)
+
+    # ── Build structured prompt payload ──────────────────────────────────────
+    top5_lines = "\n".join(
+        f"  {i+1}. {row['display_name']} ({row['mksc_shrn_iscd']}): "
+        f"score={row['score']:.2f}, return={row['prdy_ctrt']:+.2f}%"
+        for i, (_, row) in enumerate(high.head(5).iterrows())
+    ) or "  (none above threshold)"
+
+    kpi1_badge = "NONE" if kpis["count"] == 0 else "FOCUSED" if kpis["count"] <= 5 else "BROAD"
+    kpi2_str   = f"{kpis['rising_pct']:.1f}%" if kpis["rising_pct"] is not None else "N/A"
+    kpi2_badge = ("FADING" if kpis["rising_pct"] is not None and kpis["rising_pct"] <= 33
+                  else "RISING" if kpis["rising_pct"] is not None and kpis["rising_pct"] > 66
+                  else "STEADY")
+    kpi3_str   = f"{kpis['kpi3']:+.2f}%" if kpis["kpi3"] is not None else "N/A"
+    kpi3_badge = ("CONFIRMED" if kpis["kpi3"] is not None and kpis["kpi3"] < -1.0
+                  else "WEAK" if kpis["kpi3"] is not None and kpis["kpi3"] < 0
+                  else "UNCONFIRMED")
+    kpi4_badge = "LOW" if kpis["kpi4"] <= 1 else "MODERATE" if kpis["kpi4"] <= 3 else "HIGH"
+
+    user_prompt = f"""\
+Korea Short Pressure Monitor — {today_str}
+Universe: {meta['total_count']} large-cap stocks (KOSPI {meta['kospi_count']} / KOSDAQ {meta['kosdaq_count']})
+
+KPI Summary:
+• High-pressure stocks (score ≥ 1.0): {kpis['count']} [{kpi1_badge}]
+• Rising short pressure: {kpi2_str} of high-pressure stocks have short turnover above 5-day avg [{kpi2_badge}]
+• Score-weighted return: {kpi3_str} [{kpi3_badge}]
+• Unconfirmed shorts (score ≥ 1.0 & price ≥ +0.5%): {kpis['kpi4']} [{kpi4_badge}]
+
+Score formula components (weights):
+  z(short turnover %) ×0.35  +  z(short turnover accel.) ×0.15
+  + z(−foreign net flow) ×0.25  +  z(−institution net flow) ×0.15  +  z(−price chg%) ×0.10
+
+Top 5 names by short pressure score:
+{top5_lines}
+
+Write 3 to 5 bullet points interpreting what this data signals today.\
+"""
+
+    try:
+        import anthropic  # deferred import — only needed if key is present
+
+        client = anthropic.AsyncAnthropic(api_key=api_key)
+        message = await client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=400,
+            system=_SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": user_prompt}],
+        )
+        text = message.content[0].text.strip()
+        bullets = [
+            line.lstrip("•·-– ").strip()
+            for line in text.splitlines()
+            if line.strip().startswith(("•", "·", "-", "–"))
+        ]
+        if len(bullets) >= 3:
+            logger.info("AI summary generated: %d bullets", len(bullets))
+            return bullets[:5]
+
+        logger.warning("AI response yielded <3 bullets — using rules-based fallback. Response: %s", text[:200])
+
+    except Exception as exc:
+        logger.warning("AI summary generation failed (%s) — using rules-based fallback", exc)
+
+    return _rules_based_summary(high, kpis)
 
 
 def _stock_meta_cache_path(config: dict) -> Path:
@@ -219,6 +437,12 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
     threshold = config.get("score", {}).get("high_pressure_threshold", 1.0)
     scored = compute_score(df)
 
+    # ── 5b. AI summary ────────────────────────────────────────────────────────
+    meta = build_meta_summary(scored, threshold)
+    today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    logger.info("Generating AI summary…")
+    ai_summary = await generate_ai_summary(scored, meta, threshold, today_str)
+
     # ── 6. Serialise ──────────────────────────────────────────────────────────
     def df_to_records(frame: pd.DataFrame) -> list[dict]:
         cols = [
@@ -244,15 +468,14 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
             out.append(rec)
         return out
 
-    today_str    = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     generated_at = datetime.now(timezone.utc).isoformat()
 
-    meta = build_meta_summary(scored, threshold)
     payload = {
         "date":         today_str,
         "generated_at": generated_at,
         "stocks":       df_to_records(scored),
         "meta":         meta,
+        "ai_summary":   ai_summary,
     }
 
     # ── 7. Write ──────────────────────────────────────────────────────────────
