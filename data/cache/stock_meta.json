@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-08T14:17:15.798521+00:00",
+  "updated_at": "2026-04-13T07:17:29.878756+00:00",
   "stocks": {
     "005930": {
       "ticker": "005930",
@@ -2400,6 +2400,48 @@
       "name": "TES",
       "display_name": "TES",
       "name_ko": "테스",
+      "sector": ""
+    },
+    "458870": {
+      "ticker": "458870",
+      "name": "SEERS",
+      "display_name": "SEERS",
+      "name_ko": "씨어스테크놀로지",
+      "sector": ""
+    },
+    "183300": {
+      "ticker": "183300",
+      "name": "KoMiCo",
+      "display_name": "KoMiCo",
+      "name_ko": "코미코",
+      "sector": ""
+    },
+    "100840": {
+      "ticker": "100840",
+      "name": "SNTEnergy",
+      "display_name": "SNTEnergy",
+      "name_ko": "SNT에너지",
+      "sector": ""
+    },
+    "456600": {
+      "ticker": "456600",
+      "name": "TIME GLOBAL AI ACTIVE",
+      "display_name": "TIME GLOBAL AI ACTIVE",
+      "name_ko": "TIME 글로벌AI인공지능액티브",
+      "sector": ""
+    },
+    "131290": {
+      "ticker": "131290",
+      "name": "TSE",
+      "display_name": "TSE",
+      "name_ko": "티에스이",
+      "sector": ""
+    },
+    "213420": {
+      "ticker": "213420",
+      "name": "DUK SAN NEOLUX",
+      "display_name": "DUK SAN NEOLUX",
+      "name_ko": "덕산네오룩스",
       "sector": ""
     }
   }
