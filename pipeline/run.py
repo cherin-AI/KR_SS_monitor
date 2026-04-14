@@ -63,12 +63,13 @@ Rules:
 - Do not give investment advice or price targets
 - Do not reference sectors, names, or data not explicitly given to you
 - Do not mention retail investors, retail short interest, or retail participation — the score formula contains no retail data and Korea's retail short market is structurally negligible; any such contrast is unsupported
+- Do not reference or explain the score formula, its weights, or how individual components are weighted — the formula is an implementation detail, not a market observation. Insights must come from the KPI values, top-stock data, and what the numbers reveal about market behaviour, not from describing how the score is constructed
 
 Prioritise these themes in order:
-1. Breadth vs concentration of short pressure
-2. Price action confirmation vs divergence
-3. Squeeze risk assessment
-4. Large-cap / liquid name concentration
+1. Breadth vs concentration of short pressure (KPI 1 + KPI 2)
+2. Price action confirmation vs divergence (KPI 3)
+3. Squeeze risk assessment (KPI 4)
+4. Large-cap / liquid name concentration (top names list)
 5. Early reversal or short exhaustion signals\
 """
 
