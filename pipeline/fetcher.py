@@ -123,6 +123,7 @@ async def fetch_daily_short_trend(
     ticker: str,
     lookback_days: int = 5,
     trade_date_end: str | None = None,
+    market: str = "KOSPI",
 ) -> float | None:
     """
     Fetch the last `lookback_days` trading days of ssts_vol_rlim for a ticker.
@@ -130,8 +131,9 @@ async def fetch_daily_short_trend(
     """
     tr_id = "FHPST04830000"
     url = _base_url(config) + "/uapi/domestic-stock/v1/quotations/daily-short-sale"
+    mrkt_code = "NX" if market == "KOSDAQ" else "J"
     params = {
-        "FID_COND_MRKT_DIV_CODE": "J",
+        "FID_COND_MRKT_DIV_CODE": mrkt_code,
         "FID_INPUT_ISCD": ticker,
         "FID_INPUT_DATE_1": _ndays_ago(lookback_days * 2),  # buffer for non-trading days
         "FID_INPUT_DATE_2": trade_date_end or date.today().strftime("%Y%m%d"),
@@ -177,7 +179,7 @@ async def fetch_daily_short_snapshot(
     """
     tr_id = "FHPST04830000"
     url = _base_url(config) + "/uapi/domestic-stock/v1/quotations/daily-short-sale"
-    mrkt_code = "Q" if market == "KOSDAQ" else "J"
+    mrkt_code = "NX" if market == "KOSDAQ" else "J"
     params = {
         "FID_COND_MRKT_DIV_CODE": mrkt_code,
         "FID_INPUT_ISCD": ticker,
