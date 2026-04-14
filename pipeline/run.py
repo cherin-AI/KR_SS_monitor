@@ -34,10 +34,10 @@ from pipeline.auth import get_token, load_config
 from pipeline.fetcher import (
     fetch_foreign_inst_aggregate,
     fetch_inquire_investor_bulk,
+    fetch_market_cap_universe,
     fetch_short_snapshots_bulk,
     fetch_stock_meta,
 )
-from pipeline.krx_short_selling import fetch_market_cap_universe
 from pipeline.score import build_meta_summary, compute_score
 
 logging.basicConfig(
