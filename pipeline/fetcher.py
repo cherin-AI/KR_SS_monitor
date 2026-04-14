@@ -29,16 +29,23 @@ async def _get_with_retry(
     retries: int = 3,
     backoff: float = 2.0,
 ) -> httpx.Response:
-    """GET with exponential backoff on transient KIS connection drops."""
+    """GET with exponential backoff on transient KIS connection drops and 5xx errors."""
     for attempt in range(retries):
         try:
-            return await client.get(url, headers=headers, params=params)
+            resp = await client.get(url, headers=headers, params=params)
         except _RETRYABLE as exc:
             if attempt == retries - 1:
                 raise
             wait = backoff ** attempt
             logger.warning("Transient error (%s), retrying in %.1fs…", exc, wait)
             await asyncio.sleep(wait)
+            continue
+        if resp.status_code >= 500 and attempt < retries - 1:
+            wait = backoff ** attempt
+            logger.warning("KIS HTTP %d, retrying in %.1fs… (%s)", resp.status_code, wait, url.split("?")[0])
+            await asyncio.sleep(wait)
+            continue
+        return resp
     raise RuntimeError("unreachable")
 
 

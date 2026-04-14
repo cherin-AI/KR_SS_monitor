@@ -423,7 +423,8 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
         )
 
     # Apply fi_total fallback (FHPTJ04400000) for any remaining nulls
-    fi_all = pd.concat([f for f in [fi_kospi, fi_kosdaq] if not f.empty], ignore_index=True)
+    _fi_frames = [f for f in [fi_kospi, fi_kosdaq] if not f.empty]
+    fi_all = pd.concat(_fi_frames, ignore_index=True) if _fi_frames else pd.DataFrame()
     if not fi_all.empty:
         merge_cols = [c for c in ["mksc_shrn_iscd", "frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn"] if c in fi_all.columns]
         df = df.merge(fi_all[merge_cols], on="mksc_shrn_iscd", how="left", suffixes=("", "_fi"))
