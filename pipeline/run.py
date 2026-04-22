@@ -270,6 +270,24 @@ def _stock_meta_cache_path(config: dict) -> Path:
     return cache_dir / "stock_meta.json"
 
 
+def _contains_korean(s: str) -> bool:
+    """Return True if s contains any Hangul syllable characters."""
+    return any("\uAC00" <= c <= "\uD7A3" for c in (s or ""))
+
+
+def _load_stock_meta_raw(path: Path) -> dict[str, dict] | None:
+    """Load the stock meta cache regardless of age (used to salvage English names on refresh)."""
+    if not path.exists():
+        return None
+    try:
+        with open(path, encoding="utf-8") as f:
+            payload = json.load(f)
+        stocks = payload.get("stocks", {})
+        return stocks if isinstance(stocks, dict) else None
+    except Exception:
+        return None
+
+
 def _load_stock_meta_cache(path: Path, max_age_days: int) -> dict[str, dict] | None:
     if not path.exists():
         return None
@@ -343,8 +361,19 @@ async def run_pipeline(config: dict, dry_run: bool = False) -> dict:
         stock_meta = _load_stock_meta_cache(meta_cache_path, meta_cache_days)
         missing_meta = [t for t in all_tickers if t not in (stock_meta or {})]
         if stock_meta is None:
+            # Cache expired — load stale entries to preserve curated English names that
+            # the KIS API would otherwise overwrite with Korean abbreviated names.
+            stale_meta = _load_stock_meta_raw(meta_cache_path) or {}
             logger.info("Fetching stock metadata for %d tickers…", len(all_tickers))
             stock_meta = await _fetch_stock_meta_map(client, token, config, all_tickers)
+            # If the freshly fetched display_name is Korean but the stale cache had an
+            # English name, keep the English name so it survives the refresh cycle.
+            for ticker, entry in stock_meta.items():
+                new_dn = entry.get("display_name", "")
+                old_dn = stale_meta.get(ticker, {}).get("display_name", "")
+                if _contains_korean(new_dn) and old_dn and not _contains_korean(old_dn):
+                    entry["display_name"] = old_dn
+                    entry["name"] = old_dn
             _write_stock_meta_cache(meta_cache_path, stock_meta)
         elif missing_meta:
             logger.info("Refreshing missing stock metadata for %d tickers…", len(missing_meta))
