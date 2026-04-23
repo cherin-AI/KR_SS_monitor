@@ -1,158 +1,11 @@
 {
-  "updated_at": "2026-04-14T08:13:47.182752+00:00",
+  "updated_at": "2026-04-23T11:01:41.280490+00:00",
   "stocks": {
-    "005930": {
-      "ticker": "005930",
-      "name": "SamsungElec",
-      "display_name": "SamsungElec",
-      "name_ko": "삼성전자",
-      "sector": ""
-    },
-    "034220": {
-      "ticker": "034220",
-      "name": "LG Display",
-      "display_name": "LG Display",
-      "name_ko": "LG디스플레이",
-      "sector": ""
-    },
-    "009830": {
-      "ticker": "009830",
-      "name": "HANWHA SOLUTIONS",
-      "display_name": "HANWHA SOLUTIONS",
-      "name_ko": "한화솔루션",
-      "sector": ""
-    },
-    "010140": {
-      "ticker": "010140",
-      "name": "SamsungHvyInd",
-      "display_name": "SamsungHvyInd",
-      "name_ko": "삼성중공업",
-      "sector": ""
-    },
-    "047040": {
-      "ticker": "047040",
-      "name": "DWEC",
-      "display_name": "DWEC",
-      "name_ko": "대우건설",
-      "sector": ""
-    },
-    "006800": {
-      "ticker": "006800",
-      "name": "MIRAE ASSET SEC",
-      "display_name": "MIRAE ASSET SEC",
-      "name_ko": "미래에셋증권",
-      "sector": ""
-    },
-    "018880": {
-      "ticker": "018880",
-      "name": "Hanon Systems",
-      "display_name": "Hanon Systems",
-      "name_ko": "한온시스템",
-      "sector": ""
-    },
-    "088350": {
-      "ticker": "088350",
-      "name": "HANWHA LIFE",
-      "display_name": "HANWHA LIFE",
-      "name_ko": "한화생명",
-      "sector": ""
-    },
-    "042700": {
-      "ticker": "042700",
-      "name": "HANMISemi",
-      "display_name": "HANMISemi",
-      "name_ko": "한미반도체",
-      "sector": ""
-    },
-    "014160": {
-      "ticker": "014160",
-      "name": "DaeyoungPkg",
-      "display_name": "DaeyoungPkg",
-      "name_ko": "대영포장",
-      "sector": ""
-    },
-    "093370": {
-      "ticker": "093370",
-      "name": "FOOSUNG",
-      "display_name": "FOOSUNG",
-      "name_ko": "후성",
-      "sector": ""
-    },
-    "034020": {
-      "ticker": "034020",
-      "name": "Doosan Enerbility",
-      "display_name": "Doosan Enerbility",
-      "name_ko": "두산에너빌리티",
-      "sector": ""
-    },
-    "005940": {
-      "ticker": "005940",
-      "name": "NHIS",
-      "display_name": "NHIS",
-      "name_ko": "NH투자증권",
-      "sector": ""
-    },
-    "001780": {
-      "ticker": "001780",
-      "name": "ALUKO",
-      "display_name": "ALUKO",
-      "name_ko": "알루코",
-      "sector": ""
-    },
-    "005380": {
-      "ticker": "005380",
-      "name": "HyundaiMtr",
-      "display_name": "HyundaiMtr",
-      "name_ko": "현대차",
-      "sector": ""
-    },
-    "024110": {
-      "ticker": "024110",
-      "name": "IBK",
-      "display_name": "IBK",
-      "name_ko": "기업은행",
-      "sector": ""
-    },
-    "006360": {
-      "ticker": "006360",
-      "name": "GS E&C",
-      "display_name": "GS E&C",
-      "name_ko": "GS건설",
-      "sector": ""
-    },
-    "005880": {
-      "ticker": "005880",
-      "name": "KorLine",
-      "display_name": "KorLine",
-      "name_ko": "대한해운",
-      "sector": ""
-    },
-    "323410": {
-      "ticker": "323410",
-      "name": "KakaoBank",
-      "display_name": "KakaoBank",
-      "name_ko": "카카오뱅크",
-      "sector": ""
-    },
-    "011930": {
-      "ticker": "011930",
-      "name": "SHINSUNG E&G",
-      "display_name": "SHINSUNG E&G",
-      "name_ko": "신성이엔지",
-      "sector": ""
-    },
-    "028670": {
-      "ticker": "028670",
-      "name": "PanOcean",
-      "display_name": "PanOcean",
-      "name_ko": "팬오션",
-      "sector": ""
-    },
-    "011200": {
-      "ticker": "011200",
-      "name": "HMM",
-      "display_name": "HMM",
-      "name_ko": "HMM",
+    "402340": {
+      "ticker": "402340",
+      "name": "SKSQUARE",
+      "display_name": "SKSQUARE",
+      "name_ko": "SK스퀘어",
       "sector": ""
     },
     "000660": {
@@ -162,410 +15,39 @@
       "name_ko": "SK하이닉스",
       "sector": ""
     },
-    "092220": {
-      "ticker": "092220",
-      "name": "KEC",
-      "display_name": "KEC",
-      "name_ko": "KEC",
+    "373220": {
+      "ticker": "373220",
+      "name": "LG Energy Solution",
+      "display_name": "LG Energy Solution",
+      "name_ko": "LG에너지솔루션",
       "sector": ""
     },
-    "003490": {
-      "ticker": "003490",
-      "name": "KAL",
-      "display_name": "KAL",
-      "name_ko": "대한항공",
+    "005930": {
+      "ticker": "005930",
+      "name": "SamsungElec",
+      "display_name": "SamsungElec",
+      "name_ko": "삼성전자",
       "sector": ""
     },
-    "034830": {
-      "ticker": "034830",
-      "name": "KOREIT",
-      "display_name": "KOREIT",
-      "name_ko": "한국토지신탁",
+    "005380": {
+      "ticker": "005380",
+      "name": "HyundaiMtr",
+      "display_name": "HyundaiMtr",
+      "name_ko": "현대차",
       "sector": ""
     },
-    "079160": {
-      "ticker": "079160",
-      "name": "CJ CGV",
-      "display_name": "CJ CGV",
-      "name_ko": "CJ CGV",
+    "012450": {
+      "ticker": "012450",
+      "name": "HANWHA AEROSPACE",
+      "display_name": "HANWHA AEROSPACE",
+      "name_ko": "한화에어로스페이스",
       "sector": ""
     },
-    "018000": {
-      "ticker": "018000",
-      "name": "UNISON",
-      "display_name": "UNISON",
-      "name_ko": "유니슨",
-      "sector": ""
-    },
-    "010170": {
-      "ticker": "010170",
-      "name": "TaihanFiberoptics",
-      "display_name": "TaihanFiberoptics",
-      "name_ko": "대한광통신",
-      "sector": ""
-    },
-    "293490": {
-      "ticker": "293490",
-      "name": "Kakao Games",
-      "display_name": "Kakao Games",
-      "name_ko": "카카오게임즈",
-      "sector": ""
-    },
-    "001510": {
-      "ticker": "001510",
-      "name": "SKSecu",
-      "display_name": "SKSecu",
-      "name_ko": "SK증권",
-      "sector": ""
-    },
-    "042660": {
-      "ticker": "042660",
-      "name": "Hanwha Ocean",
-      "display_name": "Hanwha Ocean",
-      "name_ko": "한화오션",
-      "sector": ""
-    },
-    "289080": {
-      "ticker": "289080",
-      "name": "SV INVESTMENT",
-      "display_name": "SV INVESTMENT",
-      "name_ko": "SV인베스트먼트",
-      "sector": ""
-    },
-    "038110": {
-      "ticker": "038110",
-      "name": "ECOPLASTIC",
-      "display_name": "ECOPLASTIC",
-      "name_ko": "에코플라스틱",
-      "sector": ""
-    },
-    "263750": {
-      "ticker": "263750",
-      "name": "PearlAbyss",
-      "display_name": "PearlAbyss",
-      "name_ko": "펄어비스",
-      "sector": ""
-    },
-    "032820": {
-      "ticker": "032820",
-      "name": "WooriTG, Inc.",
-      "display_name": "WooriTG, Inc.",
-      "name_ko": "우리기술",
-      "sector": ""
-    },
-    "005290": {
-      "ticker": "005290",
-      "name": "DONGJIN",
-      "display_name": "DONGJIN",
-      "name_ko": "동진쎄미켐",
-      "sector": ""
-    },
-    "090710": {
-      "ticker": "090710",
-      "name": "Hyulim ROBOT",
-      "display_name": "Hyulim ROBOT",
-      "name_ko": "휴림로봇",
-      "sector": ""
-    },
-    "137950": {
-      "ticker": "137950",
-      "name": "JC Chemical",
-      "display_name": "JC Chemical",
-      "name_ko": "제이씨케미칼",
-      "sector": ""
-    },
-    "012860": {
-      "ticker": "012860",
-      "name": "MOBASE ELECTRONICS",
-      "display_name": "MOBASE ELECTRONICS",
-      "name_ko": "모베이스전자",
-      "sector": ""
-    },
-    "036540": {
-      "ticker": "036540",
-      "name": "SFASemicon",
-      "display_name": "SFASemicon",
-      "name_ko": "SFA반도체",
-      "sector": ""
-    },
-    "382800": {
-      "ticker": "382800",
-      "name": "GnBS eco",
-      "display_name": "GnBS eco",
-      "name_ko": "지앤비에스 에코",
-      "sector": ""
-    },
-    "065420": {
-      "ticker": "065420",
-      "name": "SI",
-      "display_name": "SI",
-      "name_ko": "에스아이리소스",
-      "sector": ""
-    },
-    "452300": {
-      "ticker": "452300",
-      "name": "Capstone Partners",
-      "display_name": "Capstone Partners",
-      "name_ko": "캡스톤파트너스",
-      "sector": ""
-    },
-    "050890": {
-      "ticker": "050890",
-      "name": "Solid",
-      "display_name": "Solid",
-      "name_ko": "쏠리드",
-      "sector": ""
-    },
-    "028300": {
-      "ticker": "028300",
-      "name": "HLB",
-      "display_name": "HLB",
-      "name_ko": "HLB",
-      "sector": ""
-    },
-    "217730": {
-      "ticker": "217730",
-      "name": "KANGSTEM BIOTECH",
-      "display_name": "KANGSTEM BIOTECH",
-      "name_ko": "강스템바이오텍",
-      "sector": ""
-    },
-    "131370": {
-      "ticker": "131370",
-      "name": "RSUPPORT",
-      "display_name": "RSUPPORT",
-      "name_ko": "알서포트",
-      "sector": ""
-    },
-    "195990": {
-      "ticker": "195990",
-      "name": "Abpro Bio",
-      "display_name": "Abpro Bio",
-      "name_ko": "에이비프로바이오",
-      "sector": ""
-    },
-    "348370": {
-      "ticker": "348370",
-      "name": "Enchem",
-      "display_name": "Enchem",
-      "name_ko": "엔켐",
-      "sector": ""
-    },
-    "084990": {
-      "ticker": "084990",
-      "name": "Helixmith",
-      "display_name": "Helixmith",
-      "name_ko": "헬릭스미스",
-      "sector": ""
-    },
-    "240810": {
-      "ticker": "240810",
-      "name": "WONIK IPS",
-      "display_name": "WONIK IPS",
-      "name_ko": "원익IPS",
-      "sector": ""
-    },
-    "056090": {
-      "ticker": "056090",
-      "name": "CG MedTech",
-      "display_name": "CG MedTech",
-      "name_ko": "시지메드텍",
-      "sector": ""
-    },
-    "369370": {
-      "ticker": "369370",
-      "name": "Blitzway Entertainment",
-      "display_name": "Blitzway Entertainment",
-      "name_ko": "블리츠웨이엔터테인먼트",
-      "sector": ""
-    },
-    "024850": {
-      "ticker": "024850",
-      "name": "HLB innoVation",
-      "display_name": "HLB innoVation",
-      "name_ko": "HLB이노베이션",
-      "sector": ""
-    },
-    "058470": {
-      "ticker": "058470",
-      "name": "LEENO",
-      "display_name": "LEENO",
-      "name_ko": "리노공업",
-      "sector": ""
-    },
-    "027710": {
-      "ticker": "027710",
-      "name": "FarmStory",
-      "display_name": "FarmStory",
-      "name_ko": "팜스토리",
-      "sector": ""
-    },
-    "049630": {
-      "ticker": "049630",
-      "name": "JAEYOUNG",
-      "display_name": "JAEYOUNG",
-      "name_ko": "재영솔루텍",
-      "sector": ""
-    },
-    "046890": {
-      "ticker": "046890",
-      "name": "SSC",
-      "display_name": "SSC",
-      "name_ko": "서울반도체",
-      "sector": ""
-    },
-    "035250": {
-      "ticker": "035250",
-      "name": "Kangwonland",
-      "display_name": "Kangwonland",
-      "name_ko": "강원랜드",
-      "sector": ""
-    },
-    "003530": {
-      "ticker": "003530",
-      "name": "H.I.S.C",
-      "display_name": "H.I.S.C",
-      "name_ko": "한화투자증권",
-      "sector": ""
-    },
-    "035720": {
-      "ticker": "035720",
-      "name": "Kakao",
-      "display_name": "Kakao",
-      "name_ko": "카카오",
-      "sector": ""
-    },
-    "008350": {
-      "ticker": "008350",
-      "name": "NamsunAlum",
-      "display_name": "NamsunAlum",
-      "name_ko": "남선알미늄",
-      "sector": ""
-    },
-    "028050": {
-      "ticker": "028050",
-      "name": "SamsungE&A",
-      "display_name": "SamsungE&A",
-      "name_ko": "삼성E&A",
-      "sector": ""
-    },
-    "003280": {
-      "ticker": "003280",
-      "name": "HeungaShipping",
-      "display_name": "HeungaShipping",
-      "name_ko": "흥아해운",
-      "sector": ""
-    },
-    "018470": {
-      "ticker": "018470",
-      "name": "CHOILALUMINUM",
-      "display_name": "CHOILALUMINUM",
-      "name_ko": "조일알미늄",
-      "sector": ""
-    },
-    "088980": {
-      "ticker": "088980",
-      "name": "MKIF",
-      "display_name": "MKIF",
-      "name_ko": "맥쿼리인프라",
-      "sector": ""
-    },
-    "009520": {
-      "ticker": "009520",
-      "name": "POSCO M-TECH",
-      "display_name": "POSCO M-TECH",
-      "name_ko": "포스코엠텍",
-      "sector": ""
-    },
-    "375500": {
-      "ticker": "375500",
-      "name": "DL E&C",
-      "display_name": "DL E&C",
-      "name_ko": "DL이앤씨",
-      "sector": ""
-    },
-    "048410": {
-      "ticker": "048410",
-      "name": "HDBIO",
-      "display_name": "HDBIO",
-      "name_ko": "현대바이오",
-      "sector": ""
-    },
-    "025320": {
-      "ticker": "025320",
-      "name": "Synopex",
-      "display_name": "Synopex",
-      "name_ko": "시노펙스",
-      "sector": ""
-    },
-    "033790": {
-      "ticker": "033790",
-      "name": "FINO",
-      "display_name": "FINO",
-      "name_ko": "피노",
-      "sector": ""
-    },
-    "047050": {
-      "ticker": "047050",
-      "name": "POSCO INTERNATIONAL",
-      "display_name": "POSCO INTERNATIONAL",
-      "name_ko": "포스코인터내셔널",
-      "sector": ""
-    },
-    "080220": {
-      "ticker": "080220",
-      "name": "JSC",
-      "display_name": "JSC",
-      "name_ko": "제주반도체",
-      "sector": ""
-    },
-    "257720": {
-      "ticker": "257720",
-      "name": "Silicon2",
-      "display_name": "Silicon2",
-      "name_ko": "실리콘투",
-      "sector": ""
-    },
-    "086520": {
-      "ticker": "086520",
-      "name": "ECOPRO",
-      "display_name": "ECOPRO",
-      "name_ko": "에코프로",
-      "sector": ""
-    },
-    "095500": {
-      "ticker": "095500",
-      "name": "MNtech",
-      "display_name": "MNtech",
-      "name_ko": "미래나노텍",
-      "sector": ""
-    },
-    "051980": {
-      "ticker": "051980",
-      "name": "JOONGANG AM",
-      "display_name": "JOONGANG AM",
-      "name_ko": "중앙첨단소재",
-      "sector": ""
-    },
-    "054920": {
-      "ticker": "054920",
-      "name": "Hancom WITH",
-      "display_name": "Hancom WITH",
-      "name_ko": "한컴위드",
-      "sector": ""
-    },
-    "222080": {
-      "ticker": "222080",
-      "name": "CIS",
-      "display_name": "CIS",
-      "name_ko": "씨아이에스",
-      "sector": ""
-    },
-    "402340": {
-      "ticker": "402340",
-      "name": "SKSQUARE",
-      "display_name": "SKSQUARE",
-      "name_ko": "SK스퀘어",
+    "034020": {
+      "ticker": "034020",
+      "name": "Doosan Enerbility",
+      "display_name": "Doosan Enerbility",
+      "name_ko": "두산에너빌리티",
       "sector": ""
     },
     "207940": {
@@ -575,18 +57,11 @@
       "name_ko": "삼성바이오로직스",
       "sector": ""
     },
-    "373220": {
-      "ticker": "373220",
-      "name": "LG Energy Solution",
-      "display_name": "LG Energy Solution",
-      "name_ko": "LG에너지솔루션",
-      "sector": ""
-    },
-    "012450": {
-      "ticker": "012450",
-      "name": "HANWHA AEROSPACE",
-      "display_name": "HANWHA AEROSPACE",
-      "name_ko": "한화에어로스페이스",
+    "329180": {
+      "ticker": "329180",
+      "name": "HD HYUNDAI HEAVY INDUSTRIES",
+      "display_name": "HD HYUNDAI HEAVY INDUSTRIES",
+      "name_ko": "HD현대중공업",
       "sector": ""
     },
     "000270": {
@@ -603,32 +78,11 @@
       "name_ko": "KB금융",
       "sector": ""
     },
-    "329180": {
-      "ticker": "329180",
-      "name": "HD HYUNDAI HEAVY INDUSTRIES",
-      "display_name": "HD HYUNDAI HEAVY INDUSTRIES",
-      "name_ko": "HD현대중공업",
-      "sector": ""
-    },
-    "068270": {
-      "ticker": "068270",
-      "name": "Celltrion",
-      "display_name": "Celltrion",
-      "name_ko": "셀트리온",
-      "sector": ""
-    },
-    "055550": {
-      "ticker": "055550",
-      "name": "ShinhanGroup",
-      "display_name": "ShinhanGroup",
-      "name_ko": "신한지주",
-      "sector": ""
-    },
-    "032830": {
-      "ticker": "032830",
-      "name": "SAMSUNG LIFE",
-      "display_name": "SAMSUNG LIFE",
-      "name_ko": "삼성생명",
+    "009150": {
+      "ticker": "009150",
+      "name": "SamsungElecMech",
+      "display_name": "SamsungElecMech",
+      "name_ko": "삼성전기",
       "sector": ""
     },
     "028260": {
@@ -638,18 +92,18 @@
       "name_ko": "삼성물산",
       "sector": ""
     },
+    "032830": {
+      "ticker": "032830",
+      "name": "SAMSUNG LIFE",
+      "display_name": "SAMSUNG LIFE",
+      "name_ko": "삼성생명",
+      "sector": ""
+    },
     "006400": {
       "ticker": "006400",
       "name": "SAMSUNG SDI CO.,LTD.",
       "display_name": "SAMSUNG SDI CO.,LTD.",
       "name_ko": "삼성SDI",
-      "sector": ""
-    },
-    "012330": {
-      "ticker": "012330",
-      "name": "Mobis",
-      "display_name": "Mobis",
-      "name_ko": "현대모비스",
       "sector": ""
     },
     "267260": {
@@ -659,11 +113,53 @@
       "name_ko": "HD현대일렉트릭",
       "sector": ""
     },
-    "009150": {
-      "ticker": "009150",
-      "name": "SamsungElecMech",
-      "display_name": "SamsungElecMech",
-      "name_ko": "삼성전기",
+    "012330": {
+      "ticker": "012330",
+      "name": "Mobis",
+      "display_name": "Mobis",
+      "name_ko": "현대모비스",
+      "sector": ""
+    },
+    "086790": {
+      "ticker": "086790",
+      "name": "HANAFINANCIALGR",
+      "display_name": "HANAFINANCIALGR",
+      "name_ko": "하나금융지주",
+      "sector": ""
+    },
+    "009540": {
+      "ticker": "009540",
+      "name": "HDKSOE",
+      "display_name": "HDKSOE",
+      "name_ko": "HD한국조선해양",
+      "sector": ""
+    },
+    "005490": {
+      "ticker": "005490",
+      "name": "POSCO Holdings",
+      "display_name": "POSCO Holdings",
+      "name_ko": "POSCO홀딩스",
+      "sector": ""
+    },
+    "298040": {
+      "ticker": "298040",
+      "name": "HYOSUNG HEAVY",
+      "display_name": "HYOSUNG HEAVY",
+      "name_ko": "효성중공업",
+      "sector": ""
+    },
+    "010140": {
+      "ticker": "010140",
+      "name": "SamsungHvyInd",
+      "display_name": "SamsungHvyInd",
+      "name_ko": "삼성중공업",
+      "sector": ""
+    },
+    "015760": {
+      "ticker": "015760",
+      "name": "KEPCO",
+      "display_name": "KEPCO",
+      "name_ko": "한국전력",
       "sector": ""
     },
     "035420": {
@@ -680,60 +176,11 @@
       "name_ko": "고려아연",
       "sector": ""
     },
-    "086790": {
-      "ticker": "086790",
-      "name": "HANAFINANCIALGR",
-      "display_name": "HANAFINANCIALGR",
-      "name_ko": "하나금융지주",
-      "sector": ""
-    },
-    "005490": {
-      "ticker": "005490",
-      "name": "POSCO Holdings",
-      "display_name": "POSCO Holdings",
-      "name_ko": "POSCO홀딩스",
-      "sector": ""
-    },
-    "009540": {
-      "ticker": "009540",
-      "name": "HDKSOE",
-      "display_name": "HDKSOE",
-      "name_ko": "HD한국조선해양",
-      "sector": ""
-    },
-    "015760": {
-      "ticker": "015760",
-      "name": "KEPCO",
-      "display_name": "KEPCO",
-      "name_ko": "한국전력",
-      "sector": ""
-    },
-    "272210": {
-      "ticker": "272210",
-      "name": "HANWHA SYSTEMS",
-      "display_name": "HANWHA SYSTEMS",
-      "name_ko": "한화시스템",
-      "sector": ""
-    },
-    "316140": {
-      "ticker": "316140",
-      "name": "WooriFinancialGroup",
-      "display_name": "WooriFinancialGroup",
-      "name_ko": "우리금융지주",
-      "sector": ""
-    },
-    "064350": {
-      "ticker": "064350",
-      "name": "HYUNDAI ROTEM",
-      "display_name": "HYUNDAI ROTEM",
-      "name_ko": "현대로템",
-      "sector": ""
-    },
-    "298040": {
-      "ticker": "298040",
-      "name": "HYOSUNG HEAVY",
-      "display_name": "HYOSUNG HEAVY",
-      "name_ko": "효성중공업",
+    "006800": {
+      "ticker": "006800",
+      "name": "MIRAE ASSET SEC",
+      "display_name": "MIRAE ASSET SEC",
+      "name_ko": "미래에셋증권",
       "sector": ""
     },
     "034730": {
@@ -743,25 +190,39 @@
       "name_ko": "SK",
       "sector": ""
     },
-    "047810": {
-      "ticker": "047810",
-      "name": "KOREA AEROSPACE",
-      "display_name": "KOREA AEROSPACE",
-      "name_ko": "한국항공우주",
+    "051910": {
+      "ticker": "051910",
+      "name": "LGCHEM",
+      "display_name": "LGCHEM",
+      "name_ko": "LG화학",
       "sector": ""
     },
-    "066570": {
-      "ticker": "066570",
-      "name": "LGELECTRONICS",
-      "display_name": "LGELECTRONICS",
-      "name_ko": "LG전자",
+    "042700": {
+      "ticker": "042700",
+      "name": "HANMISemi",
+      "display_name": "HANMISemi",
+      "name_ko": "한미반도체",
       "sector": ""
     },
-    "017670": {
-      "ticker": "017670",
-      "name": "SKTelecom",
-      "display_name": "SKTelecom",
-      "name_ko": "SK텔레콤",
+    "064350": {
+      "ticker": "064350",
+      "name": "HYUNDAI ROTEM",
+      "display_name": "HYUNDAI ROTEM",
+      "name_ko": "현대로템",
+      "sector": ""
+    },
+    "316140": {
+      "ticker": "316140",
+      "name": "WooriFinancialGroup",
+      "display_name": "WooriFinancialGroup",
+      "name_ko": "우리금융지주",
+      "sector": ""
+    },
+    "272210": {
+      "ticker": "272210",
+      "name": "HANWHA SYSTEMS",
+      "display_name": "HANWHA SYSTEMS",
+      "name_ko": "한화시스템",
       "sector": ""
     },
     "000150": {
@@ -769,888 +230,6 @@
       "name": "DOOSAN",
       "display_name": "DOOSAN",
       "name_ko": "두산",
-      "sector": ""
-    },
-    "086280": {
-      "ticker": "086280",
-      "name": "HYUNDAIGLOVIS",
-      "display_name": "HYUNDAIGLOVIS",
-      "name_ko": "현대글로비스",
-      "sector": ""
-    },
-    "000720": {
-      "ticker": "000720",
-      "name": "HyundaiEng&Const",
-      "display_name": "HyundaiEng&Const",
-      "name_ko": "현대건설",
-      "sector": ""
-    },
-    "030200": {
-      "ticker": "030200",
-      "name": "KT",
-      "display_name": "KT",
-      "name_ko": "KT",
-      "sector": ""
-    },
-    "000250": {
-      "ticker": "000250",
-      "name": "SCD",
-      "display_name": "SCD",
-      "name_ko": "삼천당제약",
-      "sector": ""
-    },
-    "003550": {
-      "ticker": "003550",
-      "name": "LG Corp.",
-      "display_name": "LG Corp.",
-      "name_ko": "LG",
-      "sector": ""
-    },
-    "071050": {
-      "ticker": "071050",
-      "name": "KIH",
-      "display_name": "KIH",
-      "name_ko": "한국금융지주",
-      "sector": ""
-    },
-    "018260": {
-      "ticker": "018260",
-      "name": "SAMSUNG SDS",
-      "display_name": "SAMSUNG SDS",
-      "name_ko": "삼성에스디에스",
-      "sector": ""
-    },
-    "010950": {
-      "ticker": "010950",
-      "name": "S-Oil",
-      "display_name": "S-Oil",
-      "name_ko": "S-Oil",
-      "sector": ""
-    },
-    "278470": {
-      "ticker": "278470",
-      "name": "APR",
-      "display_name": "APR",
-      "name_ko": "에이피알",
-      "sector": ""
-    },
-    "0126Z0": {
-      "ticker": "0126Z0",
-      "name": "SAMSUNG EPIS HOLDINGS",
-      "display_name": "SAMSUNG EPIS HOLDINGS",
-      "name_ko": "삼성에피스홀딩스",
-      "sector": ""
-    },
-    "352820": {
-      "ticker": "352820",
-      "name": "HYBE",
-      "display_name": "HYBE",
-      "name_ko": "하이브",
-      "sector": ""
-    },
-    "039490": {
-      "ticker": "039490",
-      "name": "KIWOOM",
-      "display_name": "KIWOOM",
-      "name_ko": "키움증권",
-      "sector": ""
-    },
-    "277810": {
-      "ticker": "277810",
-      "name": "Rainbow Robotics",
-      "display_name": "Rainbow Robotics",
-      "name_ko": "레인보우로보틱스",
-      "sector": ""
-    },
-    "005830": {
-      "ticker": "005830",
-      "name": "DB INSURANCE",
-      "display_name": "DB INSURANCE",
-      "name_ko": "DB손해보험",
-      "sector": ""
-    },
-    "259960": {
-      "ticker": "259960",
-      "name": "KRAFTON",
-      "display_name": "KRAFTON",
-      "name_ko": "크래프톤",
-      "sector": ""
-    },
-    "307950": {
-      "ticker": "307950",
-      "name": "HyundaiAutoever",
-      "display_name": "HyundaiAutoever",
-      "name_ko": "현대오토에버",
-      "sector": ""
-    },
-    "298380": {
-      "ticker": "298380",
-      "name": "ABL Bio",
-      "display_name": "ABL Bio",
-      "name_ko": "에이비엘바이오",
-      "sector": ""
-    },
-    "003230": {
-      "ticker": "003230",
-      "name": "SamyangFood",
-      "display_name": "SamyangFood",
-      "name_ko": "삼양식품",
-      "sector": ""
-    },
-    "950160": {
-      "ticker": "950160",
-      "name": "Kolon TissueGene",
-      "display_name": "Kolon TissueGene",
-      "name_ko": "코오롱티슈진",
-      "sector": ""
-    },
-    "000880": {
-      "ticker": "000880",
-      "name": "Hanwha",
-      "display_name": "Hanwha",
-      "name_ko": "한화",
-      "sector": ""
-    },
-    "214370": {
-      "ticker": "214370",
-      "name": "Caregen",
-      "display_name": "Caregen",
-      "name_ko": "케어젠",
-      "sector": ""
-    },
-    "241560": {
-      "ticker": "241560",
-      "name": "Doosan Bobcat",
-      "display_name": "Doosan Bobcat",
-      "name_ko": "두산밥캣",
-      "sector": ""
-    },
-    "064400": {
-      "ticker": "064400",
-      "name": "LG CNS",
-      "display_name": "LG CNS",
-      "name_ko": "LG씨엔에스",
-      "sector": ""
-    },
-    "001040": {
-      "ticker": "001040",
-      "name": "CJ",
-      "display_name": "CJ",
-      "name_ko": "CJ",
-      "sector": ""
-    },
-    "175330": {
-      "ticker": "175330",
-      "name": "JB Financial Group",
-      "display_name": "JB Financial Group",
-      "name_ko": "JB금융지주",
-      "sector": ""
-    },
-    "138930": {
-      "ticker": "138930",
-      "name": "BNK Financial Group",
-      "display_name": "BNK Financial Group",
-      "name_ko": "BNK금융지주",
-      "sector": ""
-    },
-    "001440": {
-      "ticker": "001440",
-      "name": "Taihan Cable & Solution",
-      "display_name": "Taihan Cable & Solution",
-      "name_ko": "대한전선",
-      "sector": ""
-    },
-    "454910": {
-      "ticker": "454910",
-      "name": "Doosan Robotics",
-      "display_name": "Doosan Robotics",
-      "name_ko": "두산로보틱스",
-      "sector": ""
-    },
-    "271560": {
-      "ticker": "271560",
-      "name": "ORION",
-      "display_name": "ORION",
-      "name_ko": "오리온",
-      "sector": ""
-    },
-    "310210": {
-      "ticker": "310210",
-      "name": "VRNI",
-      "display_name": "VRNI",
-      "name_ko": "보로노이",
-      "sector": ""
-    },
-    "095340": {
-      "ticker": "095340",
-      "name": "ISC",
-      "display_name": "ISC",
-      "name_ko": "ISC",
-      "sector": ""
-    },
-    "021240": {
-      "ticker": "021240",
-      "name": "COWAY",
-      "display_name": "COWAY",
-      "name_ko": "코웨이",
-      "sector": ""
-    },
-    "039030": {
-      "ticker": "039030",
-      "name": "EO Technics",
-      "display_name": "EO Technics",
-      "name_ko": "이오테크닉스",
-      "sector": ""
-    },
-    "450080": {
-      "ticker": "450080",
-      "name": "ECOPRO MAT",
-      "display_name": "ECOPRO MAT",
-      "name_ko": "에코프로머티",
-      "sector": ""
-    },
-    "022100": {
-      "ticker": "022100",
-      "name": "POSCO DX",
-      "display_name": "POSCO DX",
-      "name_ko": "포스코DX",
-      "sector": ""
-    },
-    "004020": {
-      "ticker": "004020",
-      "name": "HYUNDAI STEEL",
-      "display_name": "HYUNDAI STEEL",
-      "name_ko": "현대제철",
-      "sector": ""
-    },
-    "036570": {
-      "ticker": "036570",
-      "name": "NCsoft",
-      "display_name": "NCsoft",
-      "name_ko": "엔씨소프트",
-      "sector": ""
-    },
-    "010060": {
-      "ticker": "010060",
-      "name": "OCI Holdings",
-      "display_name": "OCI Holdings",
-      "name_ko": "OCI홀딩스",
-      "sector": ""
-    },
-    "002380": {
-      "ticker": "002380",
-      "name": "KCC",
-      "display_name": "KCC",
-      "name_ko": "KCC",
-      "sector": ""
-    },
-    "251270": {
-      "ticker": "251270",
-      "name": "Netmarble",
-      "display_name": "Netmarble",
-      "name_ko": "넷마블",
-      "sector": ""
-    },
-    "062040": {
-      "ticker": "062040",
-      "name": "SANIL ELECTRIC",
-      "display_name": "SANIL ELECTRIC",
-      "name_ko": "산일전기",
-      "sector": ""
-    },
-    "000990": {
-      "ticker": "000990",
-      "name": "DB HiTek",
-      "display_name": "DB HiTek",
-      "name_ko": "DB하이텍",
-      "sector": ""
-    },
-    "302440": {
-      "ticker": "302440",
-      "name": "SKBS",
-      "display_name": "SKBS",
-      "name_ko": "SK바이오사이언스",
-      "sector": ""
-    },
-    "036460": {
-      "ticker": "036460",
-      "name": "Kogas",
-      "display_name": "Kogas",
-      "name_ko": "한국가스공사",
-      "sector": ""
-    },
-    "0009K0": {
-      "ticker": "0009K0",
-      "name": "Aimed Bio",
-      "display_name": "Aimed Bio",
-      "name_ko": "에임드바이오",
-      "sector": ""
-    },
-    "001720": {
-      "ticker": "001720",
-      "name": "ShinyoungSecu",
-      "display_name": "ShinyoungSecu",
-      "name_ko": "신영증권",
-      "sector": ""
-    },
-    "011780": {
-      "ticker": "011780",
-      "name": "KumhoPetrochem",
-      "display_name": "KumhoPetrochem",
-      "name_ko": "금호석유화학",
-      "sector": ""
-    },
-    "214450": {
-      "ticker": "214450",
-      "name": "PharmaResearch",
-      "display_name": "PharmaResearch",
-      "name_ko": "파마리서치",
-      "sector": ""
-    },
-    "014680": {
-      "ticker": "014680",
-      "name": "Hanchem",
-      "display_name": "Hanchem",
-      "name_ko": "한솔케미칼",
-      "sector": ""
-    },
-    "319400": {
-      "ticker": "319400",
-      "name": "HYUNDAI MOVEX",
-      "display_name": "HYUNDAI MOVEX",
-      "name_ko": "현대무벡스",
-      "sector": ""
-    },
-    "347850": {
-      "ticker": "347850",
-      "name": "D&D Pharmatech",
-      "display_name": "D&D Pharmatech",
-      "name_ko": "디앤디파마텍",
-      "sector": ""
-    },
-    "145020": {
-      "ticker": "145020",
-      "name": "Hugel",
-      "display_name": "Hugel",
-      "name_ko": "휴젤",
-      "sector": ""
-    },
-    "085620": {
-      "ticker": "085620",
-      "name": "MIRAE ASSET LIFE",
-      "display_name": "MIRAE ASSET LIFE",
-      "name_ko": "미래에셋생명",
-      "sector": ""
-    },
-    "004170": {
-      "ticker": "004170",
-      "name": "Shinsegae",
-      "display_name": "Shinsegae",
-      "name_ko": "신세계",
-      "sector": ""
-    },
-    "357780": {
-      "ticker": "357780",
-      "name": "Soulbrain",
-      "display_name": "Soulbrain",
-      "name_ko": "솔브레인",
-      "sector": ""
-    },
-    "237690": {
-      "ticker": "237690",
-      "name": "ST Pharm",
-      "display_name": "ST Pharm",
-      "name_ko": "에스티팜",
-      "sector": ""
-    },
-    "036930": {
-      "ticker": "036930",
-      "name": "JEL",
-      "display_name": "JEL",
-      "name_ko": "주성엔지니어링",
-      "sector": ""
-    },
-    "004990": {
-      "ticker": "004990",
-      "name": "LOTTE",
-      "display_name": "LOTTE",
-      "name_ko": "롯데지주",
-      "sector": ""
-    },
-    "083650": {
-      "ticker": "083650",
-      "name": "BHI",
-      "display_name": "BHI",
-      "name_ko": "비에이치아이",
-      "sector": ""
-    },
-    "009970": {
-      "ticker": "009970",
-      "name": "YoungoneHoldings",
-      "display_name": "YoungoneHoldings",
-      "name_ko": "영원무역홀딩스",
-      "sector": ""
-    },
-    "023530": {
-      "ticker": "023530",
-      "name": "LOTTE SHOPPING",
-      "display_name": "LOTTE SHOPPING",
-      "name_ko": "롯데쇼핑",
-      "sector": ""
-    },
-    "457190": {
-      "ticker": "457190",
-      "name": "ISUSPECIALTYCHEMICAL",
-      "display_name": "ISUSPECIALTYCHEMICAL",
-      "name_ko": "이수스페셜티케미컬",
-      "sector": ""
-    },
-    "017960": {
-      "ticker": "017960",
-      "name": "HankukCarbon",
-      "display_name": "HankukCarbon",
-      "name_ko": "한국카본",
-      "sector": ""
-    },
-    "383220": {
-      "ticker": "383220",
-      "name": "F&F",
-      "display_name": "F&F",
-      "name_ko": "F&F",
-      "sector": ""
-    },
-    "475150": {
-      "ticker": "475150",
-      "name": "SK eternix",
-      "display_name": "SK eternix",
-      "name_ko": "SK이터닉스",
-      "sector": ""
-    },
-    "282330": {
-      "ticker": "282330",
-      "name": "BGF Retail",
-      "display_name": "BGF Retail",
-      "name_ko": "BGF리테일",
-      "sector": ""
-    },
-    "004800": {
-      "ticker": "004800",
-      "name": "Hyosung",
-      "display_name": "Hyosung",
-      "name_ko": "효성",
-      "sector": ""
-    },
-    "204320": {
-      "ticker": "204320",
-      "name": "HL MANDO",
-      "display_name": "HL MANDO",
-      "name_ko": "HL만도",
-      "sector": ""
-    },
-    "347700": {
-      "ticker": "347700",
-      "name": "Sphere",
-      "display_name": "Sphere",
-      "name_ko": "스피어",
-      "sector": ""
-    },
-    "120110": {
-      "ticker": "120110",
-      "name": "KOLON IND",
-      "display_name": "KOLON IND",
-      "name_ko": "코오롱인더",
-      "sector": ""
-    },
-    "376900": {
-      "ticker": "376900",
-      "name": "ROKIT",
-      "display_name": "ROKIT",
-      "name_ko": "로킷헬스케어",
-      "sector": ""
-    },
-    "004370": {
-      "ticker": "004370",
-      "name": "Nongshim",
-      "display_name": "Nongshim",
-      "name_ko": "농심",
-      "sector": ""
-    },
-    "030000": {
-      "ticker": "030000",
-      "name": "CheilWorldwide",
-      "display_name": "CheilWorldwide",
-      "name_ko": "제일기획",
-      "sector": ""
-    },
-    "000240": {
-      "ticker": "000240",
-      "name": "HANKOOK & COMPANY",
-      "display_name": "HANKOOK & COMPANY",
-      "name_ko": "한국앤컴퍼니",
-      "sector": ""
-    },
-    "319660": {
-      "ticker": "319660",
-      "name": "PSK",
-      "display_name": "PSK",
-      "name_ko": "피에스케이",
-      "sector": ""
-    },
-    "097230": {
-      "ticker": "097230",
-      "name": "HJSC",
-      "display_name": "HJSC",
-      "name_ko": "HJ중공업",
-      "sector": ""
-    },
-    "007340": {
-      "ticker": "007340",
-      "name": "DN AUTOMOTIVE",
-      "display_name": "DN AUTOMOTIVE",
-      "name_ko": "DN오토모티브",
-      "sector": ""
-    },
-    "081660": {
-      "ticker": "081660",
-      "name": "Misto Holdings",
-      "display_name": "Misto Holdings",
-      "name_ko": "미스토홀딩스",
-      "sector": ""
-    },
-    "192820": {
-      "ticker": "192820",
-      "name": "COSMAX",
-      "display_name": "COSMAX",
-      "name_ko": "코스맥스",
-      "sector": ""
-    },
-    "322000": {
-      "ticker": "322000",
-      "name": "HD HYUNDAI ENERGY SOLUTIONS",
-      "display_name": "HD HYUNDAI ENERGY SOLUTIONS",
-      "name_ko": "HD현대에너지솔루션",
-      "sector": ""
-    },
-    "035900": {
-      "ticker": "035900",
-      "name": "JYP Ent.",
-      "display_name": "JYP Ent.",
-      "name_ko": "JYP Ent.",
-      "sector": ""
-    },
-    "020150": {
-      "ticker": "020150",
-      "name": "LOTTE ENERGY MATERIALS Corp",
-      "display_name": "LOTTE ENERGY MATERIALS Corp",
-      "name_ko": "롯데에너지머티리얼즈",
-      "sector": ""
-    },
-    "098460": {
-      "ticker": "098460",
-      "name": "Koh Young",
-      "display_name": "Koh Young",
-      "name_ko": "고영",
-      "sector": ""
-    },
-    "069620": {
-      "ticker": "069620",
-      "name": "DAEWOONG PHARM",
-      "display_name": "DAEWOONG PHARM",
-      "name_ko": "대웅제약",
-      "sector": ""
-    },
-    "007070": {
-      "ticker": "007070",
-      "name": "GS Retail",
-      "display_name": "GS Retail",
-      "name_ko": "GS리테일",
-      "sector": ""
-    },
-    "003570": {
-      "ticker": "003570",
-      "name": "SNT DYNAMICS",
-      "display_name": "SNT DYNAMICS",
-      "name_ko": "SNT다이내믹스",
-      "sector": ""
-    },
-    "089030": {
-      "ticker": "089030",
-      "name": "Techwing",
-      "display_name": "Techwing",
-      "name_ko": "테크윙",
-      "sector": ""
-    },
-    "000500": {
-      "ticker": "000500",
-      "name": "GAONCABLE",
-      "display_name": "GAONCABLE",
-      "name_ko": "가온전선",
-      "sector": ""
-    },
-    "361610": {
-      "ticker": "361610",
-      "name": "SK ie technology",
-      "display_name": "SK ie technology",
-      "name_ko": "SK아이이테크놀로지",
-      "sector": ""
-    },
-    "073240": {
-      "ticker": "073240",
-      "name": "KUMHOTIRE",
-      "display_name": "KUMHOTIRE",
-      "name_ko": "금호타이어",
-      "sector": ""
-    },
-    "069960": {
-      "ticker": "069960",
-      "name": "HYUNDAIDEPTST",
-      "display_name": "HYUNDAIDEPTST",
-      "name_ko": "현대백화점",
-      "sector": ""
-    },
-    "475830": {
-      "ticker": "475830",
-      "name": "ORUM",
-      "display_name": "ORUM",
-      "name_ko": "오름테라퓨틱",
-      "sector": ""
-    },
-    "437730": {
-      "ticker": "437730",
-      "name": "SAMHYUN",
-      "display_name": "SAMHYUN",
-      "name_ko": "삼현",
-      "sector": ""
-    },
-    "008770": {
-      "ticker": "008770",
-      "name": "HtlShilla",
-      "display_name": "HtlShilla",
-      "name_ko": "호텔신라",
-      "sector": ""
-    },
-    "006040": {
-      "ticker": "006040",
-      "name": "DongwonInd",
-      "display_name": "DongwonInd",
-      "name_ko": "동원산업",
-      "sector": ""
-    },
-    "101490": {
-      "ticker": "101490",
-      "name": "S&S TECH",
-      "display_name": "S&S TECH",
-      "name_ko": "에스앤에스텍",
-      "sector": ""
-    },
-    "005070": {
-      "ticker": "005070",
-      "name": "CosmoAM&T",
-      "display_name": "CosmoAM&T",
-      "name_ko": "코스모신소재",
-      "sector": ""
-    },
-    "140860": {
-      "ticker": "140860",
-      "name": "Park Systems",
-      "display_name": "Park Systems",
-      "name_ko": "파크시스템스",
-      "sector": ""
-    },
-    "006280": {
-      "ticker": "006280",
-      "name": "GC Corp",
-      "display_name": "GC Corp",
-      "name_ko": "녹십자",
-      "sector": ""
-    },
-    "491000": {
-      "ticker": "491000",
-      "name": "LivsMed",
-      "display_name": "LivsMed",
-      "name_ko": "리브스메드",
-      "sector": ""
-    },
-    "290650": {
-      "ticker": "290650",
-      "name": "L&C BIO",
-      "display_name": "L&C BIO",
-      "name_ko": "엘앤씨바이오",
-      "sector": ""
-    },
-    "007810": {
-      "ticker": "007810",
-      "name": "KorCirc",
-      "display_name": "KorCirc",
-      "name_ko": "코리아써키트",
-      "sector": ""
-    },
-    "298020": {
-      "ticker": "298020",
-      "name": "HYOSUNG TNC",
-      "display_name": "HYOSUNG TNC",
-      "name_ko": "효성티앤씨",
-      "sector": ""
-    },
-    "161890": {
-      "ticker": "161890",
-      "name": "KOLMAR KOREA",
-      "display_name": "KOLMAR KOREA",
-      "name_ko": "한국콜마",
-      "sector": ""
-    },
-    "001800": {
-      "ticker": "001800",
-      "name": "ORION Holdings",
-      "display_name": "ORION Holdings",
-      "name_ko": "오리온홀딩스",
-      "sector": ""
-    },
-    "020560": {
-      "ticker": "020560",
-      "name": "Asiana Airlines",
-      "display_name": "Asiana Airlines",
-      "name_ko": "아시아나항공",
-      "sector": ""
-    },
-    "417200": {
-      "ticker": "417200",
-      "name": "LS Materials",
-      "display_name": "LS Materials",
-      "name_ko": "LS머트리얼즈",
-      "sector": ""
-    },
-    "007310": {
-      "ticker": "007310",
-      "name": "OTOKI",
-      "display_name": "OTOKI",
-      "name_ko": "오뚜기",
-      "sector": ""
-    },
-    "127120": {
-      "ticker": "127120",
-      "name": "JS Link",
-      "display_name": "JS Link",
-      "name_ko": "제이에스링크",
-      "sector": ""
-    },
-    "232140": {
-      "ticker": "232140",
-      "name": "YCC",
-      "display_name": "YCC",
-      "name_ko": "와이씨",
-      "sector": ""
-    },
-    "034230": {
-      "ticker": "034230",
-      "name": "PARADISE",
-      "display_name": "PARADISE",
-      "name_ko": "파라다이스",
-      "sector": ""
-    },
-    "082640": {
-      "ticker": "082640",
-      "name": "TONGYANG LIFE",
-      "display_name": "TONGYANG LIFE",
-      "name_ko": "동양생명",
-      "sector": ""
-    },
-    "195940": {
-      "ticker": "195940",
-      "name": "HK inno.N",
-      "display_name": "HK inno.N",
-      "name_ko": "HK이노엔",
-      "sector": ""
-    },
-    "294870": {
-      "ticker": "294870",
-      "name": "HDC-OP",
-      "display_name": "HDC-OP",
-      "name_ko": "HDC현대산업개발",
-      "sector": ""
-    },
-    "330590": {
-      "ticker": "330590",
-      "name": "LOTTE REIT",
-      "display_name": "LOTTE REIT",
-      "name_ko": "롯데리츠",
-      "sector": ""
-    },
-    "229640": {
-      "ticker": "229640",
-      "name": "LS Eco Energy",
-      "display_name": "LS Eco Energy",
-      "name_ko": "LS에코에너지",
-      "sector": ""
-    },
-    "030610": {
-      "ticker": "030610",
-      "name": "KYOBOSECURITIES",
-      "display_name": "KYOBOSECURITIES",
-      "name_ko": "교보증권",
-      "sector": ""
-    },
-    "115180": {
-      "ticker": "115180",
-      "name": "Qurient",
-      "display_name": "Qurient",
-      "name_ko": "큐리언트",
-      "sector": ""
-    },
-    "445680": {
-      "ticker": "445680",
-      "name": "Curiox Biosystems",
-      "display_name": "Curiox Biosystems",
-      "name_ko": "큐리옥스바이오시스템즈",
-      "sector": ""
-    },
-    "003090": {
-      "ticker": "003090",
-      "name": "Daewoong",
-      "display_name": "Daewoong",
-      "name_ko": "대웅",
-      "sector": ""
-    },
-    "466100": {
-      "ticker": "466100",
-      "name": "CLOBOT",
-      "display_name": "CLOBOT",
-      "name_ko": "클로봇",
-      "sector": ""
-    },
-    "032350": {
-      "ticker": "032350",
-      "name": "LOTTE TOUR",
-      "display_name": "LOTTE TOUR",
-      "name_ko": "롯데관광개발",
-      "sector": ""
-    },
-    "082270": {
-      "ticker": "082270",
-      "name": "GemVax",
-      "display_name": "GemVax",
-      "name_ko": "젬백스",
-      "sector": ""
-    },
-    "003240": {
-      "ticker": "003240",
-      "name": "TaekwangInd",
-      "display_name": "TaekwangInd",
-      "name_ko": "태광산업",
-      "sector": ""
-    },
-    "196170": {
-      "ticker": "196170",
-      "name": "Alteogen",
-      "display_name": "Alteogen",
-      "name_ko": "알테오젠",
-      "sector": ""
-    },
-    "051910": {
-      "ticker": "051910",
-      "name": "LGCHEM",
-      "display_name": "LGCHEM",
-      "name_ko": "LG화학",
       "sector": ""
     },
     "096770": {
@@ -1667,11 +246,60 @@
       "name_ko": "HD현대",
       "sector": ""
     },
+    "003670": {
+      "ticker": "003670",
+      "name": "POSCO FUTURE M",
+      "display_name": "POSCO FUTURE M",
+      "name_ko": "포스코퓨처엠",
+      "sector": ""
+    },
+    "035720": {
+      "ticker": "035720",
+      "name": "Kakao",
+      "display_name": "Kakao",
+      "name_ko": "카카오",
+      "sector": ""
+    },
+    "017670": {
+      "ticker": "017670",
+      "name": "SKTelecom",
+      "display_name": "SKTelecom",
+      "name_ko": "SK텔레콤",
+      "sector": ""
+    },
+    "066570": {
+      "ticker": "066570",
+      "name": "LGELECTRONICS",
+      "display_name": "LGELECTRONICS",
+      "name_ko": "LG전자",
+      "sector": ""
+    },
+    "011200": {
+      "ticker": "011200",
+      "name": "HMM",
+      "display_name": "HMM",
+      "name_ko": "HMM",
+      "sector": ""
+    },
     "138040": {
       "ticker": "138040",
       "name": "Meritz Financial",
       "display_name": "Meritz Financial",
       "name_ko": "메리츠금융지주",
+      "sector": ""
+    },
+    "196170": {
+      "ticker": "196170",
+      "name": "Alteogen",
+      "display_name": "Alteogen",
+      "name_ko": "알테오젠",
+      "sector": ""
+    },
+    "047810": {
+      "ticker": "047810",
+      "name": "KOREA AEROSPACE",
+      "display_name": "KOREA AEROSPACE",
+      "name_ko": "한국항공우주",
       "sector": ""
     },
     "247540": {
@@ -1681,25 +309,18 @@
       "name_ko": "에코프로비엠",
       "sector": ""
     },
-    "003670": {
-      "ticker": "003670",
-      "name": "POSCO FUTURE M",
-      "display_name": "POSCO FUTURE M",
-      "name_ko": "포스코퓨처엠",
+    "024110": {
+      "ticker": "024110",
+      "name": "IBK",
+      "display_name": "IBK",
+      "name_ko": "기업은행",
       "sector": ""
     },
-    "000810": {
-      "ticker": "000810",
-      "name": "SamsungF&MIns",
-      "display_name": "SamsungF&MIns",
-      "name_ko": "삼성화재",
-      "sector": ""
-    },
-    "079550": {
-      "ticker": "079550",
-      "name": "LIG Nex1",
-      "display_name": "LIG Nex1",
-      "name_ko": "LIG넥스원",
+    "086280": {
+      "ticker": "086280",
+      "name": "HYUNDAIGLOVIS",
+      "display_name": "HYUNDAIGLOVIS",
+      "name_ko": "현대글로비스",
       "sector": ""
     },
     "033780": {
@@ -1707,6 +328,125 @@
       "name": "KT&G",
       "display_name": "KT&G",
       "name_ko": "KT&G",
+      "sector": ""
+    },
+    "000720": {
+      "ticker": "000720",
+      "name": "HyundaiEng&Const",
+      "display_name": "HyundaiEng&Const",
+      "name_ko": "현대건설",
+      "sector": ""
+    },
+    "278470": {
+      "ticker": "278470",
+      "name": "APR",
+      "display_name": "APR",
+      "name_ko": "에이피알",
+      "sector": ""
+    },
+    "0126Z0": {
+      "ticker": "0126Z0",
+      "name": "SAMSUNG EPIS HOLDINGS",
+      "display_name": "SAMSUNG EPIS HOLDINGS",
+      "name_ko": "삼성에피스홀딩스",
+      "sector": ""
+    },
+    "030200": {
+      "ticker": "030200",
+      "name": "KT",
+      "display_name": "KT",
+      "name_ko": "KT",
+      "sector": ""
+    },
+    "003550": {
+      "ticker": "003550",
+      "name": "LG Corp.",
+      "display_name": "LG Corp.",
+      "name_ko": "LG",
+      "sector": ""
+    },
+    "071050": {
+      "ticker": "071050",
+      "name": "KIH",
+      "display_name": "KIH",
+      "name_ko": "한국금융지주",
+      "sector": ""
+    },
+    "047050": {
+      "ticker": "047050",
+      "name": "POSCO INTERNATIONAL",
+      "display_name": "POSCO INTERNATIONAL",
+      "name_ko": "포스코인터내셔널",
+      "sector": ""
+    },
+    "018260": {
+      "ticker": "018260",
+      "name": "SAMSUNG SDS",
+      "display_name": "SAMSUNG SDS",
+      "name_ko": "삼성에스디에스",
+      "sector": ""
+    },
+    "047040": {
+      "ticker": "047040",
+      "name": "DWEC",
+      "display_name": "DWEC",
+      "name_ko": "대우건설",
+      "sector": ""
+    },
+    "010950": {
+      "ticker": "010950",
+      "name": "S-Oil",
+      "display_name": "S-Oil",
+      "name_ko": "S-Oil",
+      "sector": ""
+    },
+    "259960": {
+      "ticker": "259960",
+      "name": "KRAFTON",
+      "display_name": "KRAFTON",
+      "name_ko": "크래프톤",
+      "sector": ""
+    },
+    "307950": {
+      "ticker": "307950",
+      "name": "HyundaiAutoever",
+      "display_name": "HyundaiAutoever",
+      "name_ko": "현대오토에버",
+      "sector": ""
+    },
+    "039490": {
+      "ticker": "039490",
+      "name": "KIWOOM",
+      "display_name": "KIWOOM",
+      "name_ko": "키움증권",
+      "sector": ""
+    },
+    "277810": {
+      "ticker": "277810",
+      "name": "Rainbow Robotics",
+      "display_name": "Rainbow Robotics",
+      "name_ko": "레인보우로보틱스",
+      "sector": ""
+    },
+    "352820": {
+      "ticker": "352820",
+      "name": "HYBE",
+      "display_name": "HYBE",
+      "name_ko": "하이브",
+      "sector": ""
+    },
+    "443060": {
+      "ticker": "443060",
+      "name": "HDHMS",
+      "display_name": "HDHMS",
+      "name_ko": "HD현대마린솔루션",
+      "sector": ""
+    },
+    "003230": {
+      "ticker": "003230",
+      "name": "SamyangFood",
+      "display_name": "SamyangFood",
+      "name_ko": "삼양식품",
       "sector": ""
     },
     "006260": {
@@ -1723,25 +463,11 @@
       "name_ko": "삼성증권",
       "sector": ""
     },
-    "090430": {
-      "ticker": "090430",
-      "name": "AMOREPACIFIC",
-      "display_name": "AMOREPACIFIC",
-      "name_ko": "아모레퍼시픽",
-      "sector": ""
-    },
-    "443060": {
-      "ticker": "443060",
-      "name": "HDHMS",
-      "display_name": "HDHMS",
-      "name_ko": "HD현대마린솔루션",
-      "sector": ""
-    },
-    "011070": {
-      "ticker": "011070",
-      "name": "LG Innotek",
-      "display_name": "LG Innotek",
-      "name_ko": "LG이노텍",
+    "005830": {
+      "ticker": "005830",
+      "name": "DB INSURANCE",
+      "display_name": "DB INSURANCE",
+      "name_ko": "DB손해보험",
       "sector": ""
     },
     "007660": {
@@ -1751,25 +477,39 @@
       "name_ko": "이수페타시스",
       "sector": ""
     },
-    "000100": {
-      "ticker": "000100",
-      "name": "Yuhan",
-      "display_name": "Yuhan",
-      "name_ko": "유한양행",
+    "028050": {
+      "ticker": "028050",
+      "name": "SamsungE&A",
+      "display_name": "SamsungE&A",
+      "name_ko": "삼성E&A",
       "sector": ""
     },
-    "180640": {
-      "ticker": "180640",
-      "name": "HANJINKAL",
-      "display_name": "HANJINKAL",
-      "name_ko": "한진칼",
+    "058470": {
+      "ticker": "058470",
+      "name": "LEENO",
+      "display_name": "LEENO",
+      "name_ko": "리노공업",
       "sector": ""
     },
-    "326030": {
-      "ticker": "326030",
-      "name": "SKBP",
-      "display_name": "SKBP",
-      "name_ko": "SK바이오팜",
+    "003490": {
+      "ticker": "003490",
+      "name": "KAL",
+      "display_name": "KAL",
+      "name_ko": "대한항공",
+      "sector": ""
+    },
+    "000880": {
+      "ticker": "000880",
+      "name": "Hanwha",
+      "display_name": "Hanwha",
+      "name_ko": "한화",
+      "sector": ""
+    },
+    "000250": {
+      "ticker": "000250",
+      "name": "SCD",
+      "display_name": "SCD",
+      "name_ko": "삼천당제약",
       "sector": ""
     },
     "267270": {
@@ -1779,67 +519,284 @@
       "name_ko": "HD건설기계",
       "sector": ""
     },
-    "012510": {
-      "ticker": "012510",
-      "name": "DOUZONE BIZON",
-      "display_name": "DOUZONE BIZON",
-      "name_ko": "더존비즈온",
+    "298380": {
+      "ticker": "298380",
+      "name": "ABL Bio",
+      "display_name": "ABL Bio",
+      "name_ko": "에이비엘바이오",
       "sector": ""
     },
-    "108490": {
-      "ticker": "108490",
-      "name": "ROBOTIS",
-      "display_name": "ROBOTIS",
-      "name_ko": "로보티즈",
+    "950160": {
+      "ticker": "950160",
+      "name": "Kolon TissueGene",
+      "display_name": "Kolon TissueGene",
+      "name_ko": "코오롱티슈진",
       "sector": ""
     },
-    "011790": {
-      "ticker": "011790",
-      "name": "SKC",
-      "display_name": "SKC",
-      "name_ko": "SKC",
+    "326030": {
+      "ticker": "326030",
+      "name": "SKBP",
+      "display_name": "SKBP",
+      "name_ko": "SK바이오팜",
       "sector": ""
     },
-    "111770": {
-      "ticker": "111770",
-      "name": "Youngone Corp",
-      "display_name": "Youngone Corp",
-      "name_ko": "영원무역",
+    "009830": {
+      "ticker": "009830",
+      "name": "HANWHA SOLUTIONS",
+      "display_name": "HANWHA SOLUTIONS",
+      "name_ko": "한화솔루션",
       "sector": ""
     },
-    "403870": {
-      "ticker": "403870",
-      "name": "HPSP",
-      "display_name": "HPSP",
-      "name_ko": "HPSP",
+    "028300": {
+      "ticker": "028300",
+      "name": "HLB",
+      "display_name": "HLB",
+      "name_ko": "HLB",
       "sector": ""
     },
-    "011170": {
-      "ticker": "011170",
-      "name": "LOTTE CHEMICAL Corp",
-      "display_name": "LOTTE CHEMICAL Corp",
-      "name_ko": "롯데케미칼",
+    "161390": {
+      "ticker": "161390",
+      "name": "HANKOOK TIRE & TECHNOLOGY",
+      "display_name": "HANKOOK TIRE & TECHNOLOGY",
+      "name_ko": "한국타이어앤테크놀로지",
       "sector": ""
     },
-    "214150": {
-      "ticker": "214150",
-      "name": "CLASSYS",
-      "display_name": "CLASSYS",
-      "name_ko": "클래시스",
+    "090430": {
+      "ticker": "090430",
+      "name": "AMOREPACIFIC",
+      "display_name": "AMOREPACIFIC",
+      "name_ko": "아모레퍼시픽",
       "sector": ""
     },
-    "097950": {
-      "ticker": "097950",
-      "name": "CJ CheilJedang",
-      "display_name": "CJ CheilJedang",
-      "name_ko": "CJ제일제당",
+    "001440": {
+      "ticker": "001440",
+      "name": "Taihan Cable & Solution",
+      "display_name": "Taihan Cable & Solution",
+      "name_ko": "대한전선",
       "sector": ""
     },
-    "017800": {
-      "ticker": "017800",
-      "name": "Hyundai Elevator",
-      "display_name": "Hyundai Elevator",
-      "name_ko": "현대엘리베이터",
+    "377300": {
+      "ticker": "377300",
+      "name": "kakaopay",
+      "display_name": "kakaopay",
+      "name_ko": "카카오페이",
+      "sector": ""
+    },
+    "000100": {
+      "ticker": "000100",
+      "name": "Yuhan",
+      "display_name": "Yuhan",
+      "name_ko": "유한양행",
+      "sector": ""
+    },
+    "032640": {
+      "ticker": "032640",
+      "name": "LG Uplus",
+      "display_name": "LG Uplus",
+      "name_ko": "LG유플러스",
+      "sector": ""
+    },
+    "078930": {
+      "ticker": "078930",
+      "name": "GS",
+      "display_name": "GS",
+      "name_ko": "GS",
+      "sector": ""
+    },
+    "241560": {
+      "ticker": "241560",
+      "name": "Doosan Bobcat",
+      "display_name": "Doosan Bobcat",
+      "name_ko": "두산밥캣",
+      "sector": ""
+    },
+    "034220": {
+      "ticker": "034220",
+      "name": "LG Display",
+      "display_name": "LG Display",
+      "name_ko": "LG디스플레이",
+      "sector": ""
+    },
+    "064400": {
+      "ticker": "064400",
+      "name": "LG CNS",
+      "display_name": "LG CNS",
+      "name_ko": "LG씨엔에스",
+      "sector": ""
+    },
+    "062040": {
+      "ticker": "062040",
+      "name": "SANIL ELECTRIC",
+      "display_name": "SANIL ELECTRIC",
+      "name_ko": "산일전기",
+      "sector": ""
+    },
+    "141080": {
+      "ticker": "141080",
+      "name": "LCB",
+      "display_name": "LCB",
+      "name_ko": "리가켐바이오",
+      "sector": ""
+    },
+    "029780": {
+      "ticker": "029780",
+      "name": "SAMSUNG CARD",
+      "display_name": "SAMSUNG CARD",
+      "name_ko": "삼성카드",
+      "sector": ""
+    },
+    "052690": {
+      "ticker": "052690",
+      "name": "KEPCO E&C",
+      "display_name": "KEPCO E&C",
+      "name_ko": "한전기술",
+      "sector": ""
+    },
+    "128940": {
+      "ticker": "128940",
+      "name": "HanmiPharm",
+      "display_name": "HanmiPharm",
+      "name_ko": "한미약품",
+      "sector": ""
+    },
+    "001040": {
+      "ticker": "001040",
+      "name": "CJ",
+      "display_name": "CJ",
+      "name_ko": "CJ",
+      "sector": ""
+    },
+    "000990": {
+      "ticker": "000990",
+      "name": "DB HiTek",
+      "display_name": "DB HiTek",
+      "name_ko": "DB하이텍",
+      "sector": ""
+    },
+    "010060": {
+      "ticker": "010060",
+      "name": "OCI Holdings",
+      "display_name": "OCI Holdings",
+      "name_ko": "OCI홀딩스",
+      "sector": ""
+    },
+    "454910": {
+      "ticker": "454910",
+      "name": "Doosan Robotics",
+      "display_name": "Doosan Robotics",
+      "name_ko": "두산로보틱스",
+      "sector": ""
+    },
+    "087010": {
+      "ticker": "087010",
+      "name": "PEPTRON",
+      "display_name": "PEPTRON",
+      "name_ko": "펩트론",
+      "sector": ""
+    },
+    "082740": {
+      "ticker": "082740",
+      "name": "Hanwha Engine",
+      "display_name": "Hanwha Engine",
+      "name_ko": "한화엔진",
+      "sector": ""
+    },
+    "036570": {
+      "ticker": "036570",
+      "name": "NC",
+      "display_name": "NC",
+      "name_ko": "NC",
+      "sector": ""
+    },
+    "310210": {
+      "ticker": "310210",
+      "name": "VRNI",
+      "display_name": "VRNI",
+      "name_ko": "보로노이",
+      "sector": ""
+    },
+    "175330": {
+      "ticker": "175330",
+      "name": "JB Financial Group",
+      "display_name": "JB Financial Group",
+      "name_ko": "JB금융지주",
+      "sector": ""
+    },
+    "021240": {
+      "ticker": "021240",
+      "name": "COWAY",
+      "display_name": "COWAY",
+      "name_ko": "코웨이",
+      "sector": ""
+    },
+    "240810": {
+      "ticker": "240810",
+      "name": "WONIK IPS",
+      "display_name": "WONIK IPS",
+      "name_ko": "원익IPS",
+      "sector": ""
+    },
+    "004020": {
+      "ticker": "004020",
+      "name": "HYUNDAI STEEL",
+      "display_name": "HYUNDAI STEEL",
+      "name_ko": "현대제철",
+      "sector": ""
+    },
+    "450080": {
+      "ticker": "450080",
+      "name": "ECOPRO MAT",
+      "display_name": "ECOPRO MAT",
+      "name_ko": "에코프로머티",
+      "sector": ""
+    },
+    "088980": {
+      "ticker": "088980",
+      "name": "MKIF",
+      "display_name": "MKIF",
+      "name_ko": "맥쿼리인프라",
+      "sector": ""
+    },
+    "214370": {
+      "ticker": "214370",
+      "name": "Caregen",
+      "display_name": "Caregen",
+      "name_ko": "케어젠",
+      "sector": ""
+    },
+    "036930": {
+      "ticker": "036930",
+      "name": "JEL",
+      "display_name": "JEL",
+      "name_ko": "주성엔지니어링",
+      "sector": ""
+    },
+    "271560": {
+      "ticker": "271560",
+      "name": "ORION",
+      "display_name": "ORION",
+      "name_ko": "오리온",
+      "sector": ""
+    },
+    "002380": {
+      "ticker": "002380",
+      "name": "KCC",
+      "display_name": "KCC",
+      "name_ko": "KCC",
+      "sector": ""
+    },
+    "353200": {
+      "ticker": "353200",
+      "name": "DaeduckElectronics",
+      "display_name": "DaeduckElectronics",
+      "name_ko": "대덕전자",
+      "sector": ""
+    },
+    "022100": {
+      "ticker": "022100",
+      "name": "POSCO DX",
+      "display_name": "POSCO DX",
+      "name_ko": "포스코DX",
       "sector": ""
     },
     "103590": {
@@ -1849,11 +806,207 @@
       "name_ko": "일진전기",
       "sector": ""
     },
+    "095340": {
+      "ticker": "095340",
+      "name": "ISC",
+      "display_name": "ISC",
+      "name_ko": "ISC",
+      "sector": ""
+    },
+    "018880": {
+      "ticker": "018880",
+      "name": "Hanon Systems",
+      "display_name": "Hanon Systems",
+      "name_ko": "한온시스템",
+      "sector": ""
+    },
+    "011790": {
+      "ticker": "011790",
+      "name": "SKC",
+      "display_name": "SKC",
+      "name_ko": "SKC",
+      "sector": ""
+    },
+    "088350": {
+      "ticker": "088350",
+      "name": "HANWHA LIFE",
+      "display_name": "HANWHA LIFE",
+      "name_ko": "한화생명",
+      "sector": ""
+    },
+    "403870": {
+      "ticker": "403870",
+      "name": "HPSP",
+      "display_name": "HPSP",
+      "name_ko": "HPSP",
+      "sector": ""
+    },
+    "251270": {
+      "ticker": "251270",
+      "name": "Netmarble",
+      "display_name": "Netmarble",
+      "name_ko": "넷마블",
+      "sector": ""
+    },
+    "489790": {
+      "ticker": "489790",
+      "name": "Hanwha Vision",
+      "display_name": "Hanwha Vision",
+      "name_ko": "한화비전",
+      "sector": ""
+    },
+    "011170": {
+      "ticker": "011170",
+      "name": "LOTTE CHEMICAL Corp",
+      "display_name": "LOTTE CHEMICAL Corp",
+      "name_ko": "롯데케미칼",
+      "sector": ""
+    },
+    "032820": {
+      "ticker": "032820",
+      "name": "WooriTG, Inc.",
+      "display_name": "WooriTG, Inc.",
+      "name_ko": "우리기술",
+      "sector": ""
+    },
+    "108490": {
+      "ticker": "108490",
+      "name": "ROBOTIS",
+      "display_name": "ROBOTIS",
+      "name_ko": "로보티즈",
+      "sector": ""
+    },
+    "017800": {
+      "ticker": "017800",
+      "name": "Hyundai Elevator",
+      "display_name": "Hyundai Elevator",
+      "name_ko": "현대엘리베이터",
+      "sector": ""
+    },
+    "051900": {
+      "ticker": "051900",
+      "name": "LG H&H",
+      "display_name": "LG H&H",
+      "name_ko": "LG생활건강",
+      "sector": ""
+    },
+    "111770": {
+      "ticker": "111770",
+      "name": "Youngone Corp",
+      "display_name": "Youngone Corp",
+      "name_ko": "영원무역",
+      "sector": ""
+    },
+    "439260": {
+      "ticker": "439260",
+      "name": "DAEHAN SHIPBUILDING",
+      "display_name": "DAEHAN SHIPBUILDING",
+      "name_ko": "대한조선",
+      "sector": ""
+    },
+    "457190": {
+      "ticker": "457190",
+      "name": "ISUSPECIALTYCHEMICAL",
+      "display_name": "ISUSPECIALTYCHEMICAL",
+      "name_ko": "이수스페셜티케미컬",
+      "sector": ""
+    },
+    "035250": {
+      "ticker": "035250",
+      "name": "Kangwonland",
+      "display_name": "Kangwonland",
+      "name_ko": "강원랜드",
+      "sector": ""
+    },
+    "357780": {
+      "ticker": "357780",
+      "name": "Soulbrain",
+      "display_name": "Soulbrain",
+      "name_ko": "솔브레인",
+      "sector": ""
+    },
+    "097950": {
+      "ticker": "097950",
+      "name": "CJ CheilJedang",
+      "display_name": "CJ CheilJedang",
+      "name_ko": "CJ제일제당",
+      "sector": ""
+    },
+    "263750": {
+      "ticker": "263750",
+      "name": "PearlAbyss",
+      "display_name": "PearlAbyss",
+      "name_ko": "펄어비스",
+      "sector": ""
+    },
+    "006360": {
+      "ticker": "006360",
+      "name": "GS E&C",
+      "display_name": "GS E&C",
+      "name_ko": "GS건설",
+      "sector": ""
+    },
     "226950": {
       "ticker": "226950",
       "name": "OliX",
       "display_name": "OliX",
       "name_ko": "올릭스",
+      "sector": ""
+    },
+    "004170": {
+      "ticker": "004170",
+      "name": "Shinsegae",
+      "display_name": "Shinsegae",
+      "name_ko": "신세계",
+      "sector": ""
+    },
+    "012510": {
+      "ticker": "012510",
+      "name": "DOUZONE BIZON",
+      "display_name": "DOUZONE BIZON",
+      "name_ko": "더존비즈온",
+      "sector": ""
+    },
+    "347850": {
+      "ticker": "347850",
+      "name": "D&D Pharmatech",
+      "display_name": "D&D Pharmatech",
+      "name_ko": "디앤디파마텍",
+      "sector": ""
+    },
+    "302440": {
+      "ticker": "302440",
+      "name": "SKBS",
+      "display_name": "SKBS",
+      "name_ko": "SK바이오사이언스",
+      "sector": ""
+    },
+    "036460": {
+      "ticker": "036460",
+      "name": "Kogas",
+      "display_name": "Kogas",
+      "name_ko": "한국가스공사",
+      "sector": ""
+    },
+    "000500": {
+      "ticker": "000500",
+      "name": "GAONCABLE",
+      "display_name": "GAONCABLE",
+      "name_ko": "가온전선",
+      "sector": ""
+    },
+    "440110": {
+      "ticker": "440110",
+      "name": "FADU",
+      "display_name": "FADU",
+      "name_ko": "파두",
+      "sector": ""
+    },
+    "011780": {
+      "ticker": "011780",
+      "name": "KumhoPetrochem",
+      "display_name": "KumhoPetrochem",
+      "name_ko": "금호석유화학",
       "sector": ""
     },
     "031210": {
@@ -1870,508 +1023,18 @@
       "name_ko": "에스원",
       "sector": ""
     },
-    "043260": {
-      "ticker": "043260",
-      "name": "SUNGHO",
-      "display_name": "SUNGHO",
-      "name_ko": "성호전자",
-      "sector": ""
-    },
-    "112610": {
-      "ticker": "112610",
-      "name": "CSWIND",
-      "display_name": "CSWIND",
-      "name_ko": "씨에스윈드",
-      "sector": ""
-    },
-    "084370": {
-      "ticker": "084370",
-      "name": "Eugenetech",
-      "display_name": "Eugenetech",
-      "name_ko": "유진테크",
-      "sector": ""
-    },
-    "103140": {
-      "ticker": "103140",
-      "name": "POONGSAN",
-      "display_name": "POONGSAN",
-      "name_ko": "풍산",
-      "sector": ""
-    },
-    "026960": {
-      "ticker": "026960",
-      "name": "DONGSUH",
-      "display_name": "DONGSUH",
-      "name_ko": "동서",
-      "sector": ""
-    },
-    "139130": {
-      "ticker": "139130",
-      "name": "iM Financial Group",
-      "display_name": "iM Financial Group",
-      "name_ko": "iM금융지주",
-      "sector": ""
-    },
-    "001450": {
-      "ticker": "001450",
-      "name": "Hyundai M&F INS",
-      "display_name": "Hyundai M&F INS",
-      "name_ko": "현대해상",
-      "sector": ""
-    },
-    "178320": {
-      "ticker": "178320",
-      "name": "SEOJIN SYSTEM",
-      "display_name": "SEOJIN SYSTEM",
-      "name_ko": "서진시스템",
-      "sector": ""
-    },
-    "030530": {
-      "ticker": "030530",
-      "name": "WONIK HOLDINGS",
-      "display_name": "WONIK HOLDINGS",
-      "name_ko": "원익홀딩스",
-      "sector": ""
-    },
-    "031980": {
-      "ticker": "031980",
-      "name": "PSK HOLDINGS",
-      "display_name": "PSK HOLDINGS",
-      "name_ko": "피에스케이홀딩스",
-      "sector": ""
-    },
-    "001120": {
-      "ticker": "001120",
-      "name": "LX INT",
-      "display_name": "LX INT",
-      "name_ko": "LX인터내셔널",
-      "sector": ""
-    },
-    "041510": {
-      "ticker": "041510",
-      "name": "SME",
-      "display_name": "SME",
-      "name_ko": "에스엠",
-      "sector": ""
-    },
-    "395400": {
-      "ticker": "395400",
-      "name": "SK REIT",
-      "display_name": "SK REIT",
-      "name_ko": "SK리츠",
-      "sector": ""
-    },
-    "067310": {
-      "ticker": "067310",
-      "name": "Hana Micron",
-      "display_name": "Hana Micron",
-      "name_ko": "하나마이크론",
-      "sector": ""
-    },
-    "100090": {
-      "ticker": "100090",
-      "name": "SKoceanplant",
-      "display_name": "SKoceanplant",
-      "name_ko": "SK오션플랜트",
-      "sector": ""
-    },
-    "462870": {
-      "ticker": "462870",
-      "name": "SHIFT UP",
-      "display_name": "SHIFT UP",
-      "name_ko": "시프트업",
-      "sector": ""
-    },
-    "023590": {
-      "ticker": "023590",
-      "name": "DaouTech",
-      "display_name": "DaouTech",
-      "name_ko": "다우기술",
-      "sector": ""
-    },
-    "078600": {
-      "ticker": "078600",
-      "name": "DAEJOO",
-      "display_name": "DAEJOO",
-      "name_ko": "대주전자재료",
-      "sector": ""
-    },
-    "039200": {
-      "ticker": "039200",
-      "name": "OCT Inc.",
-      "display_name": "OCT Inc.",
-      "name_ko": "오스코텍",
-      "sector": ""
-    },
-    "222800": {
-      "ticker": "222800",
-      "name": "SIMMTECH",
-      "display_name": "SIMMTECH",
-      "name_ko": "심텍",
-      "sector": ""
-    },
-    "082920": {
-      "ticker": "082920",
-      "name": "VITCELL",
-      "display_name": "VITCELL",
-      "name_ko": "비츠로셀",
-      "sector": ""
-    },
-    "003540": {
-      "ticker": "003540",
-      "name": "DaishinSecu",
-      "display_name": "DaishinSecu",
-      "name_ko": "대신증권",
-      "sector": ""
-    },
-    "099320": {
-      "ticker": "099320",
-      "name": "SI",
-      "display_name": "SI",
-      "name_ko": "쎄트렉아이",
-      "sector": ""
-    },
-    "131970": {
-      "ticker": "131970",
-      "name": "DOOSAN TESNA",
-      "display_name": "DOOSAN TESNA",
-      "name_ko": "두산테스나",
-      "sector": ""
-    },
-    "483650": {
-      "ticker": "483650",
-      "name": "d'Alba Global",
-      "display_name": "d'Alba Global",
-      "name_ko": "달바글로벌",
-      "sector": ""
-    },
-    "012630": {
-      "ticker": "012630",
-      "name": "HDC HOLDINGS",
-      "display_name": "HDC HOLDINGS",
-      "name_ko": "HDC",
-      "sector": ""
-    },
-    "323280": {
-      "ticker": "323280",
-      "name": "TAESUNG",
-      "display_name": "TAESUNG",
-      "name_ko": "태성",
-      "sector": ""
-    },
-    "060370": {
-      "ticker": "060370",
-      "name": "LS Marine Solution",
-      "display_name": "LS Marine Solution",
-      "name_ko": "LS마린솔루션",
-      "sector": ""
-    },
-    "085660": {
-      "ticker": "085660",
-      "name": "CHA Biotech",
-      "display_name": "CHA Biotech",
-      "name_ko": "차바이오텍",
-      "sector": ""
-    },
-    "038500": {
-      "ticker": "038500",
-      "name": "SAMPYO Cement",
-      "display_name": "SAMPYO Cement",
-      "name_ko": "삼표시멘트",
-      "sector": ""
-    },
-    "377300": {
-      "ticker": "377300",
-      "name": "kakaopay",
-      "display_name": "kakaopay",
-      "name_ko": "카카오페이",
-      "sector": ""
-    },
-    "032640": {
-      "ticker": "032640",
-      "name": "LG Uplus",
-      "display_name": "LG Uplus",
-      "name_ko": "LG유플러스",
-      "sector": ""
-    },
-    "161390": {
-      "ticker": "161390",
-      "name": "HANKOOK TIRE & TECHNOLOGY",
-      "display_name": "HANKOOK TIRE & TECHNOLOGY",
-      "name_ko": "한국타이어앤테크놀로지",
-      "sector": ""
-    },
-    "066970": {
-      "ticker": "066970",
-      "name": "L&F",
-      "display_name": "L&F",
-      "name_ko": "엘앤에프",
-      "sector": ""
-    },
-    "128940": {
-      "ticker": "128940",
-      "name": "HanmiPharm",
-      "display_name": "HanmiPharm",
-      "name_ko": "한미약품",
-      "sector": ""
-    },
-    "052690": {
-      "ticker": "052690",
-      "name": "KEPCO E&C",
-      "display_name": "KEPCO E&C",
-      "name_ko": "한전기술",
-      "sector": ""
-    },
-    "087010": {
-      "ticker": "087010",
-      "name": "PEPTRON",
-      "display_name": "PEPTRON",
-      "name_ko": "펩트론",
-      "sector": ""
-    },
-    "029780": {
-      "ticker": "029780",
-      "name": "SAMSUNG CARD",
-      "display_name": "SAMSUNG CARD",
-      "name_ko": "삼성카드",
-      "sector": ""
-    },
-    "078930": {
-      "ticker": "078930",
-      "name": "GS",
-      "display_name": "GS",
-      "name_ko": "GS",
-      "sector": ""
-    },
-    "141080": {
-      "ticker": "141080",
-      "name": "LCB",
-      "display_name": "LCB",
-      "name_ko": "리가켐바이오",
-      "sector": ""
-    },
-    "051900": {
-      "ticker": "051900",
-      "name": "LG H&H",
-      "display_name": "LG H&H",
-      "name_ko": "LG생활건강",
-      "sector": ""
-    },
-    "353200": {
-      "ticker": "353200",
-      "name": "DaeduckElectronics",
-      "display_name": "DaeduckElectronics",
-      "name_ko": "대덕전자",
-      "sector": ""
-    },
-    "082740": {
-      "ticker": "082740",
-      "name": "Hanwha Engine",
-      "display_name": "Hanwha Engine",
-      "name_ko": "한화엔진",
-      "sector": ""
-    },
-    "489790": {
-      "ticker": "489790",
-      "name": "Hanwha Vision",
-      "display_name": "Hanwha Vision",
-      "name_ko": "한화비전",
-      "sector": ""
-    },
-    "140410": {
-      "ticker": "140410",
-      "name": "Mezzion Pharma",
-      "display_name": "Mezzion Pharma",
-      "name_ko": "메지온",
-      "sector": ""
-    },
-    "051600": {
-      "ticker": "051600",
-      "name": "KEPCO KPS",
-      "display_name": "KEPCO KPS",
-      "name_ko": "한전KPS",
-      "sector": ""
-    },
-    "008930": {
-      "ticker": "008930",
-      "name": "Hanmi Science",
-      "display_name": "Hanmi Science",
-      "name_ko": "한미사이언스",
-      "sector": ""
-    },
-    "005850": {
-      "ticker": "005850",
-      "name": "SLCORP",
-      "display_name": "SLCORP",
-      "name_ko": "에스엘",
-      "sector": ""
-    },
-    "439260": {
-      "ticker": "439260",
-      "name": "DAEHAN SHIPBUILDING",
-      "display_name": "DAEHAN SHIPBUILDING",
-      "name_ko": "대한조선",
-      "sector": ""
-    },
-    "440110": {
-      "ticker": "440110",
-      "name": "FADU",
-      "display_name": "FADU",
-      "name_ko": "파두",
-      "sector": ""
-    },
-    "139480": {
-      "ticker": "139480",
-      "name": "emart",
-      "display_name": "emart",
-      "name_ko": "이마트",
-      "sector": ""
-    },
-    "279570": {
-      "ticker": "279570",
-      "name": "Kbank",
-      "display_name": "Kbank",
-      "name_ko": "케이뱅크",
-      "sector": ""
-    },
-    "071970": {
-      "ticker": "071970",
-      "name": "HD-Hyundai Marine Engine",
-      "display_name": "HD-Hyundai Marine Engine",
-      "name_ko": "HD현대마린엔진",
-      "sector": ""
-    },
-    "018670": {
-      "ticker": "018670",
-      "name": "SKGas",
-      "display_name": "SKGas",
-      "name_ko": "SK가스",
-      "sector": ""
-    },
-    "068760": {
-      "ticker": "068760",
-      "name": "Celltrionph",
-      "display_name": "Celltrionph",
-      "name_ko": "셀트리온제약",
-      "sector": ""
-    },
-    "476830": {
-      "ticker": "476830",
-      "name": "Rznomics",
-      "display_name": "Rznomics",
-      "name_ko": "알지노믹스",
-      "sector": ""
-    },
-    "003690": {
-      "ticker": "003690",
-      "name": "Korean Re",
-      "display_name": "Korean Re",
-      "name_ko": "코리안리",
-      "sector": ""
-    },
-    "218410": {
-      "ticker": "218410",
-      "name": "RFHIC",
-      "display_name": "RFHIC",
-      "name_ko": "RFHIC",
-      "sector": ""
-    },
-    "011210": {
-      "ticker": "011210",
-      "name": "HYUNDAI WIA",
-      "display_name": "HYUNDAI WIA",
-      "name_ko": "현대위아",
-      "sector": ""
-    },
-    "058610": {
-      "ticker": "058610",
-      "name": "SPG",
-      "display_name": "SPG",
-      "name_ko": "에스피지",
-      "sector": ""
-    },
-    "065350": {
-      "ticker": "065350",
-      "name": "SSDELTATECH",
-      "display_name": "SSDELTATECH",
-      "name_ko": "신성델타테크",
-      "sector": ""
-    },
-    "003380": {
-      "ticker": "003380",
-      "name": "Harim Holdings",
-      "display_name": "Harim Holdings",
-      "name_ko": "하림지주",
-      "sector": ""
-    },
-    "086450": {
-      "ticker": "086450",
-      "name": "DongKook Pharm",
-      "display_name": "DongKook Pharm",
-      "name_ko": "동국제약",
-      "sector": ""
-    },
-    "077970": {
-      "ticker": "077970",
-      "name": "STXEngine",
-      "display_name": "STXEngine",
-      "name_ko": "STX엔진",
-      "sector": ""
-    },
-    "000210": {
-      "ticker": "000210",
-      "name": "DL",
-      "display_name": "DL",
-      "name_ko": "DL",
-      "sector": ""
-    },
-    "281740": {
-      "ticker": "281740",
-      "name": "LAKE",
-      "display_name": "LAKE",
-      "name_ko": "레이크머티리얼즈",
-      "sector": ""
-    },
-    "004000": {
-      "ticker": "004000",
-      "name": "LOTTE Fine Chem",
-      "display_name": "LOTTE Fine Chem",
-      "name_ko": "롯데정밀화학",
-      "sector": ""
-    },
-    "002790": {
-      "ticker": "002790",
-      "name": "AMOREPACIFIC Holdings",
-      "display_name": "AMOREPACIFIC Holdings",
-      "name_ko": "아모레퍼시픽홀딩스",
-      "sector": ""
-    },
-    "100790": {
-      "ticker": "100790",
-      "name": "Mirae Asset Venture",
-      "display_name": "Mirae Asset Venture",
-      "name_ko": "미래에셋벤처투자",
-      "sector": ""
-    },
-    "005440": {
-      "ticker": "005440",
-      "name": "HYUNDAI G.F. HOLDINGS",
-      "display_name": "HYUNDAI G.F. HOLDINGS",
-      "name_ko": "현대지에프홀딩스",
-      "sector": ""
-    },
-    "009420": {
-      "ticker": "009420",
-      "name": "HANALL BIOPHARMA",
-      "display_name": "HANALL BIOPHARMA",
-      "name_ko": "한올바이오파마",
-      "sector": ""
-    },
-    "336260": {
-      "ticker": "336260",
-      "name": "Doosanfc",
-      "display_name": "Doosanfc",
-      "name_ko": "두산퓨얼셀",
+    "001720": {
+      "ticker": "001720",
+      "name": "ShinyoungSecu",
+      "display_name": "ShinyoungSecu",
+      "name_ko": "신영증권",
+      "sector": ""
+    },
+    "020150": {
+      "ticker": "020150",
+      "name": "LOTTE ENERGY MATERIALS Corp",
+      "display_name": "LOTTE ENERGY MATERIALS Corp",
+      "name_ko": "롯데에너지머티리얼즈",
       "sector": ""
     },
     "064760": {
@@ -2381,11 +1044,312 @@
       "name_ko": "티씨케이",
       "sector": ""
     },
-    "000120": {
-      "ticker": "000120",
-      "name": "CJ LOGISTICS",
-      "display_name": "CJ LOGISTICS",
-      "name_ko": "CJ대한통운",
+    "178320": {
+      "ticker": "178320",
+      "name": "SEOJIN SYSTEM",
+      "display_name": "SEOJIN SYSTEM",
+      "name_ko": "서진시스템",
+      "sector": ""
+    },
+    "319400": {
+      "ticker": "319400",
+      "name": "HYUNDAI MOVEX",
+      "display_name": "HYUNDAI MOVEX",
+      "name_ko": "현대무벡스",
+      "sector": ""
+    },
+    "014680": {
+      "ticker": "014680",
+      "name": "Hanchem",
+      "display_name": "Hanchem",
+      "name_ko": "한솔케미칼",
+      "sector": ""
+    },
+    "071970": {
+      "ticker": "071970",
+      "name": "HD-Hyundai Marine Engine",
+      "display_name": "HD-Hyundai Marine Engine",
+      "name_ko": "HD현대마린엔진",
+      "sector": ""
+    },
+    "214450": {
+      "ticker": "214450",
+      "name": "PharmaResearch",
+      "display_name": "PharmaResearch",
+      "name_ko": "파마리서치",
+      "sector": ""
+    },
+    "145020": {
+      "ticker": "145020",
+      "name": "Hugel",
+      "display_name": "Hugel",
+      "name_ko": "휴젤",
+      "sector": ""
+    },
+    "043260": {
+      "ticker": "043260",
+      "name": "SUNGHO",
+      "display_name": "SUNGHO",
+      "name_ko": "성호전자",
+      "sector": ""
+    },
+    "222800": {
+      "ticker": "222800",
+      "name": "SIMMTECH",
+      "display_name": "SIMMTECH",
+      "name_ko": "심텍",
+      "sector": ""
+    },
+    "083650": {
+      "ticker": "083650",
+      "name": "BHI",
+      "display_name": "BHI",
+      "name_ko": "비에이치아이",
+      "sector": ""
+    },
+    "100790": {
+      "ticker": "100790",
+      "name": "Mirae Asset Venture",
+      "display_name": "Mirae Asset Venture",
+      "name_ko": "미래에셋벤처투자",
+      "sector": ""
+    },
+    "336260": {
+      "ticker": "336260",
+      "name": "Doosanfc",
+      "display_name": "Doosanfc",
+      "name_ko": "두산퓨얼셀",
+      "sector": ""
+    },
+    "005290": {
+      "ticker": "005290",
+      "name": "DONGJIN",
+      "display_name": "DONGJIN",
+      "name_ko": "동진쎄미켐",
+      "sector": ""
+    },
+    "237690": {
+      "ticker": "237690",
+      "name": "ST Pharm",
+      "display_name": "ST Pharm",
+      "name_ko": "에스티팜",
+      "sector": ""
+    },
+    "139130": {
+      "ticker": "139130",
+      "name": "iM Financial Group",
+      "display_name": "iM Financial Group",
+      "name_ko": "iM금융지주",
+      "sector": ""
+    },
+    "084370": {
+      "ticker": "084370",
+      "name": "Eugenetech",
+      "display_name": "Eugenetech",
+      "name_ko": "유진테크",
+      "sector": ""
+    },
+    "0009K0": {
+      "ticker": "0009K0",
+      "name": "Aimed Bio",
+      "display_name": "Aimed Bio",
+      "name_ko": "에임드바이오",
+      "sector": ""
+    },
+    "028670": {
+      "ticker": "028670",
+      "name": "PanOcean",
+      "display_name": "PanOcean",
+      "name_ko": "팬오션",
+      "sector": ""
+    },
+    "085620": {
+      "ticker": "085620",
+      "name": "MIRAE ASSET LIFE",
+      "display_name": "MIRAE ASSET LIFE",
+      "name_ko": "미래에셋생명",
+      "sector": ""
+    },
+    "097230": {
+      "ticker": "097230",
+      "name": "HJSC",
+      "display_name": "HJSC",
+      "name_ko": "HJ중공업",
+      "sector": ""
+    },
+    "009970": {
+      "ticker": "009970",
+      "name": "YoungoneHoldings",
+      "display_name": "YoungoneHoldings",
+      "name_ko": "영원무역홀딩스",
+      "sector": ""
+    },
+    "257720": {
+      "ticker": "257720",
+      "name": "Silicon2",
+      "display_name": "Silicon2",
+      "name_ko": "실리콘투",
+      "sector": ""
+    },
+    "112610": {
+      "ticker": "112610",
+      "name": "CSWIND",
+      "display_name": "CSWIND",
+      "name_ko": "씨에스윈드",
+      "sector": ""
+    },
+    "139480": {
+      "ticker": "139480",
+      "name": "emart",
+      "display_name": "emart",
+      "name_ko": "이마트",
+      "sector": ""
+    },
+    "005850": {
+      "ticker": "005850",
+      "name": "SLCORP",
+      "display_name": "SLCORP",
+      "name_ko": "에스엘",
+      "sector": ""
+    },
+    "483650": {
+      "ticker": "483650",
+      "name": "d'Alba Global",
+      "display_name": "d'Alba Global",
+      "name_ko": "달바글로벌",
+      "sector": ""
+    },
+    "004990": {
+      "ticker": "004990",
+      "name": "LOTTE",
+      "display_name": "LOTTE",
+      "name_ko": "롯데지주",
+      "sector": ""
+    },
+    "051600": {
+      "ticker": "051600",
+      "name": "KEPCO KPS",
+      "display_name": "KEPCO KPS",
+      "name_ko": "한전KPS",
+      "sector": ""
+    },
+    "103140": {
+      "ticker": "103140",
+      "name": "POONGSAN",
+      "display_name": "POONGSAN",
+      "name_ko": "풍산",
+      "sector": ""
+    },
+    "017960": {
+      "ticker": "017960",
+      "name": "HankukCarbon",
+      "display_name": "HankukCarbon",
+      "name_ko": "한국카본",
+      "sector": ""
+    },
+    "120110": {
+      "ticker": "120110",
+      "name": "KOLON IND",
+      "display_name": "KOLON IND",
+      "name_ko": "코오롱인더",
+      "sector": ""
+    },
+    "026960": {
+      "ticker": "026960",
+      "name": "DONGSUH",
+      "display_name": "DONGSUH",
+      "name_ko": "동서",
+      "sector": ""
+    },
+    "009420": {
+      "ticker": "009420",
+      "name": "HANALL BIOPHARMA",
+      "display_name": "HANALL BIOPHARMA",
+      "name_ko": "한올바이오파마",
+      "sector": ""
+    },
+    "001450": {
+      "ticker": "001450",
+      "name": "Hyundai M&F INS",
+      "display_name": "Hyundai M&F INS",
+      "name_ko": "현대해상",
+      "sector": ""
+    },
+    "279570": {
+      "ticker": "279570",
+      "name": "Kbank",
+      "display_name": "Kbank",
+      "name_ko": "케이뱅크",
+      "sector": ""
+    },
+    "383220": {
+      "ticker": "383220",
+      "name": "F&F",
+      "display_name": "F&F",
+      "name_ko": "F&F",
+      "sector": ""
+    },
+    "476830": {
+      "ticker": "476830",
+      "name": "Rznomics",
+      "display_name": "Rznomics",
+      "name_ko": "알지노믹스",
+      "sector": ""
+    },
+    "067310": {
+      "ticker": "067310",
+      "name": "Hana Micron",
+      "display_name": "Hana Micron",
+      "name_ko": "하나마이크론",
+      "sector": ""
+    },
+    "008930": {
+      "ticker": "008930",
+      "name": "Hanmi Science",
+      "display_name": "Hanmi Science",
+      "name_ko": "한미사이언스",
+      "sector": ""
+    },
+    "218410": {
+      "ticker": "218410",
+      "name": "RFHIC",
+      "display_name": "RFHIC",
+      "name_ko": "RFHIC",
+      "sector": ""
+    },
+    "058610": {
+      "ticker": "058610",
+      "name": "SPG",
+      "display_name": "SPG",
+      "name_ko": "에스피지",
+      "sector": ""
+    },
+    "319660": {
+      "ticker": "319660",
+      "name": "PSK",
+      "display_name": "PSK",
+      "name_ko": "피에스케이",
+      "sector": ""
+    },
+    "068760": {
+      "ticker": "068760",
+      "name": "Celltrionph",
+      "display_name": "Celltrionph",
+      "name_ko": "셀트리온제약",
+      "sector": ""
+    },
+    "204320": {
+      "ticker": "204320",
+      "name": "HL MANDO",
+      "display_name": "HL MANDO",
+      "name_ko": "HL만도",
+      "sector": ""
+    },
+    "192820": {
+      "ticker": "192820",
+      "name": "COSMAX",
+      "display_name": "COSMAX",
+      "name_ko": "코스맥스",
       "sector": ""
     },
     "001430": {
@@ -2395,39 +1359,312 @@
       "name_ko": "세아베스틸지주",
       "sector": ""
     },
-    "095610": {
-      "ticker": "095610",
-      "name": "TES",
-      "display_name": "TES",
-      "name_ko": "테스",
+    "131970": {
+      "ticker": "131970",
+      "name": "DOOSAN TESNA",
+      "display_name": "DOOSAN TESNA",
+      "name_ko": "두산테스나",
+      "sector": ""
+    },
+    "000240": {
+      "ticker": "000240",
+      "name": "HANKOOK & COMPANY",
+      "display_name": "HANKOOK & COMPANY",
+      "name_ko": "한국앤컴퍼니",
+      "sector": ""
+    },
+    "031980": {
+      "ticker": "031980",
+      "name": "PSK HOLDINGS",
+      "display_name": "PSK HOLDINGS",
+      "name_ko": "피에스케이홀딩스",
+      "sector": ""
+    },
+    "082920": {
+      "ticker": "082920",
+      "name": "VITCELL",
+      "display_name": "VITCELL",
+      "name_ko": "비츠로셀",
+      "sector": ""
+    },
+    "007340": {
+      "ticker": "007340",
+      "name": "DN AUTOMOTIVE",
+      "display_name": "DN AUTOMOTIVE",
+      "name_ko": "DN오토모티브",
+      "sector": ""
+    },
+    "282330": {
+      "ticker": "282330",
+      "name": "BGF Retail",
+      "display_name": "BGF Retail",
+      "name_ko": "BGF리테일",
+      "sector": ""
+    },
+    "011210": {
+      "ticker": "011210",
+      "name": "HYUNDAI WIA",
+      "display_name": "HYUNDAI WIA",
+      "name_ko": "현대위아",
+      "sector": ""
+    },
+    "018670": {
+      "ticker": "018670",
+      "name": "SKGas",
+      "display_name": "SKGas",
+      "name_ko": "SK가스",
+      "sector": ""
+    },
+    "030000": {
+      "ticker": "030000",
+      "name": "CheilWorldwide",
+      "display_name": "CheilWorldwide",
+      "name_ko": "제일기획",
+      "sector": ""
+    },
+    "005440": {
+      "ticker": "005440",
+      "name": "HYUNDAI G.F. HOLDINGS",
+      "display_name": "HYUNDAI G.F. HOLDINGS",
+      "name_ko": "현대지에프홀딩스",
+      "sector": ""
+    },
+    "004370": {
+      "ticker": "004370",
+      "name": "Nongshim",
+      "display_name": "Nongshim",
+      "name_ko": "농심",
+      "sector": ""
+    },
+    "030530": {
+      "ticker": "030530",
+      "name": "WONIK HOLDINGS",
+      "display_name": "WONIK HOLDINGS",
+      "name_ko": "원익홀딩스",
+      "sector": ""
+    },
+    "323280": {
+      "ticker": "323280",
+      "name": "TAESUNG",
+      "display_name": "TAESUNG",
+      "name_ko": "태성",
+      "sector": ""
+    },
+    "035900": {
+      "ticker": "035900",
+      "name": "JYP Ent.",
+      "display_name": "JYP Ent.",
+      "name_ko": "JYP Ent.",
+      "sector": ""
+    },
+    "098460": {
+      "ticker": "098460",
+      "name": "Koh Young",
+      "display_name": "Koh Young",
+      "name_ko": "고영",
+      "sector": ""
+    },
+    "010170": {
+      "ticker": "010170",
+      "name": "TaihanFiberoptics",
+      "display_name": "TaihanFiberoptics",
+      "name_ko": "대한광통신",
+      "sector": ""
+    },
+    "298020": {
+      "ticker": "298020",
+      "name": "HYOSUNG TNC",
+      "display_name": "HYOSUNG TNC",
+      "name_ko": "효성티앤씨",
+      "sector": ""
+    },
+    "008770": {
+      "ticker": "008770",
+      "name": "HtlShilla",
+      "display_name": "HtlShilla",
+      "name_ko": "호텔신라",
+      "sector": ""
+    },
+    "081660": {
+      "ticker": "081660",
+      "name": "Misto Holdings",
+      "display_name": "Misto Holdings",
+      "name_ko": "미스토홀딩스",
+      "sector": ""
+    },
+    "361610": {
+      "ticker": "361610",
+      "name": "SK ie technology",
+      "display_name": "SK ie technology",
+      "name_ko": "SK아이이테크놀로지",
+      "sector": ""
+    },
+    "078600": {
+      "ticker": "078600",
+      "name": "DAEJOO",
+      "display_name": "DAEJOO",
+      "name_ko": "대주전자재료",
+      "sector": ""
+    },
+    "101490": {
+      "ticker": "101490",
+      "name": "S&S TECH",
+      "display_name": "S&S TECH",
+      "name_ko": "에스앤에스텍",
+      "sector": ""
+    },
+    "007810": {
+      "ticker": "007810",
+      "name": "KorCirc",
+      "display_name": "KorCirc",
+      "name_ko": "코리아써키트",
+      "sector": ""
+    },
+    "003690": {
+      "ticker": "003690",
+      "name": "Korean Re",
+      "display_name": "Korean Re",
+      "name_ko": "코리안리",
+      "sector": ""
+    },
+    "069960": {
+      "ticker": "069960",
+      "name": "HYUNDAIDEPTST",
+      "display_name": "HYUNDAIDEPTST",
+      "name_ko": "현대백화점",
+      "sector": ""
+    },
+    "041510": {
+      "ticker": "041510",
+      "name": "SME",
+      "display_name": "SME",
+      "name_ko": "에스엠",
+      "sector": ""
+    },
+    "347700": {
+      "ticker": "347700",
+      "name": "Sphere",
+      "display_name": "Sphere",
+      "name_ko": "스피어",
+      "sector": ""
+    },
+    "002790": {
+      "ticker": "002790",
+      "name": "AMOREPACIFIC Holdings",
+      "display_name": "AMOREPACIFIC Holdings",
+      "name_ko": "아모레퍼시픽홀딩스",
+      "sector": ""
+    },
+    "001120": {
+      "ticker": "001120",
+      "name": "LX INT",
+      "display_name": "LX INT",
+      "name_ko": "LX인터내셔널",
+      "sector": ""
+    },
+    "023590": {
+      "ticker": "023590",
+      "name": "DaouTech",
+      "display_name": "DaouTech",
+      "name_ko": "다우기술",
+      "sector": ""
+    },
+    "161890": {
+      "ticker": "161890",
+      "name": "KOLMAR KOREA",
+      "display_name": "KOLMAR KOREA",
+      "name_ko": "한국콜마",
+      "sector": ""
+    },
+    "077970": {
+      "ticker": "077970",
+      "name": "STXEngine",
+      "display_name": "STXEngine",
+      "name_ko": "STX엔진",
+      "sector": ""
+    },
+    "089030": {
+      "ticker": "089030",
+      "name": "Techwing",
+      "display_name": "Techwing",
+      "name_ko": "테크윙",
+      "sector": ""
+    },
+    "005070": {
+      "ticker": "005070",
+      "name": "CosmoAM&T",
+      "display_name": "CosmoAM&T",
+      "name_ko": "코스모신소재",
+      "sector": ""
+    },
+    "140860": {
+      "ticker": "140860",
+      "name": "Park Systems",
+      "display_name": "Park Systems",
+      "name_ko": "파크시스템스",
+      "sector": ""
+    },
+    "007070": {
+      "ticker": "007070",
+      "name": "GS Retail",
+      "display_name": "GS Retail",
+      "name_ko": "GS리테일",
+      "sector": ""
+    },
+    "099320": {
+      "ticker": "099320",
+      "name": "SI",
+      "display_name": "SI",
+      "name_ko": "쎄트렉아이",
+      "sector": ""
+    },
+    "229640": {
+      "ticker": "229640",
+      "name": "LS Eco Energy",
+      "display_name": "LS Eco Energy",
+      "name_ko": "LS에코에너지",
+      "sector": ""
+    },
+    "039200": {
+      "ticker": "039200",
+      "name": "OCT Inc.",
+      "display_name": "OCT Inc.",
+      "name_ko": "오스코텍",
+      "sector": ""
+    },
+    "003540": {
+      "ticker": "003540",
+      "name": "DaishinSecu",
+      "display_name": "DaishinSecu",
+      "name_ko": "대신증권",
+      "sector": ""
+    },
+    "003570": {
+      "ticker": "003570",
+      "name": "SNT DYNAMICS",
+      "display_name": "SNT DYNAMICS",
+      "name_ko": "SNT다이내믹스",
+      "sector": ""
+    },
+    "060370": {
+      "ticker": "060370",
+      "name": "LS Marine Solution",
+      "display_name": "LS Marine Solution",
+      "name_ko": "LS마린솔루션",
+      "sector": ""
+    },
+    "322000": {
+      "ticker": "322000",
+      "name": "HD HYUNDAI ENERGY SOLUTIONS",
+      "display_name": "HD HYUNDAI ENERGY SOLUTIONS",
+      "name_ko": "HD현대에너지솔루션",
       "sector": ""
     },
     "458870": {
       "ticker": "458870",
       "name": "SEERS",
       "display_name": "SEERS",
-      "name_ko": "씨어스테크놀로지",
-      "sector": ""
-    },
-    "183300": {
-      "ticker": "183300",
-      "name": "KoMiCo",
-      "display_name": "KoMiCo",
-      "name_ko": "코미코",
-      "sector": ""
-    },
-    "100840": {
-      "ticker": "100840",
-      "name": "SNTEnergy",
-      "display_name": "SNTEnergy",
-      "name_ko": "SNT에너지",
-      "sector": ""
-    },
-    "456600": {
-      "ticker": "456600",
-      "name": "TIME GLOBAL AI ACTIVE",
-      "display_name": "TIME GLOBAL AI ACTIVE",
-      "name_ko": "TIME 글로벌AI인공지능액티브",
+      "name_ko": "씨어스",
       "sector": ""
     },
     "131290": {
@@ -2437,18 +1674,18 @@
       "name_ko": "티에스이",
       "sector": ""
     },
-    "213420": {
-      "ticker": "213420",
-      "name": "DUK SAN NEOLUX",
-      "display_name": "DUK SAN NEOLUX",
-      "name_ko": "덕산네오룩스",
+    "475150": {
+      "ticker": "475150",
+      "name": "SK eternix",
+      "display_name": "SK eternix",
+      "name_ko": "SK이터닉스",
       "sector": ""
     },
-    "166090": {
-      "ticker": "166090",
-      "name": "Hana Materials",
-      "display_name": "Hana Materials",
-      "name_ko": "하나머티리얼즈",
+    "475830": {
+      "ticker": "475830",
+      "name": "ORUM",
+      "display_name": "ORUM",
+      "name_ko": "오름테라퓨틱",
       "sector": ""
     },
     "027360": {
@@ -2458,11 +1695,256 @@
       "name_ko": "아주IB투자",
       "sector": ""
     },
+    "417200": {
+      "ticker": "417200",
+      "name": "LS Materials",
+      "display_name": "LS Materials",
+      "name_ko": "LS머트리얼즈",
+      "sector": ""
+    },
+    "290650": {
+      "ticker": "290650",
+      "name": "L&C BIO",
+      "display_name": "L&C BIO",
+      "name_ko": "엘앤씨바이오",
+      "sector": ""
+    },
+    "069620": {
+      "ticker": "069620",
+      "name": "DAEWOONG PHARM",
+      "display_name": "DAEWOONG PHARM",
+      "name_ko": "대웅제약",
+      "sector": ""
+    },
+    "095610": {
+      "ticker": "095610",
+      "name": "TES",
+      "display_name": "TES",
+      "name_ko": "테스",
+      "sector": ""
+    },
+    "232140": {
+      "ticker": "232140",
+      "name": "YCC",
+      "display_name": "YCC",
+      "name_ko": "와이씨",
+      "sector": ""
+    },
+    "073240": {
+      "ticker": "073240",
+      "name": "KUMHOTIRE",
+      "display_name": "KUMHOTIRE",
+      "name_ko": "금호타이어",
+      "sector": ""
+    },
+    "038500": {
+      "ticker": "038500",
+      "name": "SAMPYO Cement",
+      "display_name": "SAMPYO Cement",
+      "name_ko": "삼표시멘트",
+      "sector": ""
+    },
+    "006040": {
+      "ticker": "006040",
+      "name": "DongwonInd",
+      "display_name": "DongwonInd",
+      "name_ko": "동원산업",
+      "sector": ""
+    },
+    "006280": {
+      "ticker": "006280",
+      "name": "GC Biopharma Corp.",
+      "display_name": "GC Biopharma Corp.",
+      "name_ko": "녹십자",
+      "sector": ""
+    },
+    "437730": {
+      "ticker": "437730",
+      "name": "SAMHYUN",
+      "display_name": "SAMHYUN",
+      "name_ko": "삼현",
+      "sector": ""
+    },
+    "065350": {
+      "ticker": "065350",
+      "name": "SSDELTATECH",
+      "display_name": "SSDELTATECH",
+      "name_ko": "신성델타테크",
+      "sector": ""
+    },
+    "003530": {
+      "ticker": "003530",
+      "name": "H.I.S.C",
+      "display_name": "H.I.S.C",
+      "name_ko": "한화투자증권",
+      "sector": ""
+    },
+    "085660": {
+      "ticker": "085660",
+      "name": "CHA Biotech",
+      "display_name": "CHA Biotech",
+      "name_ko": "차바이오텍",
+      "sector": ""
+    },
+    "456600": {
+      "ticker": "456600",
+      "name": "TIME GLOBAL AI ACTIVE",
+      "display_name": "TIME GLOBAL AI ACTIVE",
+      "name_ko": "TIME 글로벌AI인공지능액티브",
+      "sector": ""
+    },
+    "030610": {
+      "ticker": "030610",
+      "name": "KYOBOSECURITIES",
+      "display_name": "KYOBOSECURITIES",
+      "name_ko": "교보증권",
+      "sector": ""
+    },
+    "294870": {
+      "ticker": "294870",
+      "name": "IPARK-DVP",
+      "display_name": "IPARK-DVP",
+      "name_ko": "IPARK현대산업개발",
+      "sector": ""
+    },
+    "445680": {
+      "ticker": "445680",
+      "name": "Curiox Biosystems",
+      "display_name": "Curiox Biosystems",
+      "name_ko": "큐리옥스바이오시스템즈",
+      "sector": ""
+    },
+    "080220": {
+      "ticker": "080220",
+      "name": "JSC",
+      "display_name": "JSC",
+      "name_ko": "제주반도체",
+      "sector": ""
+    },
+    "281740": {
+      "ticker": "281740",
+      "name": "LAKE",
+      "display_name": "LAKE",
+      "name_ko": "레이크머티리얼즈",
+      "sector": ""
+    },
+    "183300": {
+      "ticker": "183300",
+      "name": "KoMiCo",
+      "display_name": "KoMiCo",
+      "name_ko": "코미코",
+      "sector": ""
+    },
+    "001800": {
+      "ticker": "001800",
+      "name": "ORION Holdings",
+      "display_name": "ORION Holdings",
+      "name_ko": "오리온홀딩스",
+      "sector": ""
+    },
+    "032350": {
+      "ticker": "032350",
+      "name": "LOTTE TOUR",
+      "display_name": "LOTTE TOUR",
+      "name_ko": "롯데관광개발",
+      "sector": ""
+    },
+    "127120": {
+      "ticker": "127120",
+      "name": "JS Link",
+      "display_name": "JS Link",
+      "name_ko": "제이에스링크",
+      "sector": ""
+    },
+    "491000": {
+      "ticker": "491000",
+      "name": "LivsMed",
+      "display_name": "LivsMed",
+      "name_ko": "리브스메드",
+      "sector": ""
+    },
+    "003380": {
+      "ticker": "003380",
+      "name": "Harim Holdings",
+      "display_name": "Harim Holdings",
+      "name_ko": "하림지주",
+      "sector": ""
+    },
+    "012630": {
+      "ticker": "012630",
+      "name": "HDC HOLDINGS",
+      "display_name": "HDC HOLDINGS",
+      "name_ko": "HDC",
+      "sector": ""
+    },
+    "007310": {
+      "ticker": "007310",
+      "name": "OTOKI",
+      "display_name": "OTOKI",
+      "name_ko": "오뚜기",
+      "sector": ""
+    },
+    "020560": {
+      "ticker": "020560",
+      "name": "Asiana Airlines",
+      "display_name": "Asiana Airlines",
+      "name_ko": "아시아나항공",
+      "sector": ""
+    },
+    "100090": {
+      "ticker": "100090",
+      "name": "SKoceanplant",
+      "display_name": "SKoceanplant",
+      "name_ko": "SK오션플랜트",
+      "sector": ""
+    },
+    "189300": {
+      "ticker": "189300",
+      "name": "Intellian Tech",
+      "display_name": "Intellian Tech",
+      "name_ko": "인텔리안테크",
+      "sector": ""
+    },
+    "004000": {
+      "ticker": "004000",
+      "name": "LOTTE Fine Chem",
+      "display_name": "LOTTE Fine Chem",
+      "name_ko": "롯데정밀화학",
+      "sector": ""
+    },
     "388210": {
       "ticker": "388210",
       "name": "CMTX",
       "display_name": "CMTX",
       "name_ko": "씨엠티엑스",
+      "sector": ""
+    },
+    "082640": {
+      "ticker": "082640",
+      "name": "TONGYANG LIFE",
+      "display_name": "TONGYANG LIFE",
+      "name_ko": "동양생명",
+      "sector": ""
+    },
+    "115180": {
+      "ticker": "115180",
+      "name": "Qurient",
+      "display_name": "Qurient",
+      "name_ko": "큐리언트",
+      "sector": ""
+    },
+    "034230": {
+      "ticker": "034230",
+      "name": "PARADISE",
+      "display_name": "PARADISE",
+      "name_ko": "파라다이스",
+      "sector": ""
+    },
+    "195940": {
+      "ticker": "195940",
+      "name": "HK inno.N",
+      "display_name": "HK inno.N",
+      "name_ko": "HK이노엔",
       "sector": ""
     }
   }
