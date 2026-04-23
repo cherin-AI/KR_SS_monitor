@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-23T11:01:41.280490+00:00",
+  "updated_at": "2026-04-23T11:20:43.558310+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -1945,6 +1945,139 @@
       "name": "HK inno.N",
       "display_name": "HK inno.N",
       "name_ko": "HK이노엔",
+      "sector": ""
+    },
+    "055550": {
+      "ticker": "055550",
+      "name": "ShinhanGroup",
+      "display_name": "ShinhanGroup",
+      "name_ko": "신한지주",
+      "sector": ""
+    },
+    "086520": {
+      "ticker": "086520",
+      "name": "ECOPRO",
+      "display_name": "ECOPRO",
+      "name_ko": "에코프로",
+      "sector": ""
+    },
+    "079550": {
+      "ticker": "079550",
+      "name": "LIG Defense&Aerospace",
+      "display_name": "LIG Defense&Aerospace",
+      "name_ko": "LIG디펜스앤에어로스페이스",
+      "sector": ""
+    },
+    "068270": {
+      "ticker": "068270",
+      "name": "Celltrion",
+      "display_name": "Celltrion",
+      "name_ko": "셀트리온",
+      "sector": ""
+    },
+    "042660": {
+      "ticker": "042660",
+      "name": "Hanwha Ocean",
+      "display_name": "Hanwha Ocean",
+      "name_ko": "한화오션",
+      "sector": ""
+    },
+    "000810": {
+      "ticker": "000810",
+      "name": "SamsungF&MIns",
+      "display_name": "SamsungF&MIns",
+      "name_ko": "삼성화재",
+      "sector": ""
+    },
+    "011070": {
+      "ticker": "011070",
+      "name": "LG Innotek",
+      "display_name": "LG Innotek",
+      "name_ko": "LG이노텍",
+      "sector": ""
+    },
+    "005940": {
+      "ticker": "005940",
+      "name": "NHIS",
+      "display_name": "NHIS",
+      "name_ko": "NH투자증권",
+      "sector": ""
+    },
+    "180640": {
+      "ticker": "180640",
+      "name": "HANJINKAL",
+      "display_name": "HANJINKAL",
+      "name_ko": "한진칼",
+      "sector": ""
+    },
+    "323410": {
+      "ticker": "323410",
+      "name": "KakaoBank",
+      "display_name": "KakaoBank",
+      "name_ko": "카카오뱅크",
+      "sector": ""
+    },
+    "066970": {
+      "ticker": "066970",
+      "name": "L&F",
+      "display_name": "L&F",
+      "name_ko": "엘앤에프",
+      "sector": ""
+    },
+    "039030": {
+      "ticker": "039030",
+      "name": "EO Technics",
+      "display_name": "EO Technics",
+      "name_ko": "이오테크닉스",
+      "sector": ""
+    },
+    "375500": {
+      "ticker": "375500",
+      "name": "DL E&C",
+      "display_name": "DL E&C",
+      "name_ko": "DL이앤씨",
+      "sector": ""
+    },
+    "140410": {
+      "ticker": "140410",
+      "name": "Mezzion Pharma",
+      "display_name": "Mezzion Pharma",
+      "name_ko": "메지온",
+      "sector": ""
+    },
+    "004800": {
+      "ticker": "004800",
+      "name": "Hyosung",
+      "display_name": "Hyosung",
+      "name_ko": "효성",
+      "sector": ""
+    },
+    "462870": {
+      "ticker": "462870",
+      "name": "SHIFT UP",
+      "display_name": "SHIFT UP",
+      "name_ko": "시프트업",
+      "sector": ""
+    },
+    "093370": {
+      "ticker": "093370",
+      "name": "FOOSUNG",
+      "display_name": "FOOSUNG",
+      "name_ko": "후성",
+      "sector": ""
+    },
+    "023530": {
+      "ticker": "023530",
+      "name": "LOTTE SHOPPING",
+      "display_name": "LOTTE SHOPPING",
+      "name_ko": "롯데쇼핑",
+      "sector": ""
+    },
+    "395400": {
+      "ticker": "395400",
+      "name": "SK REIT",
+      "display_name": "SK REIT",
+      "name_ko": "SK리츠",
       "sector": ""
     }
   }

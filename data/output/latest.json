@@ -1,6 +1,6 @@
 {
   "date": "2026-04-23",
-  "generated_at": "2026-04-23T11:02:48.765547+00:00",
+  "generated_at": "2026-04-23T11:21:54.860083+00:00",
   "stocks": [
     {
       "rank": 1,
@@ -125,7 +125,7 @@
     {
       "rank": 7,
       "mksc_shrn_iscd": "086520",
-      "display_name": "에코프로",
+      "display_name": "ECOPRO",
       "name_ko": "에코프로",
       "market": "KOSDAQ",
       "market_cap_100m": 213440,
@@ -305,7 +305,7 @@
     {
       "rank": 16,
       "mksc_shrn_iscd": "180640",
-      "display_name": "한진칼",
+      "display_name": "HANJINKAL",
       "name_ko": "한진칼",
       "market": "KOSPI",
       "market_cap_100m": 77044,
@@ -325,7 +325,7 @@
     {
       "rank": 17,
       "mksc_shrn_iscd": "011070",
-      "display_name": "LG이노텍",
+      "display_name": "LG Innotek",
       "name_ko": "LG이노텍",
       "market": "KOSPI",
       "market_cap_100m": 118336,
@@ -665,7 +665,7 @@
     {
       "rank": 34,
       "mksc_shrn_iscd": "039030",
-      "display_name": "이오테크닉스",
+      "display_name": "EO Technics",
       "name_ko": "이오테크닉스",
       "market": "KOSDAQ",
       "market_cap_100m": 59688,
@@ -685,7 +685,7 @@
     {
       "rank": 35,
       "mksc_shrn_iscd": "079550",
-      "display_name": "LIG디펜스앤에어로스페이스",
+      "display_name": "LIG Defense&Aerospace",
       "name_ko": "LIG디펜스앤에어로스페이스",
       "market": "KOSPI",
       "market_cap_100m": 212520,
@@ -845,7 +845,7 @@
     {
       "rank": 43,
       "mksc_shrn_iscd": "055550",
-      "display_name": "신한지주",
+      "display_name": "ShinhanGroup",
       "name_ko": "신한지주",
       "market": "KOSPI",
       "market_cap_100m": 474180,
@@ -1305,7 +1305,7 @@
     {
       "rank": 66,
       "mksc_shrn_iscd": "323410",
-      "display_name": "카카오뱅크",
+      "display_name": "KakaoBank",
       "name_ko": "카카오뱅크",
       "market": "KOSPI",
       "market_cap_100m": 119757,
@@ -1425,7 +1425,7 @@
     {
       "rank": 72,
       "mksc_shrn_iscd": "395400",
-      "display_name": "SK리츠",
+      "display_name": "SK REIT",
       "name_ko": "SK리츠",
       "market": "KOSPI",
       "market_cap_100m": 20499,
@@ -1525,7 +1525,7 @@
     {
       "rank": 77,
       "mksc_shrn_iscd": "093370",
-      "display_name": "후성",
+      "display_name": "FOOSUNG",
       "name_ko": "후성",
       "market": "KOSPI",
       "market_cap_100m": 14705,
@@ -2385,7 +2385,7 @@
     {
       "rank": 120,
       "mksc_shrn_iscd": "005940",
-      "display_name": "NH투자증권",
+      "display_name": "NHIS",
       "name_ko": "NH투자증권",
       "market": "KOSPI",
       "market_cap_100m": 124542,
@@ -2665,7 +2665,7 @@
     {
       "rank": 134,
       "mksc_shrn_iscd": "375500",
-      "display_name": "DL이앤씨",
+      "display_name": "DL E&C",
       "name_ko": "DL이앤씨",
       "market": "KOSPI",
       "market_cap_100m": 37765,
@@ -3045,7 +3045,7 @@
     {
       "rank": 153,
       "mksc_shrn_iscd": "068270",
-      "display_name": "셀트리온",
+      "display_name": "Celltrion",
       "name_ko": "셀트리온",
       "market": "KOSPI",
       "market_cap_100m": 457193,
@@ -3125,7 +3125,7 @@
     {
       "rank": 157,
       "mksc_shrn_iscd": "462870",
-      "display_name": "시프트업",
+      "display_name": "SHIFT UP",
       "name_ko": "시프트업",
       "market": "KOSPI",
       "market_cap_100m": 20382,
@@ -4025,7 +4025,7 @@
     {
       "rank": 202,
       "mksc_shrn_iscd": "066970",
-      "display_name": "엘앤에프",
+      "display_name": "L&F",
       "name_ko": "엘앤에프",
       "market": "KOSPI",
       "market_cap_100m": 76255,
@@ -4405,7 +4405,7 @@
     {
       "rank": 221,
       "mksc_shrn_iscd": "140410",
-      "display_name": "메지온",
+      "display_name": "Mezzion Pharma",
       "name_ko": "메지온",
       "market": "KOSDAQ",
       "market_cap_100m": 27657,
@@ -4585,7 +4585,7 @@
     {
       "rank": 230,
       "mksc_shrn_iscd": "000810",
-      "display_name": "삼성화재",
+      "display_name": "SamsungF&MIns",
       "name_ko": "삼성화재",
       "market": "KOSPI",
       "market_cap_100m": 206718,
@@ -5065,7 +5065,7 @@
     {
       "rank": 254,
       "mksc_shrn_iscd": "042660",
-      "display_name": "한화오션",
+      "display_name": "Hanwha Ocean",
       "name_ko": "한화오션",
       "market": "KOSPI",
       "market_cap_100m": 411820,
@@ -5405,7 +5405,7 @@
     {
       "rank": 271,
       "mksc_shrn_iscd": "023530",
-      "display_name": "롯데쇼핑",
+      "display_name": "LOTTE SHOPPING",
       "name_ko": "롯데쇼핑",
       "market": "KOSPI",
       "market_cap_100m": 34456,
@@ -5585,7 +5585,7 @@
     {
       "rank": 280,
       "mksc_shrn_iscd": "004800",
-      "display_name": "효성",
+      "display_name": "Hyosung",
       "name_ko": "효성",
       "market": "KOSPI",
       "market_cap_100m": 27438,
