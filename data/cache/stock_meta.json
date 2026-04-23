@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-13T07:17:29.878756+00:00",
+  "updated_at": "2026-04-14T08:13:47.182752+00:00",
   "stocks": {
     "005930": {
       "ticker": "005930",
@@ -2442,6 +2442,27 @@
       "name": "DUK SAN NEOLUX",
       "display_name": "DUK SAN NEOLUX",
       "name_ko": "덕산네오룩스",
+      "sector": ""
+    },
+    "166090": {
+      "ticker": "166090",
+      "name": "Hana Materials",
+      "display_name": "Hana Materials",
+      "name_ko": "하나머티리얼즈",
+      "sector": ""
+    },
+    "027360": {
+      "ticker": "027360",
+      "name": "AJU IB INVESTMENT",
+      "display_name": "AJU IB INVESTMENT",
+      "name_ko": "아주IB투자",
+      "sector": ""
+    },
+    "388210": {
+      "ticker": "388210",
+      "name": "CMTX",
+      "display_name": "CMTX",
+      "name_ko": "씨엠티엑스",
       "sector": ""
     }
   }

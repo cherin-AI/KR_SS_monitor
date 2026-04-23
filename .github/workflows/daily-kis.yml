@@ -36,8 +36,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: data/cache/stock_meta.json
-          key: kis-stock-meta-v1
-          restore-keys: kis-stock-meta-v1
+          key: kis-stock-meta-${{ steps.date.outputs.today }}
+          restore-keys: kis-stock-meta-
 
       - name: Validate secrets are set
         run: |
@@ -74,7 +74,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/output
+          git add data/output data/cache/stock_meta.json
           if git diff --cached --quiet; then
             echo "No snapshot changes to commit."
             exit 0
