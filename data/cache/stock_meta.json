@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-23T11:20:43.558310+00:00",
+  "updated_at": "2026-04-24T06:44:52.954012+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2078,6 +2078,48 @@
       "name": "SK REIT",
       "display_name": "SK REIT",
       "name_ko": "SK리츠",
+      "sector": ""
+    },
+    "138930": {
+      "ticker": "138930",
+      "name": "BNK Financial Group",
+      "display_name": "BNK Financial Group",
+      "name_ko": "BNK금융지주",
+      "sector": ""
+    },
+    "214150": {
+      "ticker": "214150",
+      "name": "CLASSYS",
+      "display_name": "CLASSYS",
+      "name_ko": "클래시스",
+      "sector": ""
+    },
+    "090710": {
+      "ticker": "090710",
+      "name": "Hyulim ROBOT",
+      "display_name": "Hyulim ROBOT",
+      "name_ko": "휴림로봇",
+      "sector": ""
+    },
+    "036540": {
+      "ticker": "036540",
+      "name": "SFASemicon",
+      "display_name": "SFASemicon",
+      "name_ko": "SFA반도체",
+      "sector": ""
+    },
+    "000120": {
+      "ticker": "000120",
+      "name": "CJ LOGISTICS",
+      "display_name": "CJ LOGISTICS",
+      "name_ko": "CJ대한통운",
+      "sector": ""
+    },
+    "397030": {
+      "ticker": "397030",
+      "name": "AprilBio",
+      "display_name": "AprilBio",
+      "name_ko": "에이프릴바이오",
       "sector": ""
     }
   }
