@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-24T06:44:52.954012+00:00",
+  "updated_at": "2026-04-27T06:44:53.745661+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2120,6 +2120,13 @@
       "name": "AprilBio",
       "display_name": "AprilBio",
       "name_ko": "에이프릴바이오",
+      "sector": ""
+    },
+    "048410": {
+      "ticker": "048410",
+      "name": "HDBIO",
+      "display_name": "HDBIO",
+      "name_ko": "현대바이오",
       "sector": ""
     }
   }
