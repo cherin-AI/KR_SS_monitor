@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-27T06:44:53.745661+00:00",
+  "updated_at": "2026-04-28T06:44:52.975130+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2127,6 +2127,27 @@
       "name": "HDBIO",
       "display_name": "HDBIO",
       "name_ko": "현대바이오",
+      "sector": ""
+    },
+    "000210": {
+      "ticker": "000210",
+      "name": "DL",
+      "display_name": "DL",
+      "name_ko": "DL",
+      "sector": ""
+    },
+    "166090": {
+      "ticker": "166090",
+      "name": "Hana Materials",
+      "display_name": "Hana Materials",
+      "name_ko": "하나머티리얼즈",
+      "sector": ""
+    },
+    "036830": {
+      "ticker": "036830",
+      "name": "Soulbrain Holdings",
+      "display_name": "Soulbrain Holdings",
+      "name_ko": "솔브레인홀딩스",
       "sector": ""
     }
   }
