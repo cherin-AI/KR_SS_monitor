@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-28T06:44:52.975130+00:00",
+  "updated_at": "2026-04-29T06:44:55.818643+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2148,6 +2148,13 @@
       "name": "Soulbrain Holdings",
       "display_name": "Soulbrain Holdings",
       "name_ko": "솔브레인홀딩스",
+      "sector": ""
+    },
+    "052020": {
+      "ticker": "052020",
+      "name": "STCUBE",
+      "display_name": "STCUBE",
+      "name_ko": "에스티큐브",
       "sector": ""
     }
   }
