@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-29T06:44:55.818643+00:00",
+  "updated_at": "2026-04-30T06:44:57.731599+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2155,6 +2155,20 @@
       "name": "STCUBE",
       "display_name": "STCUBE",
       "name_ko": "에스티큐브",
+      "sector": ""
+    },
+    "490470": {
+      "ticker": "490470",
+      "name": "SemiFive",
+      "display_name": "SemiFive",
+      "name_ko": "세미파이브",
+      "sector": ""
+    },
+    "426030": {
+      "ticker": "426030",
+      "name": "TIME US NASDAQ100 ACTIVE",
+      "display_name": "TIME US NASDAQ100 ACTIVE",
+      "name_ko": "TIME 미국나스닥100액티브",
       "sector": ""
     }
   }
