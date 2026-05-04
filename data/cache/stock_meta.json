@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-30T06:44:57.731599+00:00",
+  "updated_at": "2026-05-04T06:45:00.141778+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2169,6 +2169,13 @@
       "name": "TIME US NASDAQ100 ACTIVE",
       "display_name": "TIME US NASDAQ100 ACTIVE",
       "name_ko": "TIME 미국나스닥100액티브",
+      "sector": ""
+    },
+    "033100": {
+      "ticker": "033100",
+      "name": "CheryongElec",
+      "display_name": "CheryongElec",
+      "name_ko": "제룡전기",
       "sector": ""
     }
   }
