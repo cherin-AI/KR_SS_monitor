@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-06T06:45:01.344852+00:00",
+  "updated_at": "2026-05-07T06:44:58.329854+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2190,6 +2190,27 @@
       "name": "PHILOPTICS",
       "display_name": "PHILOPTICS",
       "name_ko": "필옵틱스",
+      "sector": ""
+    },
+    "033790": {
+      "ticker": "033790",
+      "name": "FINO",
+      "display_name": "FINO",
+      "name_ko": "피노",
+      "sector": ""
+    },
+    "195870": {
+      "ticker": "195870",
+      "name": "HAESUNG DS",
+      "display_name": "HAESUNG DS",
+      "name_ko": "해성디에스",
+      "sector": ""
+    },
+    "089970": {
+      "ticker": "089970",
+      "name": "VM",
+      "display_name": "VM",
+      "name_ko": "브이엠",
       "sector": ""
     }
   }
