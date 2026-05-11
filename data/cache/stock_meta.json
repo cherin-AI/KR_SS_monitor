@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-07T06:44:58.329854+00:00",
+  "updated_at": "2026-05-11T06:44:57.228887+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2211,6 +2211,20 @@
       "name": "VM",
       "display_name": "VM",
       "name_ko": "브이엠",
+      "sector": ""
+    },
+    "096530": {
+      "ticker": "096530",
+      "name": "SEEGENE",
+      "display_name": "SEEGENE",
+      "name_ko": "씨젠",
+      "sector": ""
+    },
+    "032500": {
+      "ticker": "032500",
+      "name": "KMW",
+      "display_name": "KMW",
+      "name_ko": "케이엠더블유",
       "sector": ""
     }
   }
