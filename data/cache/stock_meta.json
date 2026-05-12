@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-11T06:44:57.228887+00:00",
+  "updated_at": "2026-05-12T06:44:52.087823+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2225,6 +2225,13 @@
       "name": "KMW",
       "display_name": "KMW",
       "name_ko": "케이엠더블유",
+      "sector": ""
+    },
+    "420770": {
+      "ticker": "420770",
+      "name": "GigaVis",
+      "display_name": "GigaVis",
+      "name_ko": "기가비스",
       "sector": ""
     }
   }
