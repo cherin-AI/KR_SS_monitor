@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-12T06:44:52.087823+00:00",
+  "updated_at": "2026-05-13T06:44:55.158711+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2232,6 +2232,13 @@
       "name": "GigaVis",
       "display_name": "GigaVis",
       "name_ko": "기가비스",
+      "sector": ""
+    },
+    "281820": {
+      "ticker": "281820",
+      "name": "KCTECH",
+      "display_name": "KCTECH",
+      "name_ko": "케이씨텍",
       "sector": ""
     }
   }
