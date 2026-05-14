@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-13T06:44:55.158711+00:00",
+  "updated_at": "2026-05-14T06:44:57.308123+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2239,6 +2239,20 @@
       "name": "KCTECH",
       "display_name": "KCTECH",
       "name_ko": "케이씨텍",
+      "sector": ""
+    },
+    "001740": {
+      "ticker": "001740",
+      "name": "SKNetworks",
+      "display_name": "SKNetworks",
+      "name_ko": "SK네트웍스",
+      "sector": ""
+    },
+    "439960": {
+      "ticker": "439960",
+      "name": "COSMO ROBOTICS",
+      "display_name": "COSMO ROBOTICS",
+      "name_ko": "코스모로보틱스",
       "sector": ""
     }
   }
