@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T06:44:57.308123+00:00",
+  "updated_at": "2026-05-15T06:44:55.598281+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2253,6 +2253,13 @@
       "name": "COSMO ROBOTICS",
       "display_name": "COSMO ROBOTICS",
       "name_ko": "코스모로보틱스",
+      "sector": ""
+    },
+    "031330": {
+      "ticker": "031330",
+      "name": "SAMT",
+      "display_name": "SAMT",
+      "name_ko": "에스에이엠티",
       "sector": ""
     }
   }
