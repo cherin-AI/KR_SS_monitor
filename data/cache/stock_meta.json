@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T06:44:55.598281+00:00",
+  "updated_at": "2026-05-18T06:44:54.670246+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2260,6 +2260,13 @@
       "name": "SAMT",
       "display_name": "SAMT",
       "name_ko": "에스에이엠티",
+      "sector": ""
+    },
+    "295310": {
+      "ticker": "295310",
+      "name": "HVM",
+      "display_name": "HVM",
+      "name_ko": "에이치브이엠",
       "sector": ""
     }
   }
