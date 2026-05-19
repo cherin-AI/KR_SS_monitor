@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-18T06:44:54.670246+00:00",
+  "updated_at": "2026-05-19T06:44:52.338543+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2267,6 +2267,13 @@
       "name": "HVM",
       "display_name": "HVM",
       "name_ko": "에이치브이엠",
+      "sector": ""
+    },
+    "006110": {
+      "ticker": "006110",
+      "name": "SamaAlum",
+      "display_name": "SamaAlum",
+      "name_ko": "삼아알미늄",
       "sector": ""
     }
   }
