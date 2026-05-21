@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-19T06:44:52.338543+00:00",
+  "updated_at": "2026-05-21T06:44:55.436432+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2274,6 +2274,20 @@
       "name": "SamaAlum",
       "display_name": "SamaAlum",
       "name_ko": "삼아알미늄",
+      "sector": ""
+    },
+    "192080": {
+      "ticker": "192080",
+      "name": "DoubleUGames",
+      "display_name": "DoubleUGames",
+      "name_ko": "더블유게임즈",
+      "sector": ""
+    },
+    "477850": {
+      "ticker": "477850",
+      "name": "MakinaRocks",
+      "display_name": "MakinaRocks",
+      "name_ko": "마키나락스",
       "sector": ""
     }
   }
