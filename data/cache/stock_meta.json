@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-21T06:44:55.436432+00:00",
+  "updated_at": "2026-05-22T06:44:56.859266+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2288,6 +2288,13 @@
       "name": "MakinaRocks",
       "display_name": "MakinaRocks",
       "name_ko": "마키나락스",
+      "sector": ""
+    },
+    "007390": {
+      "ticker": "007390",
+      "name": "NATURECELL",
+      "display_name": "NATURECELL",
+      "name_ko": "네이처셀",
       "sector": ""
     }
   }
