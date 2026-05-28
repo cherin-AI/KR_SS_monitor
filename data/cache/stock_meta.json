@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-22T06:44:56.859266+00:00",
+  "updated_at": "2026-05-28T06:44:53.160260+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2295,6 +2295,20 @@
       "name": "NATURECELL",
       "display_name": "NATURECELL",
       "name_ko": "네이처셀",
+      "sector": ""
+    },
+    "001820": {
+      "ticker": "001820",
+      "name": "SamwhaCapacitor",
+      "display_name": "SamwhaCapacitor",
+      "name_ko": "삼화콘덴서",
+      "sector": ""
+    },
+    "181710": {
+      "ticker": "181710",
+      "name": "NHN",
+      "display_name": "NHN",
+      "name_ko": "NHN",
       "sector": ""
     }
   }
