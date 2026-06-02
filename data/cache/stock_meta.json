@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-28T06:44:53.160260+00:00",
+  "updated_at": "2026-06-02T06:44:55.035443+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2309,6 +2309,20 @@
       "name": "NHN",
       "display_name": "NHN",
       "name_ko": "NHN",
+      "sector": ""
+    },
+    "388720": {
+      "ticker": "388720",
+      "name": "YUIL",
+      "display_name": "YUIL",
+      "name_ko": "유일로보틱스",
+      "sector": ""
+    },
+    "090360": {
+      "ticker": "090360",
+      "name": "Robostar",
+      "display_name": "Robostar",
+      "name_ko": "로보스타",
       "sector": ""
     }
   }
