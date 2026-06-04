@@ -1322,39 +1322,45 @@ function renderCombinedMap() {
     .sort((a, b) => b.score - a.score)
     .slice(0, 10);
 
-  // Weighted component contributions (clamped to 0 — only positive drivers shown)
+  // Weighted component contributions (clamped to 0 — only positive drivers)
   const W = { short: 0.35, d5: 0.15, frgn: 0.25, inst: 0.15, ret: 0.10 };
   const comp = (r, key, w) => Math.max(0, (r[key] ?? 0) * w);
 
   const labels  = rows.map(r => stockName(r));
-  const cShort  = rows.map(r => +comp(r, 'z_short_today', W.short).toFixed(2));
-  const c5d     = rows.map(r => +comp(r, 'z_short_5d',    W.d5  ).toFixed(2));
-  const cFrgn   = rows.map(r => +comp(r, 'z_foreign',     W.frgn).toFixed(2));
-  const cInst   = rows.map(r => +comp(r, 'z_inst',        W.inst).toFixed(2));
-  const cRet    = rows.map(r => +comp(r, 'z_return',      W.ret ).toFixed(2));
-  const scores  = rows.map(r => +r.score.toFixed(2));
+  const rawShort = rows.map(r => comp(r, 'z_short_today', W.short));
+  const raw5d    = rows.map(r => comp(r, 'z_short_5d',    W.d5  ));
+  const rawFrgn  = rows.map(r => comp(r, 'z_foreign',     W.frgn));
+  const rawInst  = rows.map(r => comp(r, 'z_inst',        W.inst));
+  const rawRet   = rows.map(r => comp(r, 'z_return',      W.ret ));
+  const scores   = rows.map(r => +r.score.toFixed(2));
 
-  const barOpts = (label, color) => ({
-    label,
-    data: label === 'Short Ratio' ? cShort
-        : label === '5D Short Avg' ? c5d
-        : label === 'Foreign Sell' ? cFrgn
-        : label === 'Inst Sell'    ? cInst
-        : cRet,
-    backgroundColor: color,
-    borderWidth: 0,
-  });
+  // Normalise to % of each stock's total positive contribution
+  const totals = rows.map((_, i) => rawShort[i] + raw5d[i] + rawFrgn[i] + rawInst[i] + rawRet[i]);
+  const toPct  = (arr) => arr.map((v, i) => totals[i] > 0 ? +(v / totals[i] * 100).toFixed(1) : 0);
+  // Keep raw weighted values for tooltip
+  const toRaw  = (arr) => arr.map(v => +v.toFixed(2));
+
+  const pShort = toPct(rawShort);
+  const p5d    = toPct(raw5d);
+  const pFrgn  = toPct(rawFrgn);
+  const pInst  = toPct(rawInst);
+  const pRet   = toPct(rawRet);
+  const rShort = toRaw(rawShort);
+  const r5d    = toRaw(raw5d);
+  const rFrgn  = toRaw(rawFrgn);
+  const rInst  = toRaw(rawInst);
+  const rRet   = toRaw(rawRet);
 
   charts.trend = new Chart(document.getElementById('chart-trend'), {
     type: 'bar',
     data: {
       labels,
       datasets: [
-        { label: 'Short Ratio',  data: cShort, backgroundColor: THEME.pA, borderWidth: 0 },
-        { label: '5D Short Avg', data: c5d,    backgroundColor: THEME.t3, borderWidth: 0 },
-        { label: 'Foreign Sell', data: cFrgn,  backgroundColor: THEME.pC, borderWidth: 0 },
-        { label: 'Inst Sell',    data: cInst,  backgroundColor: THEME.rd, borderWidth: 0 },
-        { label: 'Return',       data: cRet,   backgroundColor: THEME.pB, borderWidth: 0 },
+        { label: 'Short Ratio (35%)',  data: pShort, raw: rShort, backgroundColor: THEME.pA, borderWidth: 0 },
+        { label: '5D Short Avg (15%)', data: p5d,    raw: r5d,    backgroundColor: THEME.t3, borderWidth: 0 },
+        { label: 'Foreign Sell (25%)', data: pFrgn,  raw: rFrgn,  backgroundColor: THEME.pC, borderWidth: 0 },
+        { label: 'Inst Sell (15%)',    data: pInst,  raw: rInst,  backgroundColor: THEME.rd, borderWidth: 0 },
+        { label: 'Return (10%)',       data: pRet,   raw: rRet,   backgroundColor: THEME.pB, borderWidth: 0 },
       ]
     },
     options: {
@@ -1373,15 +1379,19 @@ function renderCombinedMap() {
               const i = items[0].dataIndex;
               return [labels[i], rows[i].mksc_shrn_iscd, `Total score: ${scores[i]}`];
             },
-            label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.x.toFixed(2)}`,
+            label: ctx => {
+              const raw = ctx.dataset.raw[ctx.dataIndex];
+              return ` ${ctx.dataset.label}: ${ctx.parsed.x.toFixed(1)}% (${raw.toFixed(2)} pts)`;
+            },
           }
         }
       },
       scales: {
         x: {
           stacked: true,
-          title: { display: true, text: 'Score contribution', color: THEME.muted, font: { size: 10 } },
-          ticks: { color: THEME.muted },
+          max: 100,
+          title: { display: true, text: '% of score (positive drivers)', color: THEME.muted, font: { size: 10 } },
+          ticks: { color: THEME.muted, callback: v => v + '%' },
           grid: { color: THEME.grid },
         },
         y: {
