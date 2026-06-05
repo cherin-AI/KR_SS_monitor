@@ -879,9 +879,9 @@ function renderAISummary() {
   }
 
   list.innerHTML = bullets.map(b => {
-    // Bold the first sentence — split on ". " followed by an uppercase letter
-    const m = b.match(/^(.+?\.)\s+([A-Z].+)$/s);
-    return m ? `<li><strong>${m[1]}</strong> ${m[2]}</li>` : `<li>${b}</li>`;
+    // Bold the first sentence; allow digit or uppercase to start the remainder
+    const m = b.match(/^(.+?[.!?])\s+([A-Z0-9].+)$/s);
+    return m ? `<li><strong>${m[1]}</strong> ${m[2]}</li>` : `<li><strong>${b}</strong></li>`;
   }).join('');
 
   card.style.display = 'block';
