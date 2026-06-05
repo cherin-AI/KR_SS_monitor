@@ -712,20 +712,20 @@
       <colgroup>
         <col style="width:68px" />    <!-- Rank -->
         <col style="width:165px" />   <!-- Name -->
-        <col style="width:78px" />    <!-- Market -->
-        <col style="width:152px" />   <!-- Short Turnover % -->
-        <col style="width:178px" />   <!-- 5D Avg Short Turnover % -->
-        <col style="width:168px" />   <!-- Foreign Net Flow -->
-        <col style="width:158px" />   <!-- Inst Net Flow -->
-        <col style="width:130px" />   <!-- Price Change % -->
-        <col style="width:108px" />   <!-- Score -->
+        <col style="width:190px" />   <!-- Score -->
+        <col style="width:84px" />    <!-- Market -->
+        <col style="width:140px" />   <!-- Short Turnover % -->
+        <col style="width:155px" />   <!-- 5D Avg Short Turnover % -->
+        <col style="width:140px" />   <!-- Foreign Net Flow -->
+        <col style="width:130px" />   <!-- Inst Net Flow -->
+        <col style="width:110px" />   <!-- Price Change % -->
       </colgroup>
       <thead>
         <tr>
           <th data-col="rank"><span class="th-wrap"><span>Rank</span><button class="sort-btn" data-sort="rank" aria-label="Sort Rank">↕</button></span></th>
           <th data-col="name">Name</th>
-          <th data-col="score" style="min-width:140px"><span class="th-wrap"><span>Score</span><button class="sort-btn" data-sort="score" aria-label="Sort Score">↕</button></span></th>
-          <th data-col="market" style="width:1px;white-space:nowrap">Market</th>
+          <th data-col="score"><span class="th-wrap"><span>Score</span><button class="sort-btn" data-sort="score" aria-label="Sort Score">↕</button></span></th>
+          <th data-col="market">Market</th>
           <th data-col="ssts_vol_rlim"><span class="th-wrap"><span>Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim" aria-label="Sort Short Turnover %">↕</button></span></th>
           <th data-col="ssts_vol_rlim_5d"><span class="th-wrap"><span>5D Avg Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim_5d" aria-label="Sort 5D Avg Short Turnover %">↕</button></span></th>
           <th data-col="frgn_ntby_tr_pbmn"><span class="th-wrap"><span>Foreign Net Flow (KRW mn)</span><button class="sort-btn" data-sort="frgn_ntby_tr_pbmn" aria-label="Sort Foreign Net Flow">↕</button></span></th>
@@ -1150,7 +1150,7 @@ function renderTable() {
         <div class="ticker">${r.mksc_shrn_iscd}</div>
       </td>
       <td>${scoreVal}</td>
-      <td style="white-space:nowrap;width:1px">${marketBadge}</td>
+      <td>${marketBadge}</td>
       <td>
         <div class="bar-cell">
           <span>${shortPct}%</span>
