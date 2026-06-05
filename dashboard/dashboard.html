@@ -439,8 +439,8 @@
 
 
     /* Score bar */
-    .score-bar-wrap { display: flex; align-items: center; gap: 6px; }
-    .score-bar-bg { width: 44px; height: 4px; background: var(--s3); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+    .score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+    .score-bar-bg { width: 90px; height: 6px; background: var(--s3); border-radius: 3px; overflow: hidden; flex-shrink: 0; }
     .score-bar-fill { height: 100%; border-radius: 2px; }
     .score-bar-high { background: var(--rd); }
     .score-bar-mid { background: var(--am); }
@@ -724,7 +724,7 @@
         <tr>
           <th data-col="rank"><span class="th-wrap"><span>Rank</span><button class="sort-btn" data-sort="rank" aria-label="Sort Rank">↕</button></span></th>
           <th data-col="name">Name</th>
-          <th data-col="score"><span class="th-wrap"><span>Score</span><button class="sort-btn" data-sort="score" aria-label="Sort Score">↕</button></span></th>
+          <th data-col="score" style="min-width:140px"><span class="th-wrap"><span>Score</span><button class="sort-btn" data-sort="score" aria-label="Sort Score">↕</button></span></th>
           <th data-col="market">Market</th>
           <th data-col="ssts_vol_rlim"><span class="th-wrap"><span>Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim" aria-label="Sort Short Turnover %">↕</button></span></th>
           <th data-col="ssts_vol_rlim_5d"><span class="th-wrap"><span>5D Avg Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim_5d" aria-label="Sort 5D Avg Short Turnover %">↕</button></span></th>
