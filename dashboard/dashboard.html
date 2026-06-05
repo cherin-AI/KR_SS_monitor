@@ -724,13 +724,13 @@
         <tr>
           <th data-col="rank"><span class="th-wrap"><span>Rank</span><button class="sort-btn" data-sort="rank" aria-label="Sort Rank">↕</button></span></th>
           <th data-col="name">Name</th>
+          <th data-col="score"><span class="th-wrap"><span>Score</span><button class="sort-btn" data-sort="score" aria-label="Sort Score">↕</button></span></th>
           <th data-col="market">Market</th>
           <th data-col="ssts_vol_rlim"><span class="th-wrap"><span>Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim" aria-label="Sort Short Turnover %">↕</button></span></th>
           <th data-col="ssts_vol_rlim_5d"><span class="th-wrap"><span>5D Avg Short Turnover %</span><button class="sort-btn" data-sort="ssts_vol_rlim_5d" aria-label="Sort 5D Avg Short Turnover %">↕</button></span></th>
           <th data-col="frgn_ntby_tr_pbmn"><span class="th-wrap"><span>Foreign Net Flow (KRW mn)</span><button class="sort-btn" data-sort="frgn_ntby_tr_pbmn" aria-label="Sort Foreign Net Flow">↕</button></span></th>
           <th data-col="orgn_ntby_tr_pbmn"><span class="th-wrap"><span>Inst Net Flow (KRW mn)</span><button class="sort-btn" data-sort="orgn_ntby_tr_pbmn" aria-label="Sort Inst Net Flow">↕</button></span></th>
           <th data-col="prdy_ctrt"><span class="th-wrap"><span>Price Change %</span><button class="sort-btn" data-sort="prdy_ctrt" aria-label="Sort Price Change %">↕</button></span></th>
-          <th data-col="score"><span class="th-wrap"><span>Score</span><button class="sort-btn" data-sort="score" aria-label="Sort Score">↕</button></span></th>
         </tr>
       </thead>
       <tbody id="ranking-tbody"></tbody>
@@ -1149,6 +1149,7 @@ function renderTable() {
         <div class="name">${stockName(r)}</div>
         <div class="ticker">${r.mksc_shrn_iscd}</div>
       </td>
+      <td>${scoreVal}</td>
       <td>${marketBadge}</td>
       <td>
         <div class="bar-cell">
@@ -1165,7 +1166,6 @@ function renderTable() {
       <td>${frgnVal}</td>
       <td>${instVal}</td>
       <td>${retVal}</td>
-      <td>${scoreVal}</td>
     </tr>`;
   }).join('');
   updateSortButtons();
