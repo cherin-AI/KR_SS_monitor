@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-02T06:44:55.035443+00:00",
+  "updated_at": "2026-06-08T06:45:16.133086+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2323,6 +2323,13 @@
       "name": "Robostar",
       "display_name": "Robostar",
       "name_ko": "로보스타",
+      "sector": ""
+    },
+    "415640": {
+      "ticker": "415640",
+      "name": "KB Balhae Infra",
+      "display_name": "KB Balhae Infra",
+      "name_ko": "KB발해인프라",
       "sector": ""
     }
   }
