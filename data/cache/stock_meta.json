@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-08T06:45:16.133086+00:00",
+  "updated_at": "2026-06-10T06:44:56.928611+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2330,6 +2330,13 @@
       "name": "KB Balhae Infra",
       "display_name": "KB Balhae Infra",
       "name_ko": "KB발해인프라",
+      "sector": ""
+    },
+    "328130": {
+      "ticker": "328130",
+      "name": "Lunit",
+      "display_name": "Lunit",
+      "name_ko": "루닛",
       "sector": ""
     }
   }
