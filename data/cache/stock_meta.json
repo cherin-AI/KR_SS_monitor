@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T06:45:13.812373+00:00",
+  "updated_at": "2026-06-18T06:44:58.786894+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -1924,6 +1924,160 @@
       "name": "TONGYANG LIFE",
       "display_name": "TONGYANG LIFE",
       "name_ko": "동양생명",
+      "sector": ""
+    },
+    "055550": {
+      "ticker": "055550",
+      "name": "ShinhanGroup",
+      "display_name": "ShinhanGroup",
+      "name_ko": "신한지주",
+      "sector": ""
+    },
+    "196170": {
+      "ticker": "196170",
+      "name": "Alteogen",
+      "display_name": "Alteogen",
+      "name_ko": "알테오젠",
+      "sector": ""
+    },
+    "036930": {
+      "ticker": "036930",
+      "name": "JEL",
+      "display_name": "JEL",
+      "name_ko": "주성엔지니어링",
+      "sector": ""
+    },
+    "028050": {
+      "ticker": "028050",
+      "name": "SamsungE&A",
+      "display_name": "SamsungE&A",
+      "name_ko": "삼성E&A",
+      "sector": ""
+    },
+    "267250": {
+      "ticker": "267250",
+      "name": "HD HYUNDAI",
+      "display_name": "HD HYUNDAI",
+      "name_ko": "HD현대",
+      "sector": ""
+    },
+    "000990": {
+      "ticker": "000990",
+      "name": "DB HiTek",
+      "display_name": "DB HiTek",
+      "name_ko": "DB하이텍",
+      "sector": ""
+    },
+    "088980": {
+      "ticker": "088980",
+      "name": "MKIF",
+      "display_name": "MKIF",
+      "name_ko": "맥쿼리인프라",
+      "sector": ""
+    },
+    "088350": {
+      "ticker": "088350",
+      "name": "HANWHA LIFE",
+      "display_name": "HANWHA LIFE",
+      "name_ko": "한화생명",
+      "sector": ""
+    },
+    "095340": {
+      "ticker": "095340",
+      "name": "ISC",
+      "display_name": "ISC",
+      "name_ko": "ISC",
+      "sector": ""
+    },
+    "310210": {
+      "ticker": "310210",
+      "name": "VRNI",
+      "display_name": "VRNI",
+      "name_ko": "보로노이",
+      "sector": ""
+    },
+    "279570": {
+      "ticker": "279570",
+      "name": "Kbank",
+      "display_name": "Kbank",
+      "name_ko": "케이뱅크",
+      "sector": ""
+    },
+    "226950": {
+      "ticker": "226950",
+      "name": "OliX",
+      "display_name": "OliX",
+      "name_ko": "올릭스",
+      "sector": ""
+    },
+    "426030": {
+      "ticker": "426030",
+      "name": "TIME US NASDAQ100 ACTIVE",
+      "display_name": "TIME US NASDAQ100 ACTIVE",
+      "name_ko": "TIME 미국나스닥100액티브",
+      "sector": ""
+    },
+    "263750": {
+      "ticker": "263750",
+      "name": "PearlAbyss",
+      "display_name": "PearlAbyss",
+      "name_ko": "펄어비스",
+      "sector": ""
+    },
+    "483650": {
+      "ticker": "483650",
+      "name": "d'Alba Global",
+      "display_name": "d'Alba Global",
+      "name_ko": "달바글로벌",
+      "sector": ""
+    },
+    "098460": {
+      "ticker": "098460",
+      "name": "Koh Young",
+      "display_name": "Koh Young",
+      "name_ko": "고영",
+      "sector": ""
+    },
+    "005440": {
+      "ticker": "005440",
+      "name": "HYUNDAI G.F. HOLDINGS",
+      "display_name": "HYUNDAI G.F. HOLDINGS",
+      "name_ko": "현대지에프홀딩스",
+      "sector": ""
+    },
+    "097230": {
+      "ticker": "097230",
+      "name": "HJSC",
+      "display_name": "HJSC",
+      "name_ko": "HJ중공업",
+      "sector": ""
+    },
+    "103140": {
+      "ticker": "103140",
+      "name": "POONGSAN",
+      "display_name": "POONGSAN",
+      "name_ko": "풍산",
+      "sector": ""
+    },
+    "078600": {
+      "ticker": "078600",
+      "name": "DAEJOO",
+      "display_name": "DAEJOO",
+      "name_ko": "대주전자재료",
+      "sector": ""
+    },
+    "281820": {
+      "ticker": "281820",
+      "name": "KCTECH",
+      "display_name": "KCTECH",
+      "name_ko": "케이씨텍",
+      "sector": ""
+    },
+    "100790": {
+      "ticker": "100790",
+      "name": "Mirae Asset Venture",
+      "display_name": "Mirae Asset Venture",
+      "name_ko": "미래에셋벤처투자",
       "sector": ""
     }
   }
