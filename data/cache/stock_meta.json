@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T06:44:58.465655+00:00",
+  "updated_at": "2026-06-22T06:45:09.392953+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2113,6 +2113,13 @@
       "name": "KB Balhae Infra",
       "display_name": "KB Balhae Infra",
       "name_ko": "KB발해인프라",
+      "sector": ""
+    },
+    "036540": {
+      "ticker": "036540",
+      "name": "SFASemicon",
+      "display_name": "SFASemicon",
+      "name_ko": "SFA반도체",
       "sector": ""
     }
   }
