@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-22T06:45:09.392953+00:00",
+  "updated_at": "2026-06-23T06:44:55.566858+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2120,6 +2120,13 @@
       "name": "SFASemicon",
       "display_name": "SFASemicon",
       "name_ko": "SFA반도체",
+      "sector": ""
+    },
+    "195940": {
+      "ticker": "195940",
+      "name": "HK inno.N",
+      "display_name": "HK inno.N",
+      "name_ko": "HK이노엔",
       "sector": ""
     }
   }
