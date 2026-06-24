@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T06:44:55.566858+00:00",
+  "updated_at": "2026-06-24T06:44:54.230942+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2127,6 +2127,13 @@
       "name": "HK inno.N",
       "display_name": "HK inno.N",
       "name_ko": "HK이노엔",
+      "sector": ""
+    },
+    "003380": {
+      "ticker": "003380",
+      "name": "Harim Holdings",
+      "display_name": "Harim Holdings",
+      "name_ko": "하림지주",
       "sector": ""
     }
   }
