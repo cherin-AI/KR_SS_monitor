@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-24T06:44:54.230942+00:00",
+  "updated_at": "2026-06-26T06:45:00.497079+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2134,6 +2134,20 @@
       "name": "Harim Holdings",
       "display_name": "Harim Holdings",
       "name_ko": "하림지주",
+      "sector": ""
+    },
+    "057050": {
+      "ticker": "057050",
+      "name": "HYUNDAIHOMESHOP",
+      "display_name": "HYUNDAIHOMESHOP",
+      "name_ko": "현대홈쇼핑",
+      "sector": ""
+    },
+    "330590": {
+      "ticker": "330590",
+      "name": "LOTTE REIT",
+      "display_name": "LOTTE REIT",
+      "name_ko": "롯데리츠",
       "sector": ""
     }
   }
