@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T06:45:00.497079+00:00",
+  "updated_at": "2026-06-29T06:44:56.133577+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2148,6 +2148,13 @@
       "name": "LOTTE REIT",
       "display_name": "LOTTE REIT",
       "name_ko": "롯데리츠",
+      "sector": ""
+    },
+    "085660": {
+      "ticker": "085660",
+      "name": "CHA Biotech",
+      "display_name": "CHA Biotech",
+      "name_ko": "차바이오텍",
       "sector": ""
     }
   }
