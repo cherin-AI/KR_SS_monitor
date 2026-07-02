@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-01T06:45:00.238131+00:00",
+  "updated_at": "2026-07-02T06:44:59.208451+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2162,6 +2162,13 @@
       "name": "LOTTE rental",
       "display_name": "LOTTE rental",
       "name_ko": "롯데렌탈",
+      "sector": ""
+    },
+    "000080": {
+      "ticker": "000080",
+      "name": "HITEJINRO",
+      "display_name": "HITEJINRO",
+      "name_ko": "하이트진로",
       "sector": ""
     }
   }
