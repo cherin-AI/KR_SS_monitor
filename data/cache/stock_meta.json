@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02T06:44:59.208451+00:00",
+  "updated_at": "2026-07-07T06:44:57.732483+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2169,6 +2169,20 @@
       "name": "HITEJINRO",
       "display_name": "HITEJINRO",
       "name_ko": "하이트진로",
+      "sector": ""
+    },
+    "003090": {
+      "ticker": "003090",
+      "name": "Daewoong",
+      "display_name": "Daewoong",
+      "name_ko": "대웅",
+      "sector": ""
+    },
+    "300720": {
+      "ticker": "300720",
+      "name": "HANILCMT",
+      "display_name": "HANILCMT",
+      "name_ko": "한일시멘트",
       "sector": ""
     }
   }
