@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T06:44:57.732483+00:00",
+  "updated_at": "2026-07-08T06:44:57.038349+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2183,6 +2183,13 @@
       "name": "HANILCMT",
       "display_name": "HANILCMT",
       "name_ko": "한일시멘트",
+      "sector": ""
+    },
+    "280360": {
+      "ticker": "280360",
+      "name": "LOTTE WELLFOOD",
+      "display_name": "LOTTE WELLFOOD",
+      "name_ko": "롯데웰푸드",
       "sector": ""
     }
   }
