@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T06:44:57.038349+00:00",
+  "updated_at": "2026-07-10T06:44:57.546952+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2190,6 +2190,13 @@
       "name": "LOTTE WELLFOOD",
       "display_name": "LOTTE WELLFOOD",
       "name_ko": "롯데웰푸드",
+      "sector": ""
+    },
+    "491000": {
+      "ticker": "491000",
+      "name": "LivsMed",
+      "display_name": "LivsMed",
+      "name_ko": "리브스메드",
       "sector": ""
     }
   }
