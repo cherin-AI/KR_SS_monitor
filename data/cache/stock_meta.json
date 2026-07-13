@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-10T06:44:57.546952+00:00",
+  "updated_at": "2026-07-13T06:44:54.768255+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2197,6 +2197,13 @@
       "name": "LivsMed",
       "display_name": "LivsMed",
       "name_ko": "리브스메드",
+      "sector": ""
+    },
+    "479080": {
+      "ticker": "479080",
+      "name": "1Q Money Market Active",
+      "display_name": "1Q Money Market Active",
+      "name_ko": "1Q 머니마켓액티브",
       "sector": ""
     }
   }
