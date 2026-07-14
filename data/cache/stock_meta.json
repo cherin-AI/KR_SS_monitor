@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-13T06:44:54.768255+00:00",
+  "updated_at": "2026-07-14T06:44:59.496225+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2204,6 +2204,20 @@
       "name": "1Q Money Market Active",
       "display_name": "1Q Money Market Active",
       "name_ko": "1Q 머니마켓액티브",
+      "sector": ""
+    },
+    "003240": {
+      "ticker": "003240",
+      "name": "TaekwangInd",
+      "display_name": "TaekwangInd",
+      "name_ko": "태광산업",
+      "sector": ""
+    },
+    "006340": {
+      "ticker": "006340",
+      "name": "DaewonCbl",
+      "display_name": "DaewonCbl",
+      "name_ko": "대원전선",
       "sector": ""
     }
   }
