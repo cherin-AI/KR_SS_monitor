@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14T06:44:59.496225+00:00",
+  "updated_at": "2026-07-16T06:45:02.082118+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2218,6 +2218,13 @@
       "name": "DaewonCbl",
       "display_name": "DaewonCbl",
       "name_ko": "대원전선",
+      "sector": ""
+    },
+    "000210": {
+      "ticker": "000210",
+      "name": "DL",
+      "display_name": "DL",
+      "name_ko": "DL",
       "sector": ""
     }
   }
