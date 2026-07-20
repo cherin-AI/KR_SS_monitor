@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-16T06:45:02.082118+00:00",
+  "updated_at": "2026-07-20T06:44:58.478311+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2225,6 +2225,27 @@
       "name": "DL",
       "display_name": "DL",
       "name_ko": "DL",
+      "sector": ""
+    },
+    "252990": {
+      "ticker": "252990",
+      "name": "SEMCNS",
+      "display_name": "SEMCNS",
+      "name_ko": "샘씨엔에스",
+      "sector": ""
+    },
+    "376900": {
+      "ticker": "376900",
+      "name": "ROKIT",
+      "display_name": "ROKIT",
+      "name_ko": "로킷헬스케어",
+      "sector": ""
+    },
+    "185750": {
+      "ticker": "185750",
+      "name": "CHONGKUNDANG",
+      "display_name": "CHONGKUNDANG",
+      "name_ko": "종근당",
       "sector": ""
     }
   }
