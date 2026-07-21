@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20T06:44:58.478311+00:00",
+  "updated_at": "2026-07-21T06:45:00.852110+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2246,6 +2246,13 @@
       "name": "CHONGKUNDANG",
       "display_name": "CHONGKUNDANG",
       "name_ko": "종근당",
+      "sector": ""
+    },
+    "009450": {
+      "ticker": "009450",
+      "name": "KYUNGDONGNAVIEN",
+      "display_name": "KYUNGDONGNAVIEN",
+      "name_ko": "경동나비엔",
       "sector": ""
     }
   }
