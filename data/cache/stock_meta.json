@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-21T06:45:00.852110+00:00",
+  "updated_at": "2026-07-23T06:45:15.621011+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2253,6 +2253,13 @@
       "name": "KYUNGDONGNAVIEN",
       "display_name": "KYUNGDONGNAVIEN",
       "name_ko": "경동나비엔",
+      "sector": ""
+    },
+    "100090": {
+      "ticker": "100090",
+      "name": "SKoceanplant",
+      "display_name": "SKoceanplant",
+      "name_ko": "SK오션플랜트",
       "sector": ""
     }
   }
