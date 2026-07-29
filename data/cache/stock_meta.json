@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28T06:45:04.531695+00:00",
+  "updated_at": "2026-07-29T06:45:03.815123+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2274,6 +2274,27 @@
       "name": "LotteChilsung",
       "display_name": "LotteChilsung",
       "name_ko": "롯데칠성",
+      "sector": ""
+    },
+    "241710": {
+      "ticker": "241710",
+      "name": "COSMECCA KOREA",
+      "display_name": "COSMECCA KOREA",
+      "name_ko": "코스메카코리아",
+      "sector": ""
+    },
+    "009240": {
+      "ticker": "009240",
+      "name": "Hanssem",
+      "display_name": "Hanssem",
+      "name_ko": "한샘",
+      "sector": ""
+    },
+    "451800": {
+      "ticker": "451800",
+      "name": "Hanwha REIT",
+      "display_name": "Hanwha REIT",
+      "name_ko": "한화리츠",
       "sector": ""
     }
   }
