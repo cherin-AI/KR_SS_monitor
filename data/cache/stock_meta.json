@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T06:45:03.815123+00:00",
+  "updated_at": "2026-07-30T06:45:03.980844+00:00",
   "stocks": {
     "402340": {
       "ticker": "402340",
@@ -2295,6 +2295,13 @@
       "name": "Hanwha REIT",
       "display_name": "Hanwha REIT",
       "name_ko": "한화리츠",
+      "sector": ""
+    },
+    "079160": {
+      "ticker": "079160",
+      "name": "CJ CGV",
+      "display_name": "CJ CGV",
+      "name_ko": "CJ CGV",
       "sector": ""
     }
   }
