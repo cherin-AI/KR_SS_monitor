@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T06:44:58.269343+00:00",
+  "updated_at": "2026-08-10T06:44:59.056021+00:00",
   "stocks": {
     "005930": {
       "ticker": "005930",
@@ -2078,6 +2078,48 @@
       "name": "HANILCMT",
       "display_name": "HANILCMT",
       "name_ko": "한일시멘트",
+      "sector": ""
+    },
+    "183300": {
+      "ticker": "183300",
+      "name": "KoMiCo",
+      "display_name": "KoMiCo",
+      "name_ko": "코미코",
+      "sector": ""
+    },
+    "319660": {
+      "ticker": "319660",
+      "name": "PSK",
+      "display_name": "PSK",
+      "name_ko": "피에스케이",
+      "sector": ""
+    },
+    "012630": {
+      "ticker": "012630",
+      "name": "HDC HOLDINGS",
+      "display_name": "HDC HOLDINGS",
+      "name_ko": "HDC",
+      "sector": ""
+    },
+    "031330": {
+      "ticker": "031330",
+      "name": "SAMT",
+      "display_name": "SAMT",
+      "name_ko": "에스에이엠티",
+      "sector": ""
+    },
+    "028300": {
+      "ticker": "028300",
+      "name": "HLB",
+      "display_name": "HLB",
+      "name_ko": "HLB",
+      "sector": ""
+    },
+    "032350": {
+      "ticker": "032350",
+      "name": "LOTTE TOUR",
+      "display_name": "LOTTE TOUR",
+      "name_ko": "롯데관광개발",
       "sector": ""
     }
   }
