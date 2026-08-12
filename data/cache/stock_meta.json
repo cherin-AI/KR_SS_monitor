@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T06:44:59.056021+00:00",
+  "updated_at": "2026-08-12T06:45:01.557970+00:00",
   "stocks": {
     "005930": {
       "ticker": "005930",
@@ -2120,6 +2120,13 @@
       "name": "LOTTE TOUR",
       "display_name": "LOTTE TOUR",
       "name_ko": "롯데관광개발",
+      "sector": ""
+    },
+    "204270": {
+      "ticker": "204270",
+      "name": "JNTC",
+      "display_name": "JNTC",
+      "name_ko": "제이앤티씨",
       "sector": ""
     }
   }
