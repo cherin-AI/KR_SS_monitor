@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-12T06:45:01.557970+00:00",
+  "updated_at": "2026-08-13T06:45:00.861503+00:00",
   "stocks": {
     "005930": {
       "ticker": "005930",
@@ -2127,6 +2127,13 @@
       "name": "JNTC",
       "display_name": "JNTC",
       "name_ko": "제이앤티씨",
+      "sector": ""
+    },
+    "001820": {
+      "ticker": "001820",
+      "name": "SamwhaCapacitor",
+      "display_name": "SamwhaCapacitor",
+      "name_ko": "삼화콘덴서",
       "sector": ""
     }
   }
