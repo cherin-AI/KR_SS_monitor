@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-13T06:45:00.861503+00:00",
+  "updated_at": "2026-08-19T06:44:53.874429+00:00",
   "stocks": {
     "005930": {
       "ticker": "005930",
@@ -2134,6 +2134,13 @@
       "name": "SamwhaCapacitor",
       "display_name": "SamwhaCapacitor",
       "name_ko": "삼화콘덴서",
+      "sector": ""
+    },
+    "451800": {
+      "ticker": "451800",
+      "name": "Hanwha REIT",
+      "display_name": "Hanwha REIT",
+      "name_ko": "한화리츠",
       "sector": ""
     }
   }
