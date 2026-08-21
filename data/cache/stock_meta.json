@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20T06:44:53.810458+00:00",
+  "updated_at": "2026-08-21T06:44:56.586351+00:00",
   "stocks": {
     "005930": {
       "ticker": "005930",
@@ -2148,6 +2148,20 @@
       "name": "Rznomics",
       "display_name": "Rznomics",
       "name_ko": "알지노믹스",
+      "sector": ""
+    },
+    "003530": {
+      "ticker": "003530",
+      "name": "H.I.S.C",
+      "display_name": "H.I.S.C",
+      "name_ko": "한화투자증권",
+      "sector": ""
+    },
+    "192400": {
+      "ticker": "192400",
+      "name": "CUCKOO",
+      "display_name": "CUCKOO",
+      "name_ko": "쿠쿠홀딩스",
       "sector": ""
     }
   }
