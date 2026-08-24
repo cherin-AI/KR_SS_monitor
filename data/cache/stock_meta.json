@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T06:44:56.586351+00:00",
+  "updated_at": "2026-08-24T06:44:57.412115+00:00",
   "stocks": {
     "005930": {
       "ticker": "005930",
@@ -2162,6 +2162,13 @@
       "name": "CUCKOO",
       "display_name": "CUCKOO",
       "name_ko": "쿠쿠홀딩스",
+      "sector": ""
+    },
+    "003240": {
+      "ticker": "003240",
+      "name": "TaekwangInd",
+      "display_name": "TaekwangInd",
+      "name_ko": "태광산업",
       "sector": ""
     }
   }
