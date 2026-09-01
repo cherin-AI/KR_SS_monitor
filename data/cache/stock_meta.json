@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T06:45:11.888686+00:00",
+  "updated_at": "2026-09-01T06:45:03.356089+00:00",
   "stocks": {
     "000660": {
       "ticker": "000660",
@@ -1980,6 +1980,118 @@
       "name": "Hana Materials",
       "display_name": "Hana Materials",
       "name_ko": "하나머티리얼즈",
+      "sector": ""
+    },
+    "005940": {
+      "ticker": "005940",
+      "name": "NHIS",
+      "display_name": "NHIS",
+      "name_ko": "NH투자증권",
+      "sector": ""
+    },
+    "090430": {
+      "ticker": "090430",
+      "name": "AMOREPACIFIC",
+      "display_name": "AMOREPACIFIC",
+      "name_ko": "아모레퍼시픽",
+      "sector": ""
+    },
+    "047050": {
+      "ticker": "047050",
+      "name": "POSCO INTERNATIONAL",
+      "display_name": "POSCO INTERNATIONAL",
+      "name_ko": "포스코인터내셔널",
+      "sector": ""
+    },
+    "326030": {
+      "ticker": "326030",
+      "name": "SKBP",
+      "display_name": "SKBP",
+      "name_ko": "SK바이오팜",
+      "sector": ""
+    },
+    "068270": {
+      "ticker": "068270",
+      "name": "Celltrion",
+      "display_name": "Celltrion",
+      "name_ko": "셀트리온",
+      "sector": ""
+    },
+    "021240": {
+      "ticker": "021240",
+      "name": "COWAY",
+      "display_name": "COWAY",
+      "name_ko": "코웨이",
+      "sector": ""
+    },
+    "032640": {
+      "ticker": "032640",
+      "name": "LG Uplus",
+      "display_name": "LG Uplus",
+      "name_ko": "LG유플러스",
+      "sector": ""
+    },
+    "039030": {
+      "ticker": "039030",
+      "name": "EO Technics",
+      "display_name": "EO Technics",
+      "name_ko": "이오테크닉스",
+      "sector": ""
+    },
+    "036570": {
+      "ticker": "036570",
+      "name": "NC",
+      "display_name": "NC",
+      "name_ko": "NC",
+      "sector": ""
+    },
+    "138930": {
+      "ticker": "138930",
+      "name": "BNK Financial Group",
+      "display_name": "BNK Financial Group",
+      "name_ko": "BNK금융지주",
+      "sector": ""
+    },
+    "454910": {
+      "ticker": "454910",
+      "name": "Doosan Robotics",
+      "display_name": "Doosan Robotics",
+      "name_ko": "두산로보틱스",
+      "sector": ""
+    },
+    "001040": {
+      "ticker": "001040",
+      "name": "CJ",
+      "display_name": "CJ",
+      "name_ko": "CJ",
+      "sector": ""
+    },
+    "457190": {
+      "ticker": "457190",
+      "name": "ISUSPECIALTYCHEMICAL",
+      "display_name": "ISUSPECIALTYCHEMICAL",
+      "name_ko": "이수스페셜티케미컬",
+      "sector": ""
+    },
+    "010170": {
+      "ticker": "010170",
+      "name": "TaihanFiberoptics",
+      "display_name": "TaihanFiberoptics",
+      "name_ko": "대한광통신",
+      "sector": ""
+    },
+    "000370": {
+      "ticker": "000370",
+      "name": "Hanwha General Ins",
+      "display_name": "Hanwha General Ins",
+      "name_ko": "한화손해보험",
+      "sector": ""
+    },
+    "001120": {
+      "ticker": "001120",
+      "name": "LX INT",
+      "display_name": "LX INT",
+      "name_ko": "LX인터내셔널",
       "sector": ""
     }
   }
