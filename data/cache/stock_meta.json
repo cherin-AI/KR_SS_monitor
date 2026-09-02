@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-01T06:45:03.356089+00:00",
+  "updated_at": "2026-09-02T06:45:01.834477+00:00",
   "stocks": {
     "000660": {
       "ticker": "000660",
@@ -2092,6 +2092,20 @@
       "name": "LX INT",
       "display_name": "LX INT",
       "name_ko": "LX인터내셔널",
+      "sector": ""
+    },
+    "003690": {
+      "ticker": "003690",
+      "name": "Korean Re",
+      "display_name": "Korean Re",
+      "name_ko": "코리안리",
+      "sector": ""
+    },
+    "096530": {
+      "ticker": "096530",
+      "name": "SEEGENE",
+      "display_name": "SEEGENE",
+      "name_ko": "씨젠",
       "sector": ""
     }
   }
