@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-02T06:45:01.834477+00:00",
+  "updated_at": "2026-09-03T06:45:19.200239+00:00",
   "stocks": {
     "000660": {
       "ticker": "000660",
@@ -2106,6 +2106,20 @@
       "name": "SEEGENE",
       "display_name": "SEEGENE",
       "name_ko": "씨젠",
+      "sector": ""
+    },
+    "192400": {
+      "ticker": "192400",
+      "name": "CUCKOO",
+      "display_name": "CUCKOO",
+      "name_ko": "쿠쿠홀딩스",
+      "sector": ""
+    },
+    "086450": {
+      "ticker": "086450",
+      "name": "DongKook Pharm",
+      "display_name": "DongKook Pharm",
+      "name_ko": "동국제약",
       "sector": ""
     }
   }
