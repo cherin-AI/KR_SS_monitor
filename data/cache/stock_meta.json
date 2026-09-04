@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T06:45:19.200239+00:00",
+  "updated_at": "2026-09-04T06:44:53.680058+00:00",
   "stocks": {
     "000660": {
       "ticker": "000660",
@@ -2120,6 +2120,13 @@
       "name": "DongKook Pharm",
       "display_name": "DongKook Pharm",
       "name_ko": "동국제약",
+      "sector": ""
+    },
+    "437730": {
+      "ticker": "437730",
+      "name": "SAMHYUN",
+      "display_name": "SAMHYUN",
+      "name_ko": "삼현",
       "sector": ""
     }
   }
